@@ -1,4 +1,4 @@
 # Focust
 
 Welcome to Focust, 
-The **BEST** focus app's repository! 
+The **BEST** focus app! 
