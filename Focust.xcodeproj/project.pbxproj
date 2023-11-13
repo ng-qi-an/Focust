@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAD489922B02499900E2131B /* Homescreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD489912B02499900E2131B /* Homescreen.swift */; };
 		F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABA2B0127460099395D /* FocustApp.swift */; };
 		F2DBBABD2B0127460099395D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABC2B0127460099395D /* ContentView.swift */; };
 		F2DBBABF2B01274A0099395D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DBBABE2B01274A0099395D /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AAD489912B02499900E2131B /* Homescreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homescreen.swift; sourceTree = "<group>"; };
 		F2DBBAB72B0127460099395D /* Focust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DBBABA2B0127460099395D /* FocustApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocustApp.swift; sourceTree = "<group>"; };
 		F2DBBABC2B0127460099395D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				F2DBBABA2B0127460099395D /* FocustApp.swift */,
+				AAD489912B02499900E2131B /* Homescreen.swift */,
 				F2DBBABC2B0127460099395D /* ContentView.swift */,
 				F2DBBABE2B01274A0099395D /* Assets.xcassets */,
 				F2DBBAC02B01274A0099395D /* Preview Content */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2DBBABD2B0127460099395D /* ContentView.swift in Sources */,
+				AAD489922B02499900E2131B /* Homescreen.swift in Sources */,
 				F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +284,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +314,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
