@@ -12,7 +12,7 @@ struct Homescreen: View {
     @State var value = 0
     var body: some View {
         ZStack {
-            Color(red: 45/255, green: 212/255, blue: 191/255)
+            Color(red: 45/255, green: 212/255, blue: 191/255) //bg color
                 .edgesIgnoringSafeArea(.all)
             Image(systemName: "triangle")
                 .font(.system(size: 24))
@@ -49,23 +49,23 @@ struct Homescreen: View {
                 .rotationEffect(.degrees(-151))
                 .offset(x: 150, y: -400)
                 .foregroundColor(.white)
-                .opacity(0.2)
+                .opacity(0.2) //rando triangles
             Ellipse()
                 .frame(width: 395, height: 50)
                 .offset(y: -210)
                 .foregroundColor(.white)
-                .shadow(color: .white, radius: 5, y: -5)
+                .shadow(color: .white, radius: 5, y: -5) //bg oval
             VStack {
                 Text("**1**")
                     .foregroundColor(.white)
                     .font(.system(size: 60))
                 Text("hours focused")
                     .foregroundColor(.white)
-                    .font(.system(size: 20))
+                    .font(.system(size: 20)) //number of hours focused
                 Rectangle()
                     .frame(height: 650)
                     .offset(y: 60)
-                    .foregroundColor(.white)
+                    .foregroundColor(.white) //bg rectangle
             }
             VStack {
                 HStack {
@@ -87,7 +87,7 @@ struct Homescreen: View {
                             .foregroundColor(.black)
                             .opacity(0.3)
                             .offset(x: -35, y: -20)
-                    }
+                    }//frien button
                     Button {
                         //
                     } label: {
@@ -101,7 +101,7 @@ struct Homescreen: View {
                                     .offset(x: -2.5, y: -3)
                                     .rotationEffect(.degrees(-30)))
                             .offset(y: -60)
-                    }
+                    } //start button
                     Button {
                         //
                     } label: {
@@ -120,7 +120,7 @@ struct Homescreen: View {
                             .foregroundColor(.black)
                             .opacity(0.3)
                             .offset(x: -20, y: -20)
-                    }
+                    } //stats button
                 }
                 .offset(y: -70)
                 HStack {
@@ -140,27 +140,27 @@ struct Homescreen: View {
                     }
                     Text("🎉")
                         .font(.system(size: 15))
-                }.offset(x: 3, y: -100)
-                Text("[ ] hrs left")
+                }.offset(x: 3, y: -100) //time left
+                Text("[ ] hrs left") //text version of time left
                     .opacity(0.3)
                     .offset(y: -90)
                 Text("**Your activity**")
                     .opacity(0.5)
-                    .offset(x: -120)
+                    .offset(x: -120, y: -70) //your activity
                 ZStack {
                     Rectangle()
-                        .frame(width: 350, height: 290)
-                        .foregroundColor(Color(red: 242/255, green: 242/255, blue: 242/255))
+                        .frame(width: 350, height: 270)
+                        .foregroundColor(Color(red: 242/255, green: 242/255, blue: 242/255)) //streak bg
                         .cornerRadius(15)
                     Image("flame")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 150)
-                        .offset(y: -65)
-                    Text("[ ]")
+                        .offset(y: -65) //fire
+                    Text("**5**")
                         .font(.system(size: 40))
                         .foregroundColor(.white)
-                        .offset(y: -50)
+                        .offset(y: -50) //streak number
                     Text("**Day Streak**")
                         .font(.system(size: 20))
                         .opacity(0.6)
@@ -345,7 +345,7 @@ struct Homescreen: View {
                                             .opacity(1)
                                     }
                                 }.offset(x: 120, y: 70)
-                            }.offset(y: -20)
+                            }.offset(y: -20) //timeline
                             HStack {
                                 Text("M")
                                     .font(.system(size: 15))
@@ -375,7 +375,7 @@ struct Homescreen: View {
                                     .font(.system(size: 15))
                                     .offset(x: 65, y: 90)
                                     .opacity(0.5)
-                            }.offset(y: -40)
+                            }.offset(y: -40) //days of the week
                         }
                     }
                 }.offset(y: -70)
@@ -422,7 +422,7 @@ struct Homescreen: View {
                                 .opacity(0.5)
                         }.offset(x: -10)
                     }
-                    .tabViewStyle(PageTabViewStyle())
+                    .tabViewStyle(PageTabViewStyle()) //tabs
                 }.offset(y: -180)
             }.offset(y: 315)
         }
