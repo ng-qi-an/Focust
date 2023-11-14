@@ -52,7 +52,7 @@ struct Homescreen: View {
                 .opacity(0.2) //rando triangles
             Ellipse()
                 .frame(width: 395, height: 50)
-                .offset(y: -210)
+                .offset(y: -200)
                 .foregroundColor(.white)
                 .shadow(color: .white, radius: 5, y: -5) //bg oval
             VStack {
@@ -64,9 +64,9 @@ struct Homescreen: View {
                     .font(.system(size: 20)) //number of hours focused
                 Rectangle()
                     .frame(height: 650)
-                    .offset(y: 60)
+                    .offset(y: 50)
                     .foregroundColor(.white) //bg rectangle
-            }
+            }.offset(y: 20)
             VStack {
                 HStack {
                     Button {
@@ -122,7 +122,7 @@ struct Homescreen: View {
                             .offset(x: -20, y: -20)
                     } //stats button
                 }
-                .offset(y: -70)
+                .offset(y: 100)
                 HStack {
                     Text("🏁")
                         .font(.system(size: 15))
@@ -140,13 +140,13 @@ struct Homescreen: View {
                     }
                     Text("🎉")
                         .font(.system(size: 15))
-                }.offset(x: 3, y: -100) //time left
+                }.offset(x: 3, y: 65) //time left
                 Text("[ ] hrs left") //text version of time left
                     .opacity(0.3)
-                    .offset(y: -90)
+                    .offset(y: 65)
                 Text("**Your activity**")
                     .opacity(0.5)
-                    .offset(x: -120, y: -70) //your activity
+                    .offset(x: -120, y: 90) //your activity
                 ZStack {
                     Rectangle()
                         .frame(width: 350, height: 270)
@@ -378,53 +378,8 @@ struct Homescreen: View {
                             }.offset(y: -40) //days of the week
                         }
                     }
-                }.offset(y: -70)
-                HStack {
-                    TabView {
-                        VStack {
-                            Image(systemName: "house.fill")
-                                .foregroundColor(Color(red: 45/255, green: 212/255, blue: 191/255))
-                            Text("Home")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color(red: 45/255, green: 212/255, blue: 191/255))
-                        }.offset(x: 10)
-                    }
-                    .tabViewStyle(PageTabViewStyle())
-                    
-                    TabView {
-                        VStack {
-                            Image(systemName: "person.2.fill")
-                                .opacity(0.5)
-                            Text("Friends")
-                                .font(.system(size: 10))
-                                .opacity(0.5)
-                        }.offset(x: 5)
-                    }
-                    .tabViewStyle(PageTabViewStyle())
-                    
-                    TabView {
-                        VStack {
-                            Image(systemName: "chart.line.uptrend.xyaxis")
-                                .opacity(0.5)
-                            Text("Stats")
-                                .font(.system(size: 10))
-                                .opacity(0.5)
-                        }
-                    }
-                    .tabViewStyle(PageTabViewStyle())
-                    
-                    TabView {
-                        VStack {
-                            Image(systemName: "gearshape.fill")
-                                .opacity(0.5)
-                            Text("Settings")
-                                .font(.system(size: 10))
-                                .opacity(0.5)
-                        }.offset(x: -10)
-                    }
-                    .tabViewStyle(PageTabViewStyle()) //tabs
-                }.offset(y: -180)
-            }.offset(y: 315)
+                }.offset(y: 90)
+            }.offset(y: 10)
         }
     }
 }
