@@ -87,25 +87,25 @@ struct Homescreen: View {
             }.offset(y: 20)
             VStack {
                 HStack {
-                    Button {
-                        //
-                    } label: {
-                        Circle()
-                            .fill(Color(red: 242/255, green: 242/255, blue: 242/255))
-                            .frame(width: 50, height: 50)
-                            .overlay(
-                                Image(systemName: "person.2.fill")
-                                    .font(.system(size: 17))
-                                    .foregroundColor(.black)
-                                    .offset(y: -0.5))
-                            .offset(x: 15, y: -60 )
-                            .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 1)
+                    VStack {
+                        Button {
+                            //
+                        } label: {
+                            Circle()
+                                .fill(Color(red: 242/255, green: 242/255, blue: 242/255))
+                                .frame(width: 50, height: 50)
+                                .overlay(
+                                    Image(systemName: "person.2.fill")
+                                        .font(.system(size: 17))
+                                        .foregroundColor(.black)
+                                        .offset(y: -0.5))
+                                .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 1)
+                        }//frien button
                         Text("Friends")
                             .font(.system(size: 10))
                             .foregroundColor(.black)
                             .opacity(0.3)
-                            .offset(x: -35, y: -20)
-                    }//frien button
+                    }.offset(x: -25, y: -50)
                     Button {
                         //
                     } label: {
@@ -120,25 +120,25 @@ struct Homescreen: View {
                                     .rotationEffect(.degrees(-30)))
                             .offset(y: -60)
                     } //start button
-                    Button {
-                        //
-                    } label: {
-                        Circle()
-                            .fill(Color(red: 242/255, green: 242/255, blue: 242/255))
-                            .frame(width: 50, height: 50)
-                            .overlay(
-                                Image(systemName: "chart.line.uptrend.xyaxis")
-                                    .font(.system(size: 17))
-                                    .foregroundColor(.black)
-                                    .offset(y: -0.5))
-                            .offset(x: 25, y: -60)
-                            .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 1)
+                    VStack {
+                        Button {
+                            //
+                        } label: {
+                            Circle()
+                                .fill(Color(red: 242/255, green: 242/255, blue: 242/255))
+                                .frame(width: 50, height: 50)
+                                .overlay(
+                                    Image(systemName: "chart.line.uptrend.xyaxis")
+                                        .font(.system(size: 17))
+                                        .foregroundColor(.black)
+                                        .offset(y: -0.5))
+                                .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 1)
+                        } //stats button
                         Text("Stats")
                             .font(.system(size: 10))
                             .foregroundColor(.black)
                             .opacity(0.3)
-                            .offset(x: -20, y: -20)
-                    } //stats button
+                    }.offset(x: 25, y: -50)
                 }
                 .offset(y: 100)
                 HStack {
