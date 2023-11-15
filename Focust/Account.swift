@@ -25,22 +25,28 @@ struct Account: View {
                     HStack {
                         Image("blueTheme")
                             .resizable()
-                            .frame(width: 90, height: 191)
+                            .frame(width: 70)
+                            .aspectRatio(contentMode: .fit)
                         Image("greenTheme")
                             .resizable()
-                            .frame(width: 90, height: 191)
+                            .frame(width: 70)
+                            .aspectRatio(contentMode: .fit)
                         Image("yellowTheme")
                             .resizable()
-                            .frame(width: 90, height: 191)
+                            .frame(width: 70)
+                            .aspectRatio(contentMode: .fit)
                         Image("orangeTheme")
                             .resizable()
-                            .frame(width: 90, height: 191)
+                            .frame(width: 70)
+                            .aspectRatio(contentMode: .fit)
                         Image("redTheme")
                             .resizable()
-                            .frame(width: 90, height: 191)
+                            .frame(width: 70)
+                            .aspectRatio(contentMode: .fit)
                         Image("purpledTheme")
                             .resizable()
-                            .frame(width: 90, height: 191)
+                            .frame(width: 70)
+                            .aspectRatio(contentMode: .fit)
                     }
                     if isDarkMode == false {
                         Rectangle()
@@ -61,7 +67,7 @@ struct Account: View {
                             .foregroundColor(.black)
                             .offset(x: 177)
                     }
-                }.offset(y: 45)
+                }.offset(y: 35)
                 ZStack {
                     Rectangle()
                         .frame(width: 361, height: 44)
@@ -72,11 +78,8 @@ struct Account: View {
                             .font(.system(size: 17))
                             .offset(x: 80)
                     } .offset(x: -40)
-                }.offset(y: 105)
-                VStack {
-                    
-                }
-            }
+                }.offset(y: 67)
+            }.offset(y: -130)
             .preferredColorScheme(isDarkMode ? .dark : .light)
             .navigationTitle("Account")
         }

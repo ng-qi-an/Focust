@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1F0AEC2B04A08600F3ECFF /* Focus Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F0AEB2B04A08600F3ECFF /* Focus Mode.swift */; };
 		AA2147112B03D83C00E7B7A5 /* MainDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2147102B03D83C00E7B7A5 /* MainDisplay.swift */; };
 		AA46033E2B03D01300F24DC4 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033D2B03D01300F24DC4 /* Account.swift */; };
 		AA4603402B03D20200F24DC4 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033F2B03D20200F24DC4 /* Friends.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA1F0AEB2B04A08600F3ECFF /* Focus Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focus Mode.swift"; sourceTree = "<group>"; };
 		AA2147102B03D83C00E7B7A5 /* MainDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDisplay.swift; sourceTree = "<group>"; };
 		AA46033D2B03D01300F24DC4 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		AA46033F2B03D20200F24DC4 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				F2DBBABA2B0127460099395D /* FocustApp.swift */,
 				AAD489912B02499900E2131B /* Homescreen.swift */,
 				AA2147102B03D83C00E7B7A5 /* MainDisplay.swift */,
+				AA1F0AEB2B04A08600F3ECFF /* Focus Mode.swift */,
 				AA46033F2B03D20200F24DC4 /* Friends.swift */,
 				AAB01EAA2B03AC9200A6E8D6 /* Statistics.swift */,
 				AA46033D2B03D01300F24DC4 /* Account.swift */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1F0AEC2B04A08600F3ECFF /* Focus Mode.swift in Sources */,
 				F2DBBABD2B0127460099395D /* ContentView.swift in Sources */,
 				AA4603402B03D20200F24DC4 /* Friends.swift in Sources */,
 				AAD489922B02499900E2131B /* Homescreen.swift in Sources */,
