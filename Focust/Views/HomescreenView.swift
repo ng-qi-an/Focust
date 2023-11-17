@@ -14,8 +14,13 @@ struct HomescreenView: View {
     
     var body: some View {
         ZStack {
-            Color(red: 45/255, green: 212/255, blue: 191/255) //bg color
-                .edgesIgnoringSafeArea(.top)
+            if darkMode == true {
+                Color(red: 17/255, green: 94/255, blue: 89/255)
+                    .edgesIgnoringSafeArea(.top)
+            } else {
+                Color(red: 45/255, green: 212/255, blue: 191/255)
+                    .edgesIgnoringSafeArea(.top)
+            }//bg color
             Image(systemName: "triangle")
                 .font(.system(size: 24))
                 .rotationEffect(.degrees(88))
@@ -168,6 +173,7 @@ struct HomescreenView: View {
                         .font(.system(size: 20))
                         .opacity(0.6)
                         .offset(y: 10)
+                        .foregroundColor(.black)
                     VStack {
                         LinearGradient(
                             gradient: Gradient(
@@ -378,7 +384,9 @@ struct HomescreenView: View {
                                     .font(.system(size: 15))
                                     .offset(x: 65, y: 90)
                                     .opacity(0.5)
-                            }.offset(y: -40) //days of the week
+                            }//days of the week
+                            .offset(y: -40)
+                            .foregroundColor(.black)
                         }
                     }
                 }.offset(y: 90)
