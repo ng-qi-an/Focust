@@ -2,7 +2,7 @@ import SwiftUI
 
 struct FriendsView: View {
     var body: some View {
-        VStack{
+        VStack {
             Text("Friends")
                 .bold()
                 .font(.system(size: 45))

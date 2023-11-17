@@ -95,6 +95,7 @@ struct StatisticsView: View {
                                 Spacer()
                                 Image(systemName: "trash")
                                     .padding(.trailing, 20)
+                                    .foregroundColor(.white)
                             }
                             .frame(width: 315, height: 50)
                             .background(Color(red: 239/255, green: 68/255, blue: 86/255))
