@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Account: View {
+struct AccountView: View {
     @State var isDarkMode = false
     
     var body: some View {
@@ -88,8 +88,8 @@ struct Account: View {
     }
 }
 
-struct Account_Previews: PreviewProvider {
+struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        Account()
+        AccountView()
     }
 }

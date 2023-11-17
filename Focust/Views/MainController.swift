@@ -7,25 +7,25 @@
 
 import SwiftUI
 
-struct MainDisplay: View {
+struct MainController: View {
     var body: some View {
         TabView {
-            Homescreen()
+            HomescreenView()
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
-            Friends()
+            FriendsView()
                 .tabItem {
                     Image(systemName: "person.2.fill")
                     Text("Friends")
                 }
-            Statistics()
+            StatisticsView()
                 .tabItem {
                     Image(systemName: "chart.line.uptrend.xyaxis")
                     Text("Stats")
                 }
-            Account()
+            AccountView()
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                     Text("Account")
@@ -35,8 +35,8 @@ struct MainDisplay: View {
     }
 }
 
-struct MainDisplay_Previews: PreviewProvider {
+struct MainController_Previews: PreviewProvider {
     static var previews: some View {
-        MainDisplay()
+        MainController()
     }
 }

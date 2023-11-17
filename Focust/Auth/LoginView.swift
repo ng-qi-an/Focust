@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct Login: View {
+struct LoginView: View {
     @State private var phoneNo = ""
     @State private var password = ""
     
@@ -87,8 +87,8 @@ struct Login: View {
     }
 }
 
-struct Login_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        Login()
+        LoginView()
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AuthStartingPage: View {
+struct AuthController: View {
     var body: some View {
         ZStack {
             Color(red: 216/255, green: 255/255, blue:250/255)
@@ -63,8 +63,8 @@ struct AuthStartingPage: View {
     }
 }
 
-struct AuthStartingPage_Previews: PreviewProvider {
+struct AuthController_Previews: PreviewProvider {
     static var previews: some View {
-        AuthStartingPage()
+        AuthController()
     }
 }

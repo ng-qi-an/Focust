@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Statistics: View {
+struct StatisticsView: View {
     var body: some View {
         NavigationView {
             VStack {
@@ -113,8 +113,8 @@ struct Statistics: View {
     }
 }
 
-struct Statistics_Previews: PreviewProvider {
+struct StatisticsView_Previews: PreviewProvider {
     static var previews: some View {
-        Statistics()
+        StatisticsView()
     }
 }

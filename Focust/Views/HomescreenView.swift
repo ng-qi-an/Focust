@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct Homescreen: View {
+struct HomescreenView: View {
     
     @State var value = 0
-    @State var account = Account()
+    @State var account = AccountView()
     
     var body: some View {
         ZStack {
@@ -402,8 +402,8 @@ struct Homescreen: View {
     }
 }
 
-struct Homescreen_Previews: PreviewProvider {
+struct HomescreenView_Previews: PreviewProvider {
     static var previews: some View {
-        Homescreen()
+        HomescreenView()
     }
 }

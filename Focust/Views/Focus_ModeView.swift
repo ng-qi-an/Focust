@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Focus_Mode: View {
+struct Focus_ModeView: View {
     var body: some View {
         ZStack {
             LinearGradient(colors: [Color(red: 45/255, green: 212/255, blue: 191/255), Color(red: 0/255, green: 157/255, blue: 221/255)], startPoint: .top, endPoint: .bottom)
@@ -97,8 +97,8 @@ struct Focus_Mode: View {
     }
 }
 
-struct Focus_Mode_Previews: PreviewProvider {
+struct Focus_ModeView_Previews: PreviewProvider {
     static var previews: some View {
-        Focus_Mode()
+        Focus_ModeView()
     }
 }

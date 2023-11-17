@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA1F0AEC2B04A08600F3ECFF /* Focus Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F0AEB2B04A08600F3ECFF /* Focus Mode.swift */; };
-		AA2147112B03D83C00E7B7A5 /* MainDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2147102B03D83C00E7B7A5 /* MainDisplay.swift */; };
-		AA46033E2B03D01300F24DC4 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033D2B03D01300F24DC4 /* Account.swift */; };
-		AA4603402B03D20200F24DC4 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033F2B03D20200F24DC4 /* Friends.swift */; };
-		AAB01EAB2B03AC9200A6E8D6 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB01EAA2B03AC9200A6E8D6 /* Statistics.swift */; };
-		AAB1D2762B05D0B9003A6DBF /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2752B05D0B9003A6DBF /* Login.swift */; };
-		AAB1D2782B05D98F003A6DBF /* AuthStartingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2772B05D98F003A6DBF /* AuthStartingPage.swift */; };
-		AAD489922B02499900E2131B /* Homescreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD489912B02499900E2131B /* Homescreen.swift */; };
+		AA1F0AEC2B04A08600F3ECFF /* Focus_ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */; };
+		AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2147102B03D83C00E7B7A5 /* MainController.swift */; };
+		AA46033E2B03D01300F24DC4 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033D2B03D01300F24DC4 /* AccountView.swift */; };
+		AA4603402B03D20200F24DC4 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033F2B03D20200F24DC4 /* FriendsView.swift */; };
+		AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */; };
+		AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2752B05D0B9003A6DBF /* LoginView.swift */; };
+		AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2772B05D98F003A6DBF /* AuthController.swift */; };
+		AAD489922B02499900E2131B /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD489912B02499900E2131B /* HomescreenView.swift */; };
 		F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABA2B0127460099395D /* FocustApp.swift */; };
 		F2DBBABD2B0127460099395D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABC2B0127460099395D /* ContentView.swift */; };
 		F2DBBABF2B01274A0099395D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DBBABE2B01274A0099395D /* Assets.xcassets */; };
@@ -22,14 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA1F0AEB2B04A08600F3ECFF /* Focus Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focus Mode.swift"; sourceTree = "<group>"; };
-		AA2147102B03D83C00E7B7A5 /* MainDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDisplay.swift; sourceTree = "<group>"; };
-		AA46033D2B03D01300F24DC4 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		AA46033F2B03D20200F24DC4 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
-		AAB01EAA2B03AC9200A6E8D6 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
-		AAB1D2752B05D0B9003A6DBF /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		AAB1D2772B05D98F003A6DBF /* AuthStartingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStartingPage.swift; sourceTree = "<group>"; };
-		AAD489912B02499900E2131B /* Homescreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homescreen.swift; sourceTree = "<group>"; };
+		AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus_ModeView.swift; sourceTree = "<group>"; };
+		AA2147102B03D83C00E7B7A5 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		AA46033D2B03D01300F24DC4 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		AA46033F2B03D20200F24DC4 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		AAB1D2752B05D0B9003A6DBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		AAB1D2772B05D98F003A6DBF /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
+		AAD489912B02499900E2131B /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
 		F2DBBAB72B0127460099395D /* Focust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DBBABA2B0127460099395D /* FocustApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocustApp.swift; sourceTree = "<group>"; };
 		F2DBBABC2B0127460099395D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +48,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F2536B982B06F8F5004A3CA9 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				AAB1D2772B05D98F003A6DBF /* AuthController.swift */,
+				AAB1D2752B05D0B9003A6DBF /* LoginView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		F2536B992B06F93B004A3CA9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA2147102B03D83C00E7B7A5 /* MainController.swift */,
+				AAD489912B02499900E2131B /* HomescreenView.swift */,
+				AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */,
+				AA46033F2B03D20200F24DC4 /* FriendsView.swift */,
+				AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */,
+				AA46033D2B03D01300F24DC4 /* AccountView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F2DBBAAE2B0127460099395D = {
 			isa = PBXGroup;
 			children = (
@@ -67,15 +89,9 @@
 		F2DBBAB92B0127460099395D /* Focust */ = {
 			isa = PBXGroup;
 			children = (
+				F2536B992B06F93B004A3CA9 /* Views */,
+				F2536B982B06F8F5004A3CA9 /* Auth */,
 				F2DBBABA2B0127460099395D /* FocustApp.swift */,
-				AAD489912B02499900E2131B /* Homescreen.swift */,
-				AAB1D2752B05D0B9003A6DBF /* Login.swift */,
-				AAB1D2772B05D98F003A6DBF /* AuthStartingPage.swift */,
-				AA2147102B03D83C00E7B7A5 /* MainDisplay.swift */,
-				AA1F0AEB2B04A08600F3ECFF /* Focus Mode.swift */,
-				AA46033F2B03D20200F24DC4 /* Friends.swift */,
-				AAB01EAA2B03AC9200A6E8D6 /* Statistics.swift */,
-				AA46033D2B03D01300F24DC4 /* Account.swift */,
 				F2DBBABC2B0127460099395D /* ContentView.swift */,
 				F2DBBABE2B01274A0099395D /* Assets.xcassets */,
 				F2DBBAC02B01274A0099395D /* Preview Content */,
@@ -161,16 +177,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1F0AEC2B04A08600F3ECFF /* Focus Mode.swift in Sources */,
+				AA1F0AEC2B04A08600F3ECFF /* Focus_ModeView.swift in Sources */,
 				F2DBBABD2B0127460099395D /* ContentView.swift in Sources */,
-				AAB1D2782B05D98F003A6DBF /* AuthStartingPage.swift in Sources */,
-				AA4603402B03D20200F24DC4 /* Friends.swift in Sources */,
-				AAD489922B02499900E2131B /* Homescreen.swift in Sources */,
-				AAB01EAB2B03AC9200A6E8D6 /* Statistics.swift in Sources */,
-				AA2147112B03D83C00E7B7A5 /* MainDisplay.swift in Sources */,
-				AAB1D2762B05D0B9003A6DBF /* Login.swift in Sources */,
+				AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */,
+				AA4603402B03D20200F24DC4 /* FriendsView.swift in Sources */,
+				AAD489922B02499900E2131B /* HomescreenView.swift in Sources */,
+				AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */,
+				AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */,
+				AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */,
 				F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */,
-				AA46033E2B03D01300F24DC4 /* Account.swift in Sources */,
+				AA46033E2B03D01300F24DC4 /* AccountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
