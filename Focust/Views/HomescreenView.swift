@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomescreenView: View {
+    @Binding var darkMode: Bool
     
     @State var value = 0
-    @State var account = AccountView()
     
     var body: some View {
         ZStack {
@@ -55,8 +55,8 @@ struct HomescreenView: View {
             Ellipse()
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 .offset(y: -200)
-                .foregroundColor(account.isDarkMode ? .black : .white)
-                .shadow(color: account.isDarkMode ? .black : .white, radius: 5, y: -5) //bg oval
+                .foregroundColor(darkMode ? .black : .white)
+                .shadow(color: darkMode ? .black : .white, radius: 5, y: -5) //bg oval
             VStack {
                 Text("**1**")
                     .foregroundColor(.white)
@@ -67,7 +67,7 @@ struct HomescreenView: View {
                 Rectangle()
                     .frame(maxHeight: 660)
                     .offset(y: 58)
-                    .foregroundColor(account.isDarkMode ? .black : .white) //bg rectangle for dark mode
+                    .foregroundColor(darkMode ? .black : .white) //bg rectangle for dark mode
                 
             }.offset(y: 20)
             VStack {
@@ -389,6 +389,6 @@ struct HomescreenView: View {
 
 struct HomescreenView_Previews: PreviewProvider {
     static var previews: some View {
-        HomescreenView()
+        HomescreenView(darkMode: .constant(false))
     }
 }

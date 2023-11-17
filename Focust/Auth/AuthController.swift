@@ -22,7 +22,7 @@ struct AuthController: View {
                         .resizable()
                         .frame(width: 150, height: 150)
                         .offset(y: -30)
-                    Text("**Start you focus journey with us**")
+                    Text("**Start you focus journey**")
                         .font(.system(size: 25))
                         .foregroundColor(Color(red: 102/255, green: 100/255, blue: 100/255))
                     Text("**TODAY!**")
@@ -35,9 +35,10 @@ struct AuthController: View {
                 } label : {
                     HStack {
                         Text("Sign Up")
+                        Spacer()
                         Image(systemName: "person.crop.circle.badge.plus")
-                            .padding(.leading, 150)
                     }
+                    .padding(Edge.Set(arrayLiteral: .leading, .trailing), 30)
                     .frame(width: 315, height: 50)
                     .foregroundColor(.black)
                     .background(.white)
@@ -49,9 +50,10 @@ struct AuthController: View {
                 } label : {
                     HStack {
                         Text("Log In ")
+                        Spacer()
                         Image(systemName: "key")
-                            .padding(.leading, 150)
                     }
+                    .padding(Edge.Set(arrayLiteral: .leading, .trailing), 30)
                     .frame(width: 315, height: 50)
                     .foregroundColor(.black)
                     .background(.white)

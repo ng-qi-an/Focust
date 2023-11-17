@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct MainController: View {
+    @State var darkMode = false
     var body: some View {
         TabView {
-            HomescreenView()
+            HomescreenView(darkMode: $darkMode)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
@@ -25,7 +26,7 @@ struct MainController: View {
                     Image(systemName: "chart.line.uptrend.xyaxis")
                     Text("Stats")
                 }
-            AccountView()
+            AccountView(darkMode: $darkMode)
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                     Text("Account")

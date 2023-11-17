@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountView: View {
-    @State var isDarkMode = false
+    @Binding var darkMode: Bool;
     
     var body: some View {
         NavigationView {
@@ -52,7 +52,7 @@ struct AccountView: View {
                                 .aspectRatio(contentMode: .fit)
                         }.padding(Edge.Set(arrayLiteral: .trailing, .leading), 60)
                     }
-                    //                    if isDarkMode == false {
+                    //                    if darkMode == false {
                     //                        Rectangle()
                     //                            .frame(maxWidth: 60, maxHeight: 200)
                     //                            .foregroundColor(.white)
@@ -78,7 +78,7 @@ struct AccountView: View {
                         .opacity(0.1)
                         .cornerRadius(10)
                     HStack {
-                        Toggle(isOn: $isDarkMode) {
+                        Toggle(isOn: $darkMode) {
                             Text("Dark Mode")
                                 .font(.system(size: 17))
                         }
@@ -89,7 +89,7 @@ struct AccountView: View {
                 Spacer()
             }
                 
-            .preferredColorScheme(isDarkMode ? .dark : .light)
+            .preferredColorScheme(darkMode ? .dark : .light)
             .navigationTitle("Account")
         }
     }
@@ -97,6 +97,6 @@ struct AccountView: View {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView()
+        AccountView(darkMode: .constant(false))
     }
 }
