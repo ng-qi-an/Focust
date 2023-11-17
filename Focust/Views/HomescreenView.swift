@@ -54,13 +54,13 @@ struct HomescreenView: View {
                 .opacity(0.2) //rando triangles
             if account.isDarkMode == false {
                 Ellipse()
-                    .frame(width: 395, height: 50)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
                     .offset(y: -200)
                     .foregroundColor(.white)
                     .shadow(color: .white, radius: 5, y: -5) //bg oval
             } else {
                 Ellipse()
-                    .frame(width: 395, height: 50)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
                     .offset(y: -200)
                     .foregroundColor(.black)
                     .shadow(color: .black, radius: 5, y: -5) //bg oval
