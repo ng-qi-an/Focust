@@ -30,6 +30,11 @@ struct MainController: View {
                     Image(systemName: "gearshape.fill")
                     Text("Account")
                 }
+            Focus_ModeView()
+                .tabItem {
+                    Image(systemName: "dollarsign")
+                    Text("@money")
+                }
         }
         .accentColor(Color(red: 45/255, green: 212/255, blue: 191/255))
     }
