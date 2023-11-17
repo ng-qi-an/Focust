@@ -97,6 +97,8 @@ struct Focus_Mode: View {
     }
 }
 
-#Preview {
-    Focus_Mode()
+struct Focus_Mode_Previews: PreviewProvider {
+    static var previews: some View {
+        Focus_Mode()
+    }
 }

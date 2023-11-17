@@ -35,6 +35,8 @@ struct MainDisplay: View {
     }
 }
 
-#Preview {
-    MainDisplay()
+struct MainDisplay_Previews: PreviewProvider {
+    static var previews: some View {
+        MainDisplay()
+    }
 }

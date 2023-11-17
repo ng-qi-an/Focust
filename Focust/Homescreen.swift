@@ -402,6 +402,8 @@ struct Homescreen: View {
     }
 }
 
-#Preview {
-    Homescreen()
+struct Homescreen_Previews: PreviewProvider {
+    static var previews: some View {
+        Homescreen()
+    }
 }

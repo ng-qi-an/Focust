@@ -88,6 +88,8 @@ struct Account: View {
     }
 }
 
-#Preview {
-    Account()
+struct Account_Previews: PreviewProvider {
+    static var previews: some View {
+        Account()
+    }
 }

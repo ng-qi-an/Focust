@@ -63,6 +63,8 @@ struct AuthStartingPage: View {
     }
 }
 
-#Preview {
-    AuthStartingPage()
+struct AuthStartingPage_Previews: PreviewProvider {
+    static var previews: some View {
+        AuthStartingPage()
+    }
 }

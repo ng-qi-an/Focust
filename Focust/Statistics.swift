@@ -113,6 +113,8 @@ struct Statistics: View {
     }
 }
 
-#Preview {
-    Statistics()
+struct Statistics_Previews: PreviewProvider {
+    static var previews: some View {
+        Statistics()
+    }
 }
