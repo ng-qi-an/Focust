@@ -12,15 +12,17 @@ struct AccountView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 20) {
                 Rectangle()
-                    .frame(maxWidth: 350, maxHeight: 87)
+                    .frame(maxWidth: 380, maxHeight: 87)
                     .opacity(0.1)
                     .cornerRadius(10)
-                    .offset(y: 15)
-                Text("**Appearance**")
-                    .opacity(0.5)
-                    .offset(x: -130, y: 25)
+                HStack {
+                    Text("**Appearance**")
+                        .opacity(0.5)
+                        .padding(.leading, 40)
+                    Spacer()
+                }
                 ZStack {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
@@ -48,42 +50,47 @@ struct AccountView: View {
                                 .resizable()
                                 .frame(width: 70, height: 150)
                                 .aspectRatio(contentMode: .fit)
-                        }
+                        }.padding(Edge.Set(arrayLiteral: .trailing, .leading), 60)
                     }
-                    if isDarkMode == false {
-                        Rectangle()
-                            .frame(maxWidth: 60, maxHeight: 200)
-                            .foregroundColor(.white)
-                            .offset(x: -190)
-                        Rectangle()
-                            .frame(maxWidth: 60, maxHeight: 200)
-                            .foregroundColor(.white)
-                            .offset(x: 190)
-                    } else {
-                        Rectangle()
-                            .frame(maxWidth: 60, maxHeight: 200)
-                            .foregroundColor(.black)
-                            .offset(x: -180)
-                        Rectangle()
-                            .frame(maxWidth: 60, maxHeight: 200)
-                            .foregroundColor(.black)
-                            .offset(x: 180)
-                    }
-                }.offset(y: 35)
+                    //                    if isDarkMode == false {
+                    //                        Rectangle()
+                    //                            .frame(maxWidth: 60, maxHeight: 200)
+                    //                            .foregroundColor(.white)
+                    //                            .offset(x: -190)
+                    //                        Rectangle()
+                    //                            .frame(maxWidth: 60, maxHeight: 200)
+                    //                            .foregroundColor(.white)
+                    //                            .offset(x: 190)
+                    //                    } else {
+                    //                        Rectangle()
+                    //                            .frame(maxWidth: 60, maxHeight: 200)
+                    //                            .foregroundColor(.black)
+                    //                            .offset(x: -190)
+                    //                        Rectangle()
+                    //                            .frame(maxWidth: 60, maxHeight: 200)
+                    //                            .foregroundColor(.black)
+                    //                            .offset(x: 190)
+                    //                    }
+                }
                 ZStack {
                     Rectangle()
-                        .frame(maxWidth: 370, maxHeight: 44)
+                        .frame(maxWidth: 380, maxHeight: 50)
                         .opacity(0.1)
                         .cornerRadius(10)
-                    Toggle(isOn: $isDarkMode) {
-                        Text("Dark Mode")
-                            .font(.system(size: 17))
-                            .offset(x: 80)
-                    } .offset(x: -40)
-                }.offset(y: 67)
-            }.offset(y: -130)
-                .preferredColorScheme(isDarkMode ? .dark : .light)
-                .navigationTitle("Account")
+                    HStack {
+                        Toggle(isOn: $isDarkMode) {
+                            Text("Dark Mode")
+                                .font(.system(size: 17))
+                        }
+                    }
+                    .padding(.trailing, 40)
+                    .padding(.leading, 40)
+                }
+                Spacer()
+            }
+                
+            .preferredColorScheme(isDarkMode ? .dark : .light)
+            .navigationTitle("Account")
         }
     }
 }
