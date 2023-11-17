@@ -15,7 +15,7 @@ struct HomescreenView: View {
     var body: some View {
         ZStack {
             Color(red: 45/255, green: 212/255, blue: 191/255) //bg color
-                .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.top)
             Image(systemName: "triangle")
                 .font(.system(size: 24))
                 .rotationEffect(.degrees(88))
@@ -52,19 +52,11 @@ struct HomescreenView: View {
                 .offset(x: 150, y: -400)
                 .foregroundColor(.white)
                 .opacity(0.2) //rando triangles
-            if account.isDarkMode == false {
-                Ellipse()
-                    .frame(width: 395, height: 50)
-                    .offset(y: -200)
-                    .foregroundColor(.white)
-                    .shadow(color: .white, radius: 5, y: -5) //bg oval
-            } else {
-                Ellipse()
-                    .frame(width: 395, height: 50)
-                    .offset(y: -200)
-                    .foregroundColor(.black)
-                    .shadow(color: .black, radius: 5, y: -5) //bg oval
-            }
+            Ellipse()
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                .offset(y: -200)
+                .foregroundColor(account.isDarkMode ? .black : .white)
+                .shadow(color: account.isDarkMode ? .black : .white, radius: 5, y: -5) //bg oval
             VStack {
                 Text("**1**")
                     .foregroundColor(.white)
@@ -72,17 +64,10 @@ struct HomescreenView: View {
                 Text("hours focused")
                     .foregroundColor(.white)
                     .font(.system(size: 20)) //number of hours focused
-                if account.isDarkMode == false {
-                    Rectangle()
-                        .frame(height: 650)
-                        .offset(y: 50)
-                        .foregroundColor(.white) //bg rectangle for dark mode
-                } else {
-                    Rectangle()
-                        .frame(height: 650)
-                        .offset(y: 50)
-                        .foregroundColor(.black) //bg rectangle for dark mode
-                }
+                Rectangle()
+                    .frame(maxHeight: 660)
+                    .offset(y: 58)
+                    .foregroundColor(account.isDarkMode ? .black : .white) //bg rectangle for dark mode
                 
             }.offset(y: 20)
             VStack {
