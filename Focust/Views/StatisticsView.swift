@@ -38,10 +38,13 @@ struct StatisticsView: View {
                 ZStack {
                     Image("statsBg")
                         .resizable()
-                        .frame(width: 394, height: 520)
-                        .scaledToFit()
+                        .frame(maxWidth: .infinity, maxHeight: 520)
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
+                            Rectangle()
+                                .foregroundColor(.white)
+                                .opacity(0)
+                                .frame(maxWidth: .infinity, maxHeight: 30)
                             VStack {
                                 Text("**1**")
                                     .font(.system(size: 70))
@@ -102,12 +105,11 @@ struct StatisticsView: View {
                             .cornerRadius(15)
                             .offset(y: 30)
                         }
-                    }.offset(y: 30)
-                    Rectangle()
-                        .frame(width: 393, height: 100)
-                        .foregroundColor(.white)
-                        .offset(y: 230)
+                    }
                 }
+                Rectangle()
+                    .frame(maxWidth: .infinity, maxHeight: 10)
+                    .foregroundColor(.white)
             }
             .navigationTitle("Statistics")
         }

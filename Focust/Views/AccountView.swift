@@ -14,7 +14,7 @@ struct AccountView: View {
         NavigationView {
             VStack {
                 Rectangle()
-                    .frame(width: 350, height: 87)
+                    .frame(maxWidth: 350, maxHeight: 87)
                     .opacity(0.1)
                     .cornerRadius(10)
                     .offset(y: 15)
@@ -52,27 +52,27 @@ struct AccountView: View {
                     }
                     if isDarkMode == false {
                         Rectangle()
-                            .frame(width: 40, height: 200)
+                            .frame(maxWidth: 60, maxHeight: 200)
                             .foregroundColor(.white)
-                            .offset(x: -177)
+                            .offset(x: -190)
                         Rectangle()
-                            .frame(width: 40, height: 200)
+                            .frame(maxWidth: 60, maxHeight: 200)
                             .foregroundColor(.white)
-                            .offset(x: 177)
+                            .offset(x: 190)
                     } else {
                         Rectangle()
-                            .frame(width: 40, height: 200)
+                            .frame(maxWidth: 60, maxHeight: 200)
                             .foregroundColor(.black)
-                            .offset(x: -177)
+                            .offset(x: -180)
                         Rectangle()
-                            .frame(width: 40, height: 200)
+                            .frame(maxWidth: 60, maxHeight: 200)
                             .foregroundColor(.black)
-                            .offset(x: 177)
+                            .offset(x: 180)
                     }
                 }.offset(y: 35)
                 ZStack {
                     Rectangle()
-                        .frame(width: 361, height: 44)
+                        .frame(maxWidth: 370, maxHeight: 44)
                         .opacity(0.1)
                         .cornerRadius(10)
                     Toggle(isOn: $isDarkMode) {
