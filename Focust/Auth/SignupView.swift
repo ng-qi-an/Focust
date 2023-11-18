@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct LoginView: View {
+struct SignupView: View {
     @State private var phoneNo = ""
     @State private var password = ""
     @Environment(\.dismiss) private var dismiss
@@ -45,7 +45,7 @@ struct LoginView: View {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("**Login**")
+                            Text("**Signup**")
                                 .font(.system(size: 20))
                         }
                         .frame(width: 220, height: 70)
@@ -106,8 +106,8 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct SignupView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        SignupView()
     }
 }

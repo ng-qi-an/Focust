@@ -16,6 +16,7 @@
 		AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2752B05D0B9003A6DBF /* LoginView.swift */; };
 		AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2772B05D98F003A6DBF /* AuthController.swift */; };
 		AAD489922B02499900E2131B /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD489912B02499900E2131B /* HomescreenView.swift */; };
+		F2A28EF22B085A21009B00AD /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A28EF12B085A21009B00AD /* SignupView.swift */; };
 		F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABA2B0127460099395D /* FocustApp.swift */; };
 		F2DBBABD2B0127460099395D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABC2B0127460099395D /* ContentView.swift */; };
 		F2DBBABF2B01274A0099395D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DBBABE2B01274A0099395D /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		AAB1D2752B05D0B9003A6DBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AAB1D2772B05D98F003A6DBF /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		AAD489912B02499900E2131B /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
+		F2A28EF12B085A21009B00AD /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		F2DBBAB72B0127460099395D /* Focust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DBBABA2B0127460099395D /* FocustApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocustApp.swift; sourceTree = "<group>"; };
 		F2DBBABC2B0127460099395D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				AAB1D2772B05D98F003A6DBF /* AuthController.swift */,
 				AAB1D2752B05D0B9003A6DBF /* LoginView.swift */,
+				F2A28EF12B085A21009B00AD /* SignupView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */,
 				AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */,
 				AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */,
+				F2A28EF22B085A21009B00AD /* SignupView.swift in Sources */,
 				F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */,
 				AA46033E2B03D01300F24DC4 /* AccountView.swift in Sources */,
 			);
