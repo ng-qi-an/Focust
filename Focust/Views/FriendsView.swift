@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct FriendsView: View {
+    @Binding var theme: Theme;
+
     var body: some View {
         VStack {
             Text("Friends")
@@ -52,6 +54,6 @@ struct FriendsView: View {
 
 struct FriendsView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendsView()
+        FriendsView(theme: .constant(Theme()))
     }
 }

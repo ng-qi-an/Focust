@@ -10,18 +10,14 @@ import SwiftUI
 struct Focus_ModeView: View {
     
     @Environment(\.dismiss) private var dismiss
-    @Binding var darkMode: Bool
+    @Binding var theme: Theme;
+
     
     var body: some View {
         NavigationView {
             ZStack {
-                if darkMode == false {
-                    LinearGradient(colors: [Color(red: 45/255, green: 212/255, blue: 191/255), Color(red: 0/255, green: 157/255, blue: 221/255)], startPoint: .top, endPoint: .bottom)
+                LinearGradient(colors: [theme.color.button, theme.color.background], startPoint: .top, endPoint: .bottom)
                         .edgesIgnoringSafeArea(.top)
-                } else {
-                    LinearGradient(colors: [Color(red: 17/255, green: 94/255, blue: 89/255), Color(red: 0/255, green: 0/255, blue: 0/255), Color(red: 0/255, green: 0/255, blue: 0/255)], startPoint: .top, endPoint: .bottom)
-                        .edgesIgnoringSafeArea(.top)
-                }
                 VStack {
                     Image("triangles")
                         .resizable()
@@ -57,7 +53,7 @@ struct Focus_ModeView: View {
                     ZStack {
                         Rectangle()
                             .frame(width: 250, height: 50)
-                            .background(.white)
+                            .foregroundColor(.white)
                             .opacity(0.1)
                             .cornerRadius(15)
                         Text("finish cl homework")
@@ -66,7 +62,7 @@ struct Focus_ModeView: View {
                     ZStack {
                         Rectangle()
                             .frame(width: 250, height: 50)
-                            .background(.white)
+                            .foregroundColor(.white)
                             .opacity(0.1)
                             .cornerRadius(15)
                         Text("finish cl homework")
@@ -75,7 +71,7 @@ struct Focus_ModeView: View {
                     ZStack {
                         Rectangle()
                             .frame(width: 250, height: 50)
-                            .background(.white)
+                            .foregroundColor(.white)
                             .opacity(0.1)
                             .cornerRadius(15)
                         Text("finish cl homework")
@@ -94,7 +90,7 @@ struct Focus_ModeView: View {
                         ZStack {
                             Rectangle()
                                 .frame(width: 70, height: 70)
-                                .foregroundColor(darkMode ? Color(red: 127/255, green: 29/255, blue: 29/255) : Color(red: 239/255, green: 68/255, blue: 86/255))
+                                .foregroundColor(theme.red.foreground)
                                 .cornerRadius(20)
                             Image(systemName: "square.fill")
                                 .resizable()
@@ -108,12 +104,12 @@ struct Focus_ModeView: View {
                         Text("saver mode")
                     }
                     .frame(width: 155, height: 32)
-                    .background(darkMode ? .black : .white)
+                    .background(theme.gray.background)
                     .cornerRadius(15)
                     .padding(.bottom, 10)
                     Rectangle()
                         .frame(maxWidth: .infinity, maxHeight: 10)
-                        .foregroundColor(darkMode ? .black : .white)
+                        .foregroundColor(theme.gray.background)
                 }
             }
         }
@@ -123,6 +119,6 @@ struct Focus_ModeView: View {
 
 struct Focus_ModeView_Previews: PreviewProvider {
     static var previews: some View {
-        Focus_ModeView(darkMode: .constant(false))
+        Focus_ModeView(theme: .constant(Theme()))
     }
 }

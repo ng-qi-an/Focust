@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AuthController: View {
+    @Binding var authenticated: Bool;
     var body: some View {
         NavigationView {
             ZStack {
@@ -33,7 +34,7 @@ struct AuthController: View {
                             .foregroundColor(Color(red: 45/255, green: 212/255, blue: 191/255))
                     }.offset(y: -125)
                     
-                    NavigationLink(destination: SignupView()) {
+                    NavigationLink(destination: SignupView(authenticated: $authenticated)) {
                         HStack {
                             Text("Sign Up")
                             Spacer()
@@ -45,8 +46,11 @@ struct AuthController: View {
                         .background(.white)
                         .cornerRadius(20)
                         .shadow(color: Color(red: 218/255, green: 218/255, blue: 218/255), radius: 4, y: 3)
-                    }
-                    NavigationLink(destination: LoginView()) {
+                    }.simultaneousGesture(TapGesture().onEnded{
+                        Haptics.shared.play(.light)
+
+                    })
+                    NavigationLink(destination: LoginView(authenticated: $authenticated)) {
                         HStack {
                             Text("Log In")
                             Spacer()
@@ -58,7 +62,10 @@ struct AuthController: View {
                         .background(.white)
                         .cornerRadius(20)
                         .shadow(color: Color(red: 218/255, green: 218/255, blue: 218/255), radius: 4, y: 3)
-                    }
+                    }.simultaneousGesture(TapGesture().onEnded{
+                        Haptics.shared.play(.light)
+
+                    })
                 }
             }.ignoresSafeArea(.all)
         }
@@ -67,6 +74,6 @@ struct AuthController: View {
 
 struct AuthController_Previews: PreviewProvider {
     static var previews: some View {
-        AuthController()
+        AuthController(authenticated: .constant(false))
     }
 }

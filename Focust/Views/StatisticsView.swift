@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StatisticsView: View {
+    @Binding var theme: Theme;
+
     var body: some View {
         NavigationView {
             VStack {
@@ -118,6 +120,6 @@ struct StatisticsView: View {
 
 struct StatisticsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatisticsView()
+        StatisticsView(theme: .constant(Theme()))
     }
 }

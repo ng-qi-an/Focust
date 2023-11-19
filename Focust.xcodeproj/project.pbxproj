@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		295CF92A2B0AF95F00257D83 /* SwiftQRCodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */; };
 		29DF4FC62B07031300F56013 /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF4FC52B07031300F56013 /* QRCodeScannerView.swift */; };
 		AA1F0AEC2B04A08600F3ECFF /* Focus_ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */; };
 		AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2147102B03D83C00E7B7A5 /* MainController.swift */; };
@@ -17,6 +18,10 @@
 		AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2772B05D98F003A6DBF /* AuthController.swift */; };
 		AAD489922B02499900E2131B /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD489912B02499900E2131B /* HomescreenView.swift */; };
 		F2A28EF22B085A21009B00AD /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A28EF12B085A21009B00AD /* SignupView.swift */; };
+		F2D5F7962B09E2E30041EE70 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F7952B09E2E30041EE70 /* Themes.swift */; };
+		F2D5F7992B0A32A60041EE70 /* SignupPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F7982B0A32A60041EE70 /* SignupPassword.swift */; };
+		F2D5F79F2B0A41C90041EE70 /* SignupUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F79E2B0A41C90041EE70 /* SignupUsername.swift */; };
+		F2D5F7A12B0A4DAA0041EE70 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F7A02B0A4DAA0041EE70 /* Haptics.swift */; };
 		F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABA2B0127460099395D /* FocustApp.swift */; };
 		F2DBBABD2B0127460099395D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABC2B0127460099395D /* ContentView.swift */; };
 		F2DBBABF2B01274A0099395D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DBBABE2B01274A0099395D /* Assets.xcassets */; };
@@ -34,6 +39,10 @@
 		AAB1D2772B05D98F003A6DBF /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		AAD489912B02499900E2131B /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
 		F2A28EF12B085A21009B00AD /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		F2D5F7952B09E2E30041EE70 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		F2D5F7982B0A32A60041EE70 /* SignupPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPassword.swift; sourceTree = "<group>"; };
+		F2D5F79E2B0A41C90041EE70 /* SignupUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUsername.swift; sourceTree = "<group>"; };
+		F2D5F7A02B0A4DAA0041EE70 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		F2DBBAB72B0127460099395D /* Focust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DBBABA2B0127460099395D /* FocustApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocustApp.swift; sourceTree = "<group>"; };
 		F2DBBABC2B0127460099395D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				295CF92A2B0AF95F00257D83 /* SwiftQRCodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,9 +65,9 @@
 		F2536B982B06F8F5004A3CA9 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				F2D5F7972B0A32820041EE70 /* Signup */,
 				AAB1D2772B05D98F003A6DBF /* AuthController.swift */,
 				AAB1D2752B05D0B9003A6DBF /* LoginView.swift */,
-				F2A28EF12B085A21009B00AD /* SignupView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -74,6 +84,25 @@
 				29DF4FC52B07031300F56013 /* QRCodeScannerView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F2D5F7942B09E2C60041EE70 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F2D5F7952B09E2E30041EE70 /* Themes.swift */,
+				F2D5F7A02B0A4DAA0041EE70 /* Haptics.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F2D5F7972B0A32820041EE70 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				F2A28EF12B085A21009B00AD /* SignupView.swift */,
+				F2D5F7982B0A32A60041EE70 /* SignupPassword.swift */,
+				F2D5F79E2B0A41C90041EE70 /* SignupUsername.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		F2DBBAAE2B0127460099395D = {
@@ -95,6 +124,7 @@
 		F2DBBAB92B0127460099395D /* Focust */ = {
 			isa = PBXGroup;
 			children = (
+				F2D5F7942B09E2C60041EE70 /* Utilities */,
 				F2536B992B06F93B004A3CA9 /* Views */,
 				F2536B982B06F8F5004A3CA9 /* Auth */,
 				F2DBBABA2B0127460099395D /* FocustApp.swift */,
@@ -129,6 +159,9 @@
 			dependencies = (
 			);
 			name = Focust;
+			packageProductDependencies = (
+				295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */,
+			);
 			productName = Focust;
 			productReference = F2DBBAB72B0127460099395D /* Focust.app */;
 			productType = "com.apple.product-type.application";
@@ -157,6 +190,9 @@
 				Base,
 			);
 			mainGroup = F2DBBAAE2B0127460099395D;
+			packageReferences = (
+				295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */,
+			);
 			productRefGroup = F2DBBAB82B0127460099395D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,11 +223,15 @@
 				F2DBBABD2B0127460099395D /* ContentView.swift in Sources */,
 				AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */,
 				AA4603402B03D20200F24DC4 /* FriendsView.swift in Sources */,
+				F2D5F7A12B0A4DAA0041EE70 /* Haptics.swift in Sources */,
 				29DF4FC62B07031300F56013 /* QRCodeScannerView.swift in Sources */,
 				AAD489922B02499900E2131B /* HomescreenView.swift in Sources */,
 				AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */,
 				AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */,
+				F2D5F7962B09E2E30041EE70 /* Themes.swift in Sources */,
 				AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */,
+				F2D5F79F2B0A41C90041EE70 /* SignupUsername.swift in Sources */,
+				F2D5F7992B0A32A60041EE70 /* SignupPassword.swift in Sources */,
 				F2A28EF22B085A21009B00AD /* SignupView.swift in Sources */,
 				F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */,
 				AA46033E2B03D01300F24DC4 /* AccountView.swift in Sources */,
@@ -328,7 +368,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Focust/Preview Content\"";
-				DEVELOPMENT_TEAM = 38G2UCH83D;
+				DEVELOPMENT_TEAM = PAY24Z9872;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -358,7 +398,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Focust/Preview Content\"";
-				DEVELOPMENT_TEAM = 38G2UCH83D;
+				DEVELOPMENT_TEAM = PAY24Z9872;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -402,6 +442,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vinodiOS/SwiftQRScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */;
+			productName = SwiftQRCodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F2DBBAAF2B0127460099395D /* Project object */;
 }
