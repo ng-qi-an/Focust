@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct AccountView: View {
+    @Binding var theme: Theme;
+    @Binding var mode: AppearanceMode;
+    @Binding var color: AppearanceScheme;
+
     @Binding var darkMode: Bool;
     
     var body: some View {
@@ -25,32 +29,76 @@ struct AccountView: View {
                 }
                 ZStack {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
-                            Image("blueTheme")
-                                .resizable()
-                                .frame(width: 70, height: 150)
-                                .aspectRatio(contentMode: .fit)
-                            Image("greenTheme")
-                                .resizable()
-                                .frame(width: 70, height: 150)
-                                .aspectRatio(contentMode: .fit)
-                            Image("yellowTheme")
-                                .resizable()
-                                .frame(width: 70, height: 150)
-                                .aspectRatio(contentMode: .fit)
-                            Image("orangeTheme")
-                                .resizable()
-                                .frame(width: 70, height: 150)
-                                .aspectRatio(contentMode: .fit)
-                            Image("redTheme")
-                                .resizable()
-                                .frame(width: 70, height: 150)
-                                .aspectRatio(contentMode: .fit)
-                            Image("purpleTheme")
-                                .resizable()
-                                .frame(width: 70, height: 150)
-                                .aspectRatio(contentMode: .fit)
-                        }.padding(Edge.Set(arrayLiteral: .trailing, .leading), 60)
+                        HStack(spacing: 20) {
+                            Button {
+                                withAnimation {
+                                    color = AppearanceScheme.Blue
+                                }
+                            } label: {
+                                Image("blueTheme")
+                                    .resizable()
+                                    .frame(width: 70, height: 150)
+                                    .aspectRatio(contentMode: .fit)
+                                    .scaleEffect(color == AppearanceScheme.Blue ? 1.2 : 1)
+                            }
+                            Button {
+                                withAnimation {
+                                    color = AppearanceScheme.Teal
+                                }
+                            } label: {
+                                Image("tealTheme")
+                                    .resizable()
+                                    .frame(width: 70, height: 150)
+                                    .aspectRatio(contentMode: .fit)
+                                    .scaleEffect(color == AppearanceScheme.Teal ? 1.2 : 1)
+                            }
+                            Button {
+                                withAnimation {
+                                    color = AppearanceScheme.Yellow
+                                }
+                            } label: {
+                                Image("yellowTheme")
+                                    .resizable()
+                                    .frame(width: 70, height: 150)
+                                    .aspectRatio(contentMode: .fit)
+                                    .scaleEffect(color == AppearanceScheme.Yellow ? 1.2 : 1)
+                            }
+                            Button {
+                                withAnimation {
+                                    color = AppearanceScheme.Orange
+                                }
+                            } label: {
+                                Image("orangeTheme")
+                                    .resizable()
+                                    .frame(width: 70, height: 150)
+                                    .aspectRatio(contentMode: .fit)
+                                    .scaleEffect(color == AppearanceScheme.Orange ? 1.2 : 1)
+                            }
+                            Button {
+                                withAnimation {
+                                    color = AppearanceScheme.Red
+                                }
+                            } label: {
+                                Image("redTheme")
+                                    .resizable()
+                                    .frame(width: 70, height: 150)
+                                    .aspectRatio(contentMode: .fit)
+                                    .scaleEffect(color == AppearanceScheme.Red ? 1.2 : 1)
+                            }
+                            Button {
+                                withAnimation {
+                                    color = AppearanceScheme.Purple
+                                }
+                            } label: {
+                                Image("purpleTheme")
+                                    .resizable()
+                                    .frame(width: 70, height: 150)
+                                    .aspectRatio(contentMode: .fit)
+                                    .scaleEffect(color == AppearanceScheme.Purple ? 1.2 : 1)
+                            }
+                        }
+                        .frame(maxHeight: 190)
+                        .padding(Edge.Set(arrayLiteral: .trailing, .leading), 60)
                     }
                     //                    if darkMode == false {
                     //                        Rectangle()
@@ -81,6 +129,12 @@ struct AccountView: View {
                         Toggle(isOn: $darkMode) {
                             Text("Dark Mode")
                                 .font(.system(size: 17))
+                        }.onChange(of: darkMode) { new in
+                            if new == true {
+                                mode = AppearanceMode.Dark
+                            } else {
+                                mode = AppearanceMode.Light
+                            }
                         }
                     }
                     .padding(.trailing, 40)
@@ -88,8 +142,6 @@ struct AccountView: View {
                 }
                 Spacer()
             }
-                
-            .preferredColorScheme(darkMode ? .dark : .light)
             .navigationTitle("Account")
         }
     }
@@ -97,6 +149,6 @@ struct AccountView: View {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(darkMode: .constant(false))
+        AccountView(theme: .constant(Theme()), mode: .constant(AppearanceMode.Light), color: .constant(AppearanceScheme.Teal), darkMode: .constant(false))
     }
 }
