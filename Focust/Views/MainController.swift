@@ -8,34 +8,36 @@
 import SwiftUI
 
 struct MainController: View {
+    
     @State var darkMode = false
+    @State var page: Int = 1
+    
     var body: some View {
-        TabView {
-            HomescreenView(darkMode: $darkMode)
+        TabView(selection: $page) {
+            HomescreenView(darkMode: $darkMode, page: $page)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
+                .tag(1)
             FriendsView()
                 .tabItem {
                     Image(systemName: "person.2.fill")
                     Text("Friends")
                 }
+                .tag(2)
             StatisticsView()
                 .tabItem {
                     Image(systemName: "chart.line.uptrend.xyaxis")
                     Text("Stats")
                 }
+                .tag(3)
             AccountView(darkMode: $darkMode)
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                     Text("Account")
                 }
-            Focus_ModeView()
-                .tabItem {
-                    Image(systemName: "dollarsign")
-                    Text("@money")
-                }
+                .tag(4)
         }
         .accentColor(Color(red: 45/255, green: 212/255, blue: 191/255))
     }

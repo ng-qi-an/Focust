@@ -46,7 +46,7 @@ struct AccountView: View {
                                 .resizable()
                                 .frame(width: 70, height: 150)
                                 .aspectRatio(contentMode: .fit)
-                            Image("purpledTheme")
+                            Image("purpleTheme")
                                 .resizable()
                                 .frame(width: 70, height: 150)
                                 .aspectRatio(contentMode: .fit)
