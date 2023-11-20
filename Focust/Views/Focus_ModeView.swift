@@ -80,9 +80,15 @@ struct Focus_ModeView: View {
                     Rectangle()
                         .opacity(0)
                         .frame(height: 15)
-                    Text("add a task")
-                        .foregroundColor(.white)
-                        .opacity(0.7)
+                    Button {
+                        // Add your action when the "add a task" button is tapped
+                        // For now, it just prints a message to the console
+                        print("Add a task tapped")
+                    } label: {
+                        Text("add a task")
+                            .foregroundColor(.white)
+                            .opacity(1)
+                    }
                     Spacer()
                     Button {
                         dismiss()
@@ -122,3 +128,6 @@ struct Focus_ModeView_Previews: PreviewProvider {
         Focus_ModeView(theme: .constant(Theme()))
     }
 }
+
+
+

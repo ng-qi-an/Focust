@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29DF4FC62B07031300F56013 /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF4FC52B07031300F56013 /* QRCodeScannerView.swift */; };
+		295CF92A2B0AF95F00257D83 /* SwiftQRCodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */; };
 		AA1F0AEC2B04A08600F3ECFF /* Focus_ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */; };
 		AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2147102B03D83C00E7B7A5 /* MainController.swift */; };
 		AA46033E2B03D01300F24DC4 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033D2B03D01300F24DC4 /* AccountView.swift */; };
@@ -28,7 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		29DF4FC52B07031300F56013 /* QRCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerView.swift; sourceTree = "<group>"; };
 		AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus_ModeView.swift; sourceTree = "<group>"; };
 		AA2147102B03D83C00E7B7A5 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		AA46033D2B03D01300F24DC4 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				295CF92A2B0AF95F00257D83 /* SwiftQRCodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +79,6 @@
 				AA46033F2B03D20200F24DC4 /* FriendsView.swift */,
 				AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */,
 				AA46033D2B03D01300F24DC4 /* AccountView.swift */,
-				29DF4FC52B07031300F56013 /* QRCodeScannerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,6 +156,9 @@
 			dependencies = (
 			);
 			name = Focust;
+			packageProductDependencies = (
+				295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */,
+			);
 			productName = Focust;
 			productReference = F2DBBAB72B0127460099395D /* Focust.app */;
 			productType = "com.apple.product-type.application";
@@ -185,6 +187,9 @@
 				Base,
 			);
 			mainGroup = F2DBBAAE2B0127460099395D;
+			packageReferences = (
+				295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */,
+			);
 			productRefGroup = F2DBBAB82B0127460099395D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -216,7 +221,6 @@
 				AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */,
 				AA4603402B03D20200F24DC4 /* FriendsView.swift in Sources */,
 				F2D5F7A12B0A4DAA0041EE70 /* Haptics.swift in Sources */,
-				29DF4FC62B07031300F56013 /* QRCodeScannerView.swift in Sources */,
 				AAD489922B02499900E2131B /* HomescreenView.swift in Sources */,
 				AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */,
 				AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */,
@@ -434,6 +438,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vinodiOS/SwiftQRScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */;
+			productName = SwiftQRCodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F2DBBAAF2B0127460099395D /* Project object */;
 }
