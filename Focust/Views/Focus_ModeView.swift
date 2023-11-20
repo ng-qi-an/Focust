@@ -12,11 +12,15 @@ struct Focus_ModeView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showAlert = false
     @State private var text: String = ""
+    @State private var isLongPressing = false
+    @State private var deleteQuestion = false
     @State private var taskValue = 0
+    @State private var tasks = []
     @State private var task1 = "1."
     @State private var task2 = "2."
     @State private var task3 = "3."
     @State private var task4 = "4."
+    @State private var taskCount = 0
     @Binding var theme: Theme;
     
     let alertTitle: String = "Set your task's name:"
@@ -50,41 +54,74 @@ struct Focus_ModeView: View {
                         }
                     }
                     Spacer()
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 270, height: 60)
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
-                        Text(task1)
-                            .foregroundColor(.black)
+                    
+                    Button {
+                        taskCount = 1
+                        if isLongPressing && taskCount == 1 {
+                            deleteQuestion = true
+                            if deleteQuestion == true {
+                                task1 = ""
+                                let seconds = 1.0
+                                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                                    task1 = task2
+                                }
+                                
+                            }
+                        }
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 270, height: 60)
+                                .foregroundColor(.white)
+                                .cornerRadius(15)
+                            Text(task1)
+                                .foregroundColor(.black)
+                        }
                     }
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 250, height: 50)
-                            .foregroundColor(.white)
-                            .opacity(0.1)
-                            .cornerRadius(15)
-                        Text(task2)
-                            .foregroundColor(.white)
-                    }.frame(width: 250, height: 50)
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 250, height: 50)
-                            .foregroundColor(.white)
-                            .opacity(0.1)
-                            .cornerRadius(15)
-                        Text(task3)
-                            .foregroundColor(.white)
-                    }.frame(width: 250, height: 50)
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 250, height: 50)
-                            .foregroundColor(.white)
-                            .opacity(0.1)
-                            .cornerRadius(15)
-                        Text(task4)
-                            .foregroundColor(.white)
-                    }.frame(width: 250, height: 50)
+                    .simultaneousGesture(
+                        LongPressGesture(minimumDuration: 1.0)
+                            .onChanged { _ in                        isLongPressing = true
+                            }
+                    )
+                    Button {
+                        taskCount = 2
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 250, height: 50)
+                                .foregroundColor(.white)
+                                .opacity(0.1)
+                                .cornerRadius(15)
+                            Text(task2)
+                                .foregroundColor(.white)
+                        }.frame(width: 250, height: 50)
+                    }
+                    Button {
+                        taskCount = 3
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 250, height: 50)
+                                .foregroundColor(.white)
+                                .opacity(0.1)
+                                .cornerRadius(15)
+                            Text(task3)
+                                .foregroundColor(.white)
+                        }.frame(width: 250, height: 50)
+                    }
+                    Button {
+                        taskCount = 4
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 250, height: 50)
+                                .foregroundColor(.white)
+                                .opacity(0.1)
+                                .cornerRadius(15)
+                            Text(task4)
+                                .foregroundColor(.white)
+                        }.frame(width: 250, height: 50)
+                    }
                     Rectangle()
                         .opacity(0)
                         .frame(height: 15)
@@ -122,7 +159,6 @@ struct Focus_ModeView: View {
                         }
                         
                         TextField("Enter here", text: $text)
-                            .textContentType(.creditCardNumber)
                     } message: {
                         Text("Note: Limit to 4 entries!")
                     }
