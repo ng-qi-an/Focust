@@ -12,6 +12,7 @@
 		AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2147102B03D83C00E7B7A5 /* MainController.swift */; };
 		AA46033E2B03D01300F24DC4 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033D2B03D01300F24DC4 /* AccountView.swift */; };
 		AA4603402B03D20200F24DC4 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033F2B03D20200F24DC4 /* FriendsView.swift */; };
+		AAA204542B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA204532B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift */; };
 		AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */; };
 		AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2752B05D0B9003A6DBF /* LoginView.swift */; };
 		AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2772B05D98F003A6DBF /* AuthController.swift */; };
@@ -32,6 +33,7 @@
 		AA2147102B03D83C00E7B7A5 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		AA46033D2B03D01300F24DC4 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		AA46033F2B03D20200F24DC4 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		AAA204532B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus_ModeTypeSelectionView.swift; sourceTree = "<group>"; };
 		AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		AAB1D2752B05D0B9003A6DBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AAB1D2772B05D98F003A6DBF /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AAA204552B0B2EAD006DA103 /* Focus Mode */ = {
+			isa = PBXGroup;
+			children = (
+				AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */,
+				AAA204532B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift */,
+			);
+			path = "Focus Mode";
+			sourceTree = "<group>";
+		};
 		F2536B982B06F8F5004A3CA9 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +84,9 @@
 		F2536B992B06F93B004A3CA9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAA204552B0B2EAD006DA103 /* Focus Mode */,
 				AA2147102B03D83C00E7B7A5 /* MainController.swift */,
 				AAD489912B02499900E2131B /* HomescreenView.swift */,
-				AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */,
 				AA46033F2B03D20200F24DC4 /* FriendsView.swift */,
 				AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */,
 				AA46033D2B03D01300F24DC4 /* AccountView.swift */,
@@ -225,6 +236,7 @@
 				AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */,
 				AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */,
 				F2D5F7962B09E2E30041EE70 /* Themes.swift in Sources */,
+				AAA204542B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift in Sources */,
 				AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */,
 				F2D5F79F2B0A41C90041EE70 /* SignupUsername.swift in Sources */,
 				F2D5F7992B0A32A60041EE70 /* SignupPassword.swift in Sources */,

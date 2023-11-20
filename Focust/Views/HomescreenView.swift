@@ -76,7 +76,7 @@ struct HomescreenView: View {
                                     .opacity(0.5)
                             }.offset(x: -25, y: -50)
                             NavigationLink {
-                                Focus_ModeView(theme : $theme)
+                                Focus_ModeTypeSelectionView(theme : $theme)
                             } label: {
                                 Circle()
                                     .fill(theme.color.button)
