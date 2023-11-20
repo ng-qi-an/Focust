@@ -9,111 +9,127 @@ import SwiftUI
 
 struct StatisticsView: View {
     @Binding var theme: Theme;
-
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Past week")
-                    .opacity(0.3)
-                    .offset(x: -140, y: 30)
-                Image("vector")
-                HStack {
-                    Text("Monday")
-                        .opacity(0.3)
-                        .font(.system(size: 10))
-                        .padding(.trailing, 30)
-                    Text("Tuesday")
-                        .opacity(0.3)
-                        .font(.system(size: 10))
-                        .padding(.trailing, 30)
-                    Text("Wednesday")
-                        .opacity(0.3)
-                        .font(.system(size: 10))
-                        .padding(.trailing, 30)
-                    Text("Yesterday")
-                        .opacity(0.3)
-                        .font(.system(size: 10))
-                        .padding(.trailing, 30)
-                    Text("Today")
-                        .font(.system(size: 10))
-                }
-                ZStack {
-                    Image("statsBg")
-                        .resizable()
-                        .frame(maxWidth: .infinity, maxHeight: 520)
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack {
-                            Rectangle()
-                                .foregroundColor(.white)
-                                .opacity(0)
-                                .frame(maxWidth: .infinity, maxHeight: 30)
-                            VStack {
-                                Text("**1**")
-                                    .font(.system(size: 70))
-                                    .foregroundColor(.white)
-                                Text("hours clocked")
-                                    .font(.system(size: 15))
-                                    .foregroundColor(.white)
-                            }.offset(y: -15)
-                            HStack {
-                                Image(systemName: "clock.arrow.circlepath")
-                                    .padding(.leading, 20)
-                                Text("Total time: 1hr 20 mins")
-                                Spacer()
-                            }
-                            .frame(width: 315, height: 40)
-                            .background(.white)
-                            .cornerRadius(15)
-                            HStack {
-                                Image(systemName: "wind")
-                                    .padding(.leading, 20)
-                                Text("Breaks: 0")
-                                Spacer()
-                            }
-                            .frame(width: 315, height: 40)
-                            .background(.white)
-                            .cornerRadius(15)
-                            HStack {
-                                Image(systemName: "gearshape")
-                                    .padding(.leading, 20)
-                                Text("Focus mode: Flexible")
-                                Spacer()
-                            }
-                            .frame(width: 315, height: 40)
-                            .background(.white)
-                            .cornerRadius(15)
-                            HStack {
-                                Text("Suggestions")
-                                    .padding(.leading, 20)
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .padding(.trailing, 20)
-                            }
-                            .frame(width: 315, height: 50)
-                            .background(.white)
-                            .cornerRadius(15)
-                            .offset(y: 20)
-                            HStack {
-                                Text("Made a mistake? Remove it!")
-                                    .padding(.leading, 20)
-                                    .foregroundColor(.white)
-                                Spacer()
-                                Image(systemName: "trash")
-                                    .padding(.trailing, 20)
-                                    .foregroundColor(.white)
-                            }
-                            .frame(width: 315, height: 50)
-                            .background(Color(red: 239/255, green: 68/255, blue: 86/255))
-                            .cornerRadius(15)
-                            .offset(y: 30)
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    VStack {
+                        Text("Recent days")
+                            .opacity(0.5)
+                            .font(.system(size: 20))
+                            .offset(x: -120, y: 30)
+                        Image("vector")
+                        HStack {
+                            Spacer()
+                            Text("Mon")
+                                .opacity(0.5)
+                                .font(.system(size: 13))
+                                .padding(.trailing, 30)
+                            Spacer()
+                            Text("Tue")
+                                .opacity(0.5)
+                                .font(.system(size: 13))
+                                .padding(.trailing, 30)
+                            Spacer()
+                            Text("Wed")
+                                .opacity(0.5)
+                                .font(.system(size: 13))
+                                .padding(.trailing, 30)
+                            Spacer()
+                            Text("Thu")
+                                .opacity(0.5)
+                                .font(.system(size: 13))
+                                .padding(.trailing, 30)
+                            Spacer()
+                            Text("Today")
+                                .font(.system(size: 13))
+                            Spacer()
                         }
+                        
                     }
+                    .ignoresSafeArea(edges: .bottom)
+                    .frame(maxWidth: .infinity, maxHeight: 400)
+                    .background(theme.gray.background)
+                    VStack {
+                        Rectangle()
+                            .opacity(0)
+                            .frame(maxWidth: .infinity, maxHeight: 30)
+                        VStack {
+                            Text("**1**")
+                                .font(.system(size: 70))
+                                .foregroundColor(.white)
+                            Text("hours clocked")
+                                .font(.system(size: 15))
+                                .foregroundColor(.white)
+                        }.offset(y: -15)
+                        HStack {
+                            Image(systemName: "clock.arrow.circlepath")
+                                .foregroundColor(theme.gray.foreground)
+                                .padding(.leading, 20)
+                            Text("Total time: 1hr 20 mins")
+                                .foregroundColor(theme.gray.foreground)
+                            Spacer()
+                        }
+                        .frame(width: 315, height: 40)
+                        .background(theme.gray.background)
+                        .cornerRadius(15)
+                        HStack {
+                            Image(systemName: "wind")
+                                .padding(.leading, 20)
+                                .foregroundColor(theme.gray.foreground)
+                            Text("Breaks: 0")
+                                .foregroundColor(theme.gray.foreground)
+                            Spacer()
+                        }
+                        .frame(width: 315, height: 40)
+                        .background(theme.gray.background)
+                        .cornerRadius(15)
+                        HStack {
+                            Image(systemName: "gearshape")
+                                .foregroundColor(theme.gray.foreground)
+                                .padding(.leading, 20)
+                            Text("Focus mode: Flexible")
+                                .foregroundColor(theme.gray.foreground)
+                            Spacer()
+                        }
+                        .frame(width: 315, height: 40)
+                        .background(theme.gray.background)
+                        .cornerRadius(15)
+                        HStack {
+                            Text("Suggestions")
+                                .foregroundColor(theme.gray.foreground)
+                                .padding(.leading, 20)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(theme.gray.foreground)
+                                .padding(.trailing, 20)
+                        }
+                        .frame(width: 315, height: 50)
+                        .background(theme.gray.background)
+                        .cornerRadius(15)
+                        Rectangle()
+                            .opacity(0)
+                            .frame(maxWidth: .infinity, maxHeight: 15)
+                        HStack {
+                            Text("Made a mistake? Remove it!")
+                                .padding(.leading, 20)
+                                .foregroundColor(theme.red.foreground)
+                            Spacer()
+                            Image(systemName: "trash")
+                                .padding(.trailing, 20)
+                                .foregroundColor(theme.red.foreground)
+                        }
+                        .frame(width: 315, height: 50)
+                        .background(theme.gray.background)
+                        .cornerRadius(15)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, 20)
+                    .background(theme.color.background)
                 }
-                Rectangle()
-                    .frame(maxWidth: .infinity, maxHeight: 10)
-                    .foregroundColor(.white)
             }
-            .navigationTitle("Statistics")
+                .navigationTitle("Statistics")
         }
     }
 }
