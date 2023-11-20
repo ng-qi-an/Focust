@@ -87,7 +87,7 @@ struct Focus_ModeView: View {
                     } label: {
                         Text("add a task")
                             .foregroundColor(.white)
-                            .opacity(0.7)
+                            .opacity(1)
                     }
                     Spacer()
                     Button {
