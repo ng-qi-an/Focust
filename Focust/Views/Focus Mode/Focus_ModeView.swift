@@ -10,14 +10,26 @@ import SwiftUI
 struct Focus_ModeView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @State private var showAlert = false
+    @State private var text: String = ""
+    @State private var isLongPressing = false
+    @State private var deleteQuestion = false
+    @State private var taskValue = 0
+    @State private var tasks = []
+    @State private var task1 = "1."
+    @State private var task2 = "2."
+    @State private var task3 = "3."
+    @State private var task4 = "4."
+    @State private var taskCount = 0
     @Binding var theme: Theme;
-
+    
+    let alertTitle: String = "Set your task's name:"
     
     var body: some View {
         NavigationView {
             ZStack {
                 LinearGradient(colors: [theme.color.button, theme.color.background], startPoint: .top, endPoint: .bottom)
-                        .edgesIgnoringSafeArea(.top)
+                    .edgesIgnoringSafeArea(.top)
                 VStack {
                     Image("triangles")
                         .resizable()
@@ -42,52 +54,113 @@ struct Focus_ModeView: View {
                         }
                     }
                     Spacer()
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 270, height: 60)
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
-                        Text("finish cl homework")
-                            .foregroundColor(.black)
+                    
+                    Button {
+                        taskCount = 1
+                        if isLongPressing && taskCount == 1 {
+                            deleteQuestion = true
+                            if deleteQuestion == true {
+                                task1 = ""
+                                let seconds = 1.0
+                                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                                    task1 = task2
+                                }
+                                
+                            }
+                        }
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 270, height: 60)
+                                .foregroundColor(.white)
+                                .cornerRadius(15)
+                            Text(task1)
+                                .foregroundColor(.black)
+                        }
                     }
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 250, height: 50)
-                            .foregroundColor(.white)
-                            .opacity(0.1)
-                            .cornerRadius(15)
-                        Text("finish cl homework")
-                            .foregroundColor(.white)
-                    }.frame(width: 250, height: 50)
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 250, height: 50)
-                            .foregroundColor(.white)
-                            .opacity(0.1)
-                            .cornerRadius(15)
-                        Text("finish cl homework")
-                            .foregroundColor(.white)
-                    }.frame(width: 250, height: 50)
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 250, height: 50)
-                            .foregroundColor(.white)
-                            .opacity(0.1)
-                            .cornerRadius(15)
-                        Text("finish cl homework")
-                            .foregroundColor(.white)
-                    }.frame(width: 250, height: 50)
+                    .simultaneousGesture(
+                        LongPressGesture(minimumDuration: 1.0)
+                            .onChanged { _ in                        isLongPressing = true
+                            }
+                    )
+                    Button {
+                        taskCount = 2
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 250, height: 50)
+                                .foregroundColor(.white)
+                                .opacity(0.1)
+                                .cornerRadius(15)
+                            Text(task2)
+                                .foregroundColor(.white)
+                        }.frame(width: 250, height: 50)
+                    }
+                    Button {
+                        taskCount = 3
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 250, height: 50)
+                                .foregroundColor(.white)
+                                .opacity(0.1)
+                                .cornerRadius(15)
+                            Text(task3)
+                                .foregroundColor(.white)
+                        }.frame(width: 250, height: 50)
+                    }
+                    Button {
+                        taskCount = 4
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 250, height: 50)
+                                .foregroundColor(.white)
+                                .opacity(0.1)
+                                .cornerRadius(15)
+                            Text(task4)
+                                .foregroundColor(.white)
+                        }.frame(width: 250, height: 50)
+                    }
                     Rectangle()
                         .opacity(0)
                         .frame(height: 15)
                     Button {
-                        // Add your action when the "add a task" button is tapped
-                        // For now, it just prints a message to the console
-                        print("Add a task tapped")
+                        showAlert = true
+                        taskValue += 1
+                        if taskValue == 5 {
+                            taskValue = 0
+                        }
                     } label: {
                         Text("add a task")
                             .foregroundColor(.white)
                             .opacity(1)
+                    }
+                    .alert(
+                        Text(alertTitle),
+                        isPresented: $showAlert
+                    ) {
+                        Button("Cancel", role: .cancel) {
+                            // Handle the acknowledgement.
+                        }
+                        Button("Add Task!") {
+                            if taskValue == 1 {
+                                task1 = "1. \(text)"
+                            }
+                            if taskValue == 2 {
+                                task2 = "2. \(text)"
+                            }
+                            if taskValue == 3 {
+                                task3 = "3. \(text)"
+                            }
+                            if taskValue == 4 {
+                                task4 = "4. \(text)"
+                            }
+                        }
+                        
+                        TextField("Enter here", text: $text)
+                    } message: {
+                        Text("Note: Limit to 4 entries!")
                     }
                     Spacer()
                     Button {
