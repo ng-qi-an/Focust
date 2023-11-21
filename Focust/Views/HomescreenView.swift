@@ -10,7 +10,8 @@ import SwiftUI
 struct HomescreenView: View {
     @Binding var theme: Theme;
     @Binding var page: Int
-    
+    @Binding var startedSession: Bool
+
     @State var value = 0
     
     var body: some View {
@@ -21,9 +22,14 @@ struct HomescreenView: View {
                     VStack {
                         ZStack {
                             VStack {
-                                theme.color.background
-                                    .frame(maxWidth: .infinity, maxHeight: 225)
-                                    .background(theme.color.background)
+                                ZStack {
+                                    theme.color.background
+                                        .frame(maxWidth: .infinity, maxHeight: 225)
+                                    Image("triangles")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 380, height: 191)
+                                }
                                 Spacer()
                             }.frame(maxWidth: .infinity, maxHeight: 250)
                             VStack {
@@ -76,7 +82,7 @@ struct HomescreenView: View {
                                     .opacity(0.5)
                             }.offset(x: -25, y: -50)
                             NavigationLink {
-                                Focus_ModeTypeSelectionView(theme : $theme)
+                                Focus_ModeTypeSelectionView(theme : $theme, startedSession: $startedSession)
                             } label: {
                                 Circle()
                                     .fill(theme.color.button)
@@ -413,11 +419,12 @@ struct HomescreenView: View {
             }
             .ignoresSafeArea(edges: .top)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct HomescreenView_Previews: PreviewProvider {
     static var previews: some View {
-        HomescreenView(theme: .constant(Theme()), page: .constant(1))
+        HomescreenView(theme: .constant(Theme()), page: .constant(1), startedSession: .constant(false))
     }
 }

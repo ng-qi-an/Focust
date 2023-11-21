@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct Focus_ModeTypeSelectionView: View {
+    @Environment(\.dismiss) private var dismiss
     @Binding var theme: Theme
+    @Binding var startedSession: Bool
     @State private var flexible = true
     
     var body: some View {
@@ -27,22 +29,22 @@ struct Focus_ModeTypeSelectionView: View {
                     Spacer()
                     Text("**0  :  00**")
                         .font(.system(size: 70))
-                        .foregroundColor(theme.gray.background)
+                        .foregroundColor(.white)
                     HStack {
                         Text("hr")
-                            .foregroundColor(theme.gray.background)
+                            .foregroundColor(.white)
                             .font(.system(size: 20))
                             .padding(.leading, 125)
                             .padding(.bottom, 50)
                         Spacer()
                         Text("minutes")
-                            .foregroundColor(theme.gray.background)
+                            .foregroundColor(.white)
                             .font(.system(size: 20))
                             .padding(.trailing, 121)
                             .padding(.bottom, 50)
                     }
                     Text("**Choose a focus type**")
-                        .foregroundColor(theme.gray.background)
+                        .foregroundColor(.white)
                         .font(.system(size: 25))
                     Button {
                         flexible = true
@@ -86,10 +88,10 @@ struct Focus_ModeTypeSelectionView: View {
                     }
                     Spacer()
                     HStack {
-                        Button {
-                            //
-                        } label: {
-                            if flexible {
+                        if flexible {
+                            NavigationLink {
+                                Focus_ModeView(theme: $theme, startedSession: $startedSession)
+                            } label: {
                                 VStack {
                                     Text("Start Session")
                                         .foregroundColor(theme.color.foreground)
@@ -97,7 +99,12 @@ struct Focus_ModeTypeSelectionView: View {
                                 .frame(maxWidth: .infinity, maxHeight: 50)
                                 .background(.white)
                                 .cornerRadius(10)
-                            } else {
+                                .padding(.bottom, 20)
+                            }
+                        } else {
+                            NavigationLink {
+                                Focus_PomoView(theme: $theme)
+                            } label: {
                                 VStack {
                                     Text("Next")
                                         .foregroundColor(theme.color.foreground)
@@ -105,19 +112,26 @@ struct Focus_ModeTypeSelectionView: View {
                                 .frame(maxWidth: .infinity, maxHeight: 50)
                                 .background(.white)
                                 .cornerRadius(10)
+                                .padding(.bottom, 20)
                             }
                         }
                     }
                     .padding(.leading, 40)
                     .padding(.trailing, 40)
+                    .onAppear(){
+                        if startedSession == true {
+                            startedSession = false
+                            dismiss()
+                        }
+                    }
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(startedSession)
     }
 }
 
 struct Focus_ModeTypeSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        Focus_ModeTypeSelectionView(theme: .constant(Theme()))
+        Focus_ModeTypeSelectionView(theme: .constant(Theme()), startedSession: .constant(false))
     }
 }

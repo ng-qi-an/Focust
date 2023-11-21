@@ -22,7 +22,8 @@ struct Focus_ModeView: View {
     @State private var task4 = "4."
     @State private var taskCount = 0
     @Binding var theme: Theme;
-    
+    @Binding var startedSession: Bool;
+
     let alertTitle: String = "Set your task's name:"
     
     var body: some View {
@@ -190,6 +191,8 @@ struct Focus_ModeView: View {
                         .frame(maxWidth: .infinity, maxHeight: 10)
                         .foregroundColor(theme.gray.background)
                 }
+            }.onAppear(){
+                startedSession = true
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -198,7 +201,7 @@ struct Focus_ModeView: View {
 
 struct Focus_ModeView_Previews: PreviewProvider {
     static var previews: some View {
-        Focus_ModeView(theme: .constant(Theme()))
+        Focus_ModeView(theme: .constant(Theme()), startedSession: .constant(false))
     }
 }
 
