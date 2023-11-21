@@ -9,8 +9,12 @@ import SwiftUI
 
 struct SignupView: View {
     @Binding var authenticated: Bool;
+    @Binding var token: String;
 
-    @State private var phoneNo = ""
+    @Binding var phoneNo: String;
+    @Binding var password: String;
+    @Binding var username: String;
+
     
     enum Field:Hashable {
         case PhoneNumber
@@ -99,7 +103,7 @@ struct SignupView: View {
                             }.frame(width: 350)
                         }
                         HStack{}
-                        NavigationLink (destination: SignupPassword(authenticated: $authenticated), isActive: $errorFree){
+                        NavigationLink (destination: SignupPassword(authenticated: $authenticated, token: $token, password: $password, username: $username), isActive: $errorFree){
                             Button {
                                 withAnimation {
                                     errorFree = false
@@ -165,6 +169,6 @@ struct SignupView: View {
 
 struct SignupView_Previews: PreviewProvider {
     static var previews: some View {
-        SignupView(authenticated: .constant(false))
+        SignupView(authenticated: .constant(false), token: .constant(""), phoneNo: .constant("12345678"), password: .constant("12345678"), username: .constant("12345678"))
     }
 }

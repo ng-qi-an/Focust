@@ -9,6 +9,11 @@ import SwiftUI
 
 struct AuthController: View {
     @Binding var authenticated: Bool;
+    @Binding var token: String;
+
+    @State private var password = ""
+    @State private var username = ""
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -34,7 +39,7 @@ struct AuthController: View {
                             .foregroundColor(Color(red: 45/255, green: 212/255, blue: 191/255))
                     }.offset(y: -125)
                     
-                    NavigationLink(destination: SignupView(authenticated: $authenticated)) {
+                    NavigationLink(destination: SignupPassword(authenticated: $authenticated, token: $token, password: $password, username: $username)) {
                         HStack {
                             Text("Sign Up")
                             Spacer()
@@ -50,7 +55,7 @@ struct AuthController: View {
                         Haptics.shared.play(.light)
 
                     })
-                    NavigationLink(destination: LoginView(authenticated: $authenticated)) {
+                    NavigationLink(destination: LoginView(authenticated: $authenticated, token: $token, username: $username, password: $password)) {
                         HStack {
                             Text("Log In")
                             Spacer()
@@ -74,6 +79,6 @@ struct AuthController: View {
 
 struct AuthController_Previews: PreviewProvider {
     static var previews: some View {
-        AuthController(authenticated: .constant(false))
+        AuthController(authenticated: .constant(false), token: .constant(""))
     }
 }

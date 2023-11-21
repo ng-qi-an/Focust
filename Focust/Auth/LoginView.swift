@@ -6,14 +6,20 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct LoginView: View {
-    @Binding var authenticated: Bool;
+    let users = UsersManager()
 
-    @State private var phoneNo = ""
+    @Binding var authenticated: Bool;
+    
+    @Binding var token: String;
+    @Binding var username: String;
+    @Binding var password: String;
+    @State var loading: Bool = false
     
     enum Field:Hashable {
-        case PhoneNumber, Password
+        case Username, Password
     }
     
     @FocusState private var focused:Field?
@@ -21,7 +27,10 @@ struct LoginView: View {
     @State private var error: String = ""
     @State private var errorFree: Bool = false
     @State private var hasError: Array<Field> = []
-    @State private var password = ""
+    
+    @State private var apiError = false
+    @State private var apiErrorMessage = ""
+
     @Environment(\.dismiss) private var dismiss
     
     
@@ -39,14 +48,15 @@ struct LoginView: View {
                 
                 VStack {
                     HStack {
-                        Button {
-                            print("hi")
-                            dismiss()
-                        } label: {
-                            Image(systemName: "chevron.backward")
-                                .offset(x: 0, y: 0)
-                                .font(.system(size: 25))
-                                .foregroundColor(.black)
+                        if loading == false {
+                            Button {
+                                dismiss()
+                            } label: {
+                                Image(systemName: "chevron.backward")
+                                    .offset(x: 0, y: 0)
+                                    .font(.system(size: 25))
+                                    .foregroundColor(.black)
+                            }
                         }
                         Spacer()
                     }
@@ -75,25 +85,25 @@ struct LoginView: View {
                     }
                     VStack(spacing: 10){
                         HStack {
-                            Image(systemName: "phone")
+                            Image(systemName: "at")
                                 .foregroundColor(.black)
                                 .padding(.leading, 30)
-                            TextField("Phone Number", text: $phoneNo, prompt: Text("Phone Number").foregroundColor(.gray))
+                            TextField("Username", text: $username, prompt: Text("Username").foregroundColor(.gray))
                                 .foregroundColor(.black)
-                                .focused($focused, equals: .PhoneNumber)
-                                .keyboardType(.numberPad)
+                                .focused($focused, equals: .Username)
                                 .padding(.leading, 10)
-                                .onChange(of: phoneNo) { newValue in
+                                .onChange(of: username) { newValue in
                                     if newValue.count > 8 {
-                                        phoneNo = String(newValue.prefix(8))
+                                        username = String(newValue.prefix(8))
                                     }
                                 }
+                                .disabled(loading)
                         }
                         .frame(width: 350, height: 50)
                         .background(.white)
                         .cornerRadius(20)
                         .shadow(color: Color(red: 218/255, green: 218/255, blue: 218/255), radius: 4, y: 3)
-                        if hasError.contains(Field.PhoneNumber) {
+                        if hasError.contains(Field.Username) {
                             HStack {
                                 Text(error)
                                     .foregroundColor(.red)
@@ -108,6 +118,7 @@ struct LoginView: View {
                                 .foregroundColor(.black)
                                 .padding(.leading, 10)
                                 .focused($focused, equals: .Password)
+                                .disabled(loading)
 
                         }
                         .frame(width: 350, height: 50)
@@ -123,58 +134,85 @@ struct LoginView: View {
                         }
                         HStack {}
                         Button {
-                            errorFree = false
-                            if phoneNo.isEmpty {
-                                error = "This field is required"
-                                if hasError.contains(Field.PhoneNumber) == false {
-                                    hasError.append(Field.PhoneNumber)
+                            Task {
+                                errorFree = false
+                                if loading {
+                                    // Do nothing
+                                } else if username.isEmpty {
+                                    error = "This field is required"
+                                    if hasError.contains(Field.Username) == false {
+                                        hasError.append(Field.Username)
+                                    }
+                                    Haptics.shared.notify(.error)
+                                } else if username.count < 3 {
+                                    error = "Invalid username"
+                                    if hasError.contains(Field.Username) == false {
+                                        hasError.append(Field.Username)
+                                    }
+                                    Haptics.shared.notify(.error)
+                                } else if password.isEmpty {
+                                    error = "This field is required"
+                                    if hasError.contains(Field.Password) == false {
+                                        hasError.append(Field.Password)
+                                    }
+                                    Haptics.shared.notify(.error)
+                                } else if password.count < 8 {
+                                    error = "Minimum of 8 characters"
+                                    if hasError.contains(Field.Password) == false {
+                                        hasError.append(Field.Password)
+                                    }
+                                    Haptics.shared.notify(.error)
+                                }  else {
+                                    error = ""
+                                    errorFree = true
+                                    if hasError.contains(Field.Username) == true {
+                                        hasError.remove(at: hasError.firstIndex(of: Field.Username)!)
+                                    }
+                                    if hasError.contains(Field.Password) == true {
+                                        hasError.remove(at: hasError.firstIndex(of: Field.Password)!)
+                                    }
+                                    do {
+                                        loading = true
+                                        let result = try await users.login(username: username, password: password)
+                                        if result["status"] as! String == "OK" {
+                                            Haptics.shared.notify(.success)
+                                            let data = result["data"] as! [String: Any]
+                                            token = data["token"] as! String
+                                            authenticated = true
+                                        } else if result["status"] as! String == "INVALID" {
+                                            loading = false
+                                            apiErrorMessage = "No account exists with those credentials"
+                                            apiError = true
+                                            Haptics.shared.notify(.error)
+                                        }
+                                    } catch {
+                                        loading = false
+                                        print(String(describing: error))
+                                        apiErrorMessage = "UNKNOWN ERROR"
+                                        apiError = true
+                                        Haptics.shared.notify(.error)
+                                    }
                                 }
-                                Haptics.shared.notify(.error)
-                            } else if phoneNo.count < 8 {
-                                error = "Not a valid SG phone number"
-                                if hasError.contains(Field.PhoneNumber) == false {
-                                    hasError.append(Field.PhoneNumber)
-                                }
-                                Haptics.shared.notify(.error)
-                            } else if password.isEmpty {
-                                error = "This field is required"
-                                if hasError.contains(Field.Password) == false {
-                                    hasError.append(Field.Password)
-                                }
-                                Haptics.shared.notify(.error)
-                            } else if password.count != 8 {
-                                error = "Minimum of 8 characters"
-                                if hasError.contains(Field.Password) == false {
-                                    hasError.append(Field.Password)
-                                }
-                                Haptics.shared.notify(.error)
-                            }  else {
-                                error = ""
-                                errorFree = true
-                                if hasError.contains(Field.PhoneNumber) == true {
-                                    hasError.remove(at: hasError.firstIndex(of: Field.PhoneNumber)!)
-                                }
-                                if hasError.contains(Field.Password) == true {
-                                    hasError.remove(at: hasError.firstIndex(of: Field.Password)!)
-                                }
-                                authenticated = true
-                                Haptics.shared.notify(.success)
                             }
                         } label : {
                             HStack {
-                                Text("Login")
-                                    .padding(.leading, 30)
-                                    .foregroundColor(.black)
-                                Spacer()
-                                Image(systemName: "paperplane.fill")
-                                    .padding(.trailing, 30)
-                                    .foregroundColor(.black)
+                                if loading{
+                                    ProgressView()
+                                } else {
+                                    Text("Login")
+                                        .padding(.leading, 30)
+                                        .foregroundColor(.black)
+                                    Spacer()
+                                    Image(systemName: "paperplane.fill")
+                                        .padding(.trailing, 30)
+                                        .foregroundColor(.black)
+                                }
                             }
                             .frame(width: 350, height: 60)
                             .background(Color(red: 45/255, green: 212/255, blue: 191/255))
                             .cornerRadius(20)
                             .shadow(color: Color(red: 218/255, green: 218/255, blue: 218/255), radius: 4, y: 3)
-                        }
+                        }.disabled(loading)
                     }
                     Spacer()
                 }
@@ -188,6 +226,9 @@ struct LoginView: View {
                         }
                     }
                 }
+                .toast(isPresenting: $apiError){
+                    AlertToast(displayMode: .hud, type: .error(Color.red), title: "Request Failed", subTitle: apiErrorMessage)
+                }
 
         }.navigationBarBackButtonHidden(true)
     }
@@ -195,6 +236,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authenticated: .constant(false))
+        LoginView(authenticated: .constant(false), token: .constant(""), username: .constant("john_doe"), password: .constant("12345678"))
     }
 }
