@@ -17,13 +17,15 @@
 		AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2752B05D0B9003A6DBF /* LoginView.swift */; };
 		AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2772B05D98F003A6DBF /* AuthController.swift */; };
 		AAD489922B02499900E2131B /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD489912B02499900E2131B /* HomescreenView.swift */; };
+		F22434DE2B0C48E20088E199 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22434DD2B0C48E20088E199 /* ContentView.swift */; };
+		F22434E02B0C49070088E199 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22434DF2B0C49070088E199 /* APIManager.swift */; };
+		F22434E32B0C493E0088E199 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = F22434E22B0C493E0088E199 /* AlertToast */; };
 		F2A28EF22B085A21009B00AD /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A28EF12B085A21009B00AD /* SignupView.swift */; };
 		F2D5F7962B09E2E30041EE70 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F7952B09E2E30041EE70 /* Themes.swift */; };
 		F2D5F7992B0A32A60041EE70 /* SignupPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F7982B0A32A60041EE70 /* SignupPassword.swift */; };
 		F2D5F79F2B0A41C90041EE70 /* SignupUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F79E2B0A41C90041EE70 /* SignupUsername.swift */; };
 		F2D5F7A12B0A4DAA0041EE70 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F7A02B0A4DAA0041EE70 /* Haptics.swift */; };
 		F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABA2B0127460099395D /* FocustApp.swift */; };
-		F2DBBABD2B0127460099395D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBBABC2B0127460099395D /* ContentView.swift */; };
 		F2DBBABF2B01274A0099395D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DBBABE2B01274A0099395D /* Assets.xcassets */; };
 		F2DBBAC22B01274A0099395D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DBBAC12B01274A0099395D /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		AAB1D2752B05D0B9003A6DBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AAB1D2772B05D98F003A6DBF /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		AAD489912B02499900E2131B /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
+		F22434DD2B0C48E20088E199 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Focust/ContentView.swift; sourceTree = SOURCE_ROOT; };
+		F22434DF2B0C49070088E199 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F2A28EF12B085A21009B00AD /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		F2D5F7952B09E2E30041EE70 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		F2D5F7982B0A32A60041EE70 /* SignupPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPassword.swift; sourceTree = "<group>"; };
@@ -45,7 +49,6 @@
 		F2D5F7A02B0A4DAA0041EE70 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		F2DBBAB72B0127460099395D /* Focust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DBBABA2B0127460099395D /* FocustApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocustApp.swift; sourceTree = "<group>"; };
-		F2DBBABC2B0127460099395D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F2DBBABE2B01274A0099395D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2DBBAC12B01274A0099395D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				295CF92A2B0AF95F00257D83 /* SwiftQRCodeScanner in Frameworks */,
+				F22434E32B0C493E0088E199 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +101,7 @@
 		F2D5F7942B09E2C60041EE70 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F22434DF2B0C49070088E199 /* APIManager.swift */,
 				F2D5F7952B09E2E30041EE70 /* Themes.swift */,
 				F2D5F7A02B0A4DAA0041EE70 /* Haptics.swift */,
 			);
@@ -136,7 +141,7 @@
 				F2536B992B06F93B004A3CA9 /* Views */,
 				F2536B982B06F8F5004A3CA9 /* Auth */,
 				F2DBBABA2B0127460099395D /* FocustApp.swift */,
-				F2DBBABC2B0127460099395D /* ContentView.swift */,
+				F22434DD2B0C48E20088E199 /* ContentView.swift */,
 				F2DBBABE2B01274A0099395D /* Assets.xcassets */,
 				F2DBBAC02B01274A0099395D /* Preview Content */,
 			);
@@ -169,6 +174,7 @@
 			name = Focust;
 			packageProductDependencies = (
 				295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */,
+				F22434E22B0C493E0088E199 /* AlertToast */,
 			);
 			productName = Focust;
 			productReference = F2DBBAB72B0127460099395D /* Focust.app */;
@@ -200,6 +206,7 @@
 			mainGroup = F2DBBAAE2B0127460099395D;
 			packageReferences = (
 				295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */,
+				F22434E12B0C493E0088E199 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = F2DBBAB82B0127460099395D /* Products */;
 			projectDirPath = "";
@@ -228,17 +235,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA1F0AEC2B04A08600F3ECFF /* Focus_ModeView.swift in Sources */,
-				F2DBBABD2B0127460099395D /* ContentView.swift in Sources */,
 				AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */,
 				AA4603402B03D20200F24DC4 /* FriendsView.swift in Sources */,
 				F2D5F7A12B0A4DAA0041EE70 /* Haptics.swift in Sources */,
 				AAD489922B02499900E2131B /* HomescreenView.swift in Sources */,
 				AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */,
+				F22434DE2B0C48E20088E199 /* ContentView.swift in Sources */,
 				AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */,
 				F2D5F7962B09E2E30041EE70 /* Themes.swift in Sources */,
 				AAA204542B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift in Sources */,
 				AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */,
 				F2D5F79F2B0A41C90041EE70 /* SignupUsername.swift in Sources */,
+				F22434E02B0C49070088E199 /* APIManager.swift in Sources */,
 				F2D5F7992B0A32A60041EE70 /* SignupPassword.swift in Sources */,
 				F2A28EF22B085A21009B00AD /* SignupView.swift in Sources */,
 				F2DBBABB2B0127460099395D /* FocustApp.swift in Sources */,
@@ -460,6 +468,14 @@
 				minimumVersion = 1.1.5;
 			};
 		};
+		F22434E12B0C493E0088E199 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -467,6 +483,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */;
 			productName = SwiftQRCodeScanner;
+		};
+		F22434E22B0C493E0088E199 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F22434E12B0C493E0088E199 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -10,7 +10,9 @@ import SwiftUI
 struct SignupUsername: View {
     @Binding var authenticated: Bool;
 
-    @State private var username = ""
+    @Binding var phoneNo: String;
+    @Binding var password: String;
+    @Binding var username: String;
     
     enum Field:Hashable {
         case Username
@@ -129,6 +131,9 @@ struct SignupUsername: View {
                                     if hasError.contains(Field.Username) == true {
                                         hasError.remove(at: hasError.firstIndex(of: Field.Username)!)
                                     }
+                                    print(phoneNo)
+                                    print(password)
+                                    print(username)
                                     authenticated = true
                                     Haptics.shared.notify(.success)
 
@@ -171,6 +176,6 @@ struct SignupUsername: View {
 
 struct SignupUsername_Previews: PreviewProvider {
     static var previews: some View {
-        SignupUsername(authenticated: .constant(false))
+        SignupUsername(authenticated: .constant(false), phoneNo: .constant("12345678"), password: .constant("12345678"), username: .constant("12345678"))
     }
 }

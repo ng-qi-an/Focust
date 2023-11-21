@@ -9,8 +9,9 @@ import SwiftUI
 
 struct LoginView: View {
     @Binding var authenticated: Bool;
-
-    @State private var phoneNo = ""
+    @Binding var phoneNo: String;
+    @Binding var password: String;
+    
     
     enum Field:Hashable {
         case PhoneNumber, Password
@@ -21,7 +22,6 @@ struct LoginView: View {
     @State private var error: String = ""
     @State private var errorFree: Bool = false
     @State private var hasError: Array<Field> = []
-    @State private var password = ""
     @Environment(\.dismiss) private var dismiss
     
     
@@ -195,6 +195,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authenticated: .constant(false))
+        LoginView(authenticated: .constant(false), phoneNo: .constant("12345678"), password: .constant("12345678"))
     }
 }
