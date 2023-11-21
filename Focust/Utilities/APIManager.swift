@@ -22,9 +22,14 @@ struct UserData: Codable {
 struct User: Codable {
     var name: String
     var id: String
-    var phoneNumber: String
+    init(dictionary: [String: Any]) {
+        self.name = dictionary["name"] as? String ?? "John Doe"
+        self.id = dictionary["id"] as? String ?? "1234567890"
+    }
 }
-let baseUrl: String = "http://localhost:2087"
+
+
+let baseUrl: String = "http://172.16.102.98:2087"
 
 
 func parameters(_ data: Dictionary<String, String>) -> String {
@@ -82,6 +87,10 @@ struct UsersManager {
     }
     func login(username: String, password:String) async throws -> [String: Any] {
         let (data, _) = try await URLSession.shared.data(from: apiUrl("/users/login", params: ["username": username, "password": password]))
+        return try parseData(data)
+    }
+    func retrieve(token:String) async throws -> [String: Any] {
+        let (data, _) = try await URLSession.shared.data(from: apiUrl("/users/verify", params: ["token": token]))
         return try parseData(data)
     }
 }

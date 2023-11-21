@@ -12,7 +12,8 @@ struct SignupUsername: View {
     let users = UsersManager()
     
     @Binding var authenticated: Bool;
-
+    
+    @Binding var token: String;
     @Binding var password: String;
     @Binding var username: String;
     @State var loading: Bool = false
@@ -150,8 +151,10 @@ struct SignupUsername: View {
                                     do {
                                         let result = try await users.register(password: password, username: username)
                                         if result["status"] as! String == "OK" {
-                                            authenticated = true
                                             Haptics.shared.notify(.success)
+                                            let data = result["data"] as! [String: Any]
+                                            token = data["token"] as! String
+                                            authenticated = true
                                         } else if result["status"] as! String == "EXISTS" {
                                             loading = false
                                             apiErrorMessage = "Phone No. / Username exists"
@@ -215,6 +218,6 @@ struct SignupUsername: View {
 
 struct SignupUsername_Previews: PreviewProvider {
     static var previews: some View {
-        SignupUsername(authenticated: .constant(false), password: .constant("12345678"), username: .constant("12345678"))
+        SignupUsername(authenticated: .constant(false), token: .constant(""), password: .constant("12345678"), username: .constant("12345678"))
     }
 }

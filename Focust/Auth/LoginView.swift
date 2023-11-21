@@ -12,6 +12,8 @@ struct LoginView: View {
     let users = UsersManager()
 
     @Binding var authenticated: Bool;
+    
+    @Binding var token: String;
     @Binding var username: String;
     @Binding var password: String;
     @State var loading: Bool = false
@@ -89,7 +91,6 @@ struct LoginView: View {
                             TextField("Username", text: $username, prompt: Text("Username").foregroundColor(.gray))
                                 .foregroundColor(.black)
                                 .focused($focused, equals: .Username)
-                                .keyboardType(.numberPad)
                                 .padding(.leading, 10)
                                 .onChange(of: username) { newValue in
                                     if newValue.count > 8 {
@@ -175,6 +176,8 @@ struct LoginView: View {
                                         let result = try await users.login(username: username, password: password)
                                         if result["status"] as! String == "OK" {
                                             Haptics.shared.notify(.success)
+                                            let data = result["data"] as! [String: Any]
+                                            token = data["token"] as! String
                                             authenticated = true
                                         } else if result["status"] as! String == "INVALID" {
                                             loading = false
@@ -233,6 +236,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authenticated: .constant(false), username: .constant("john_doe"), password: .constant("12345678"))
+        LoginView(authenticated: .constant(false), token: .constant(""), username: .constant("john_doe"), password: .constant("12345678"))
     }
 }
