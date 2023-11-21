@@ -102,7 +102,7 @@ struct SignupView: View {
                             }.frame(width: 350)
                         }
                         HStack{}
-                        NavigationLink (destination: SignupPassword(authenticated: $authenticated, phoneNo: $phoneNo, password: $password, username: $username), isActive: $errorFree){
+                        NavigationLink (destination: SignupPassword(authenticated: $authenticated, password: $password, username: $username), isActive: $errorFree){
                             Button {
                                 withAnimation {
                                     errorFree = false

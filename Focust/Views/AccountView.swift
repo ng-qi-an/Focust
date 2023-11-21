@@ -16,18 +16,21 @@ struct AccountView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                Rectangle()
-                    .frame(maxWidth: 380, maxHeight: 87)
-                    .opacity(0.1)
-                    .cornerRadius(10)
-                HStack {
-                    Text("**Appearance**")
-                        .opacity(0.5)
-                        .padding(.leading, 40)
-                    Spacer()
+            List {
+                NavigationLink(destination: Text("hi")) {
+                    HStack (spacing: 20) {
+                        Circle()
+                            .frame(width: 70, height: 70)
+                            .foregroundColor(theme.color.background)
+                        VStack (alignment: .leading) {
+                            Text("@John_Doe")
+                                .font(.title3)
+                            Text("Account settings")
+                        }
+                        Spacer()
+                    }
                 }
-                ZStack {
+                Section() {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
                             Button {
@@ -97,50 +100,19 @@ struct AccountView: View {
                                     .scaleEffect(color == AppearanceScheme.Purple ? 1.2 : 1)
                             }
                         }
-                        .frame(maxHeight: 190)
-                        .padding(Edge.Set(arrayLiteral: .trailing, .leading), 60)
+                        .frame(height: 190)
                     }
-                    //                    if darkMode == false {
-                    //                        Rectangle()
-                    //                            .frame(maxWidth: 60, maxHeight: 200)
-                    //                            .foregroundColor(.white)
-                    //                            .offset(x: -190)
-                    //                        Rectangle()
-                    //                            .frame(maxWidth: 60, maxHeight: 200)
-                    //                            .foregroundColor(.white)
-                    //                            .offset(x: 190)
-                    //                    } else {
-                    //                        Rectangle()
-                    //                            .frame(maxWidth: 60, maxHeight: 200)
-                    //                            .foregroundColor(.black)
-                    //                            .offset(x: -190)
-                    //                        Rectangle()
-                    //                            .frame(maxWidth: 60, maxHeight: 200)
-                    //                            .foregroundColor(.black)
-                    //                            .offset(x: 190)
-                    //                    }
-                }
-                ZStack {
-                    Rectangle()
-                        .frame(maxWidth: 380, maxHeight: 50)
-                        .opacity(0.1)
-                        .cornerRadius(10)
-                    HStack {
-                        Toggle(isOn: $darkMode) {
-                            Text("Dark Mode")
-                                .font(.system(size: 17))
-                        }.onChange(of: darkMode) { new in
-                            if new == true {
-                                mode = AppearanceMode.Dark
-                            } else {
-                                mode = AppearanceMode.Light
-                            }
+                    Toggle(isOn: $darkMode) {
+                        Text("Dark Mode")
+                            .font(.system(size: 17))
+                    }.onChange(of: darkMode) { new in
+                        if new == true {
+                            mode = AppearanceMode.Dark
+                        } else {
+                            mode = AppearanceMode.Light
                         }
                     }
-                    .padding(.trailing, 40)
-                    .padding(.leading, 40)
                 }
-                Spacer()
             }
             .navigationTitle("Account")
         }

@@ -10,7 +10,6 @@ import SwiftUI
 struct SignupPassword: View {
     @Binding var authenticated: Bool;
     
-    @Binding var phoneNo: String;
     @Binding var password: String;
     @Binding var username: String;
     @State private var passwordConfirm = ""
@@ -130,7 +129,7 @@ struct SignupPassword: View {
                             }.frame(width: 350)
                         }
                         HStack{}
-                        NavigationLink(destination: SignupUsername(authenticated: $authenticated, phoneNo: $phoneNo, password: $password, username: $username), isActive: $errorFree){
+                        NavigationLink(destination: SignupUsername(authenticated: $authenticated, password: $password, username: $username), isActive: $errorFree){
                             Button {
                                 withAnimation {
                                     errorFree = false
@@ -208,6 +207,6 @@ struct SignupPassword: View {
 
 struct SignupPassword_Previews: PreviewProvider {
     static var previews: some View {
-        SignupPassword(authenticated: .constant(false), phoneNo: .constant("12345678"), password: .constant("12345678"), username: .constant("12345678"))
+        SignupPassword(authenticated: .constant(false), password: .constant("12345678"), username: .constant("12345678"))
     }
 }
