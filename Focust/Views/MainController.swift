@@ -15,11 +15,12 @@ struct MainController: View {
     @State var page: Int = 1
     @State var theme = Theme()
     @State var startedSession = false
+    @State var pomodoroSelection = false
 
     var body: some View {
         NavigationView {
             TabView(selection: $page) {
-                HomescreenView(theme: $theme, page: $page, startedSession: $startedSession)
+                HomescreenView(theme: $theme, page: $page, startedSession: $startedSession, pomodoroSelection: $pomodoroSelection)
                     .tabItem {
                         Image(systemName: "house.fill")
                         Text("Home")

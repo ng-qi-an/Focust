@@ -12,9 +12,9 @@
 		AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2147102B03D83C00E7B7A5 /* MainController.swift */; };
 		AA46033E2B03D01300F24DC4 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033D2B03D01300F24DC4 /* AccountView.swift */; };
 		AA4603402B03D20200F24DC4 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033F2B03D20200F24DC4 /* FriendsView.swift */; };
+		AA8D6DD12B0DD5ED00BC5B05 /* Saver_ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D6DD02B0DD5EC00BC5B05 /* Saver_ModeView.swift */; };
 		AAA204542B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA204532B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift */; };
 		AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */; };
-		AAB1BEFE2B0C97A60076FCA4 /* Focus_PomoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1BEFD2B0C97A60076FCA4 /* Focus_PomoView.swift */; };
 		AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2752B05D0B9003A6DBF /* LoginView.swift */; };
 		AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2772B05D98F003A6DBF /* AuthController.swift */; };
 		AAD489922B02499900E2131B /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD489912B02499900E2131B /* HomescreenView.swift */; };
@@ -36,9 +36,9 @@
 		AA2147102B03D83C00E7B7A5 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		AA46033D2B03D01300F24DC4 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		AA46033F2B03D20200F24DC4 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		AA8D6DD02B0DD5EC00BC5B05 /* Saver_ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saver_ModeView.swift; sourceTree = "<group>"; };
 		AAA204532B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus_ModeTypeSelectionView.swift; sourceTree = "<group>"; };
 		AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
-		AAB1BEFD2B0C97A60076FCA4 /* Focus_PomoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus_PomoView.swift; sourceTree = "<group>"; };
 		AAB1D2752B05D0B9003A6DBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AAB1D2772B05D98F003A6DBF /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		AAD489912B02499900E2131B /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
@@ -72,8 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */,
+				AA8D6DD02B0DD5EC00BC5B05 /* Saver_ModeView.swift */,
 				AAA204532B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift */,
-				AAB1BEFD2B0C97A60076FCA4 /* Focus_PomoView.swift */,
 			);
 			path = "Focus Mode";
 			sourceTree = "<group>";
@@ -245,8 +245,8 @@
 				AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */,
 				F22434DE2B0C48E20088E199 /* ContentView.swift in Sources */,
 				AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */,
-				AAB1BEFE2B0C97A60076FCA4 /* Focus_PomoView.swift in Sources */,
 				F2D5F7962B09E2E30041EE70 /* Themes.swift in Sources */,
+				AA8D6DD12B0DD5ED00BC5B05 /* Saver_ModeView.swift in Sources */,
 				AAA204542B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift in Sources */,
 				AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */,
 				F2D5F79F2B0A41C90041EE70 /* SignupUsername.swift in Sources */,
@@ -388,21 +388,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Focust/Preview Content\"";
-				DEVELOPMENT_TEAM = PAY24Z9872;
+				DEVELOPMENT_TEAM = U2GTN7TUCC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hahahahahshwidjowefwfjweffw.Focust;
+				PRODUCT_BUNDLE_IDENTIFIER = com.focust;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -418,21 +418,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Focust/Preview Content\"";
-				DEVELOPMENT_TEAM = PAY24Z9872;
+				DEVELOPMENT_TEAM = U2GTN7TUCC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hahahahahshwidjowefwfjweffw.Focust;
+				PRODUCT_BUNDLE_IDENTIFIER = com.focust;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

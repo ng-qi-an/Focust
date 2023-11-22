@@ -20,10 +20,20 @@ struct Focus_ModeView: View {
     @State private var task2 = "2."
     @State private var task3 = "3."
     @State private var task4 = "4."
+    @State private var counter = 0
+    @State private var min = 0
+    @State private var hour = 0
     @State private var taskCount = 0
-    @Binding var theme: Theme;
-    @Binding var startedSession: Bool;
-
+    @State private var paused = false
+    @Binding var theme: Theme
+    @Binding var startedSession: Bool
+    @Binding var focusLength: Int
+    @Binding var breakLength: Int
+    @Binding var longBreakLength: Int
+    @Binding var pomo: Bool
+    @Binding var focusOptions: Array<String>
+    @Binding var breakOptions: Array<String>
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let alertTitle: String = "Set your task's name:"
     
     var body: some View {
@@ -41,7 +51,7 @@ struct Focus_ModeView: View {
                 VStack {
                     Spacer()
                     VStack {
-                        Text("**2 : 20**")
+                        Text("**\(hour) : \(min < 10 ? "0" : "")\(min)**")
                             .font(.system(size: 70))
                             .foregroundColor(.white)
                         HStack {
@@ -81,7 +91,8 @@ struct Focus_ModeView: View {
                     }
                     .simultaneousGesture(
                         LongPressGesture(minimumDuration: 1.0)
-                            .onChanged { _ in                        isLongPressing = true
+                            .onChanged { _ in
+                                isLongPressing = true
                             }
                     )
                     Button {
@@ -164,44 +175,105 @@ struct Focus_ModeView: View {
                         Text("Note: Limit to 4 entries!")
                     }
                     Spacer()
-                    Button {
-                        dismiss()
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 70, height: 70)
-                                .foregroundColor(theme.red.foreground)
-                                .cornerRadius(20)
-                            Image(systemName: "square.fill")
-                                .resizable()
-                                .frame(width: 25, height: 26)
-                                .foregroundColor(.white)
+                    HStack(spacing: 0) {
+                        Button {
+                            paused = !paused
+                            if paused {
+                                timer.upstream.connect().cancel()
+                            } else {
+                                timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                            }
+                            
+                        } label: {
+                            HStack {
+                                Image(systemName: paused ? "play.fill" : "pause.fill")
+                                    .font(.system(size: 30))
+                                    .foregroundColor(theme.color.foreground)
+                                Text(paused ? "Resume" : "Pause")
+                                    .font(.system(size: 23))
+                                    .foregroundColor(theme.gray.foreground)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 20)
+                            }
+                            .frame(height: 70)
+                            .padding(.leading, 30)
+                            .background(theme.gray.background)
+                            .cornerRadius(25, corners: [.topLeft, .bottomLeft])
+                        }
+                        Button {
+                            timer.upstream.connect().cancel()
+                            dismiss()
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 80, height: 70)
+                                    .foregroundColor(theme.red.button)
+                                    .cornerRadius(25, corners: [.topRight, .bottomRight])
+                                HStack {
+                                    Image(systemName: "square.fill")
+                                        .font(.system(size: 30))
+                                        .foregroundColor(.white)
+                                }
+                            }
                         }
                     }
                     Spacer()
-                    HStack {
-                        Image(systemName: "leaf")
-                        Text("saver mode")
+                    NavigationLink {
+                        Saver_ModeView(theme: $theme)
+                    } label: {
+                        HStack {
+                            Image(systemName: "leaf")
+                                .foregroundColor(.black)
+                            Text("saver mode")
+                                .foregroundColor(.black)
+                        }
+                        .frame(width: 155, height: 32)
+                        .background(theme.gray.background)
+                        .cornerRadius(15)
+                        .padding(.bottom, 10)
                     }
-                    .frame(width: 155, height: 32)
-                    .background(theme.gray.background)
-                    .cornerRadius(15)
-                    .padding(.bottom, 10)
-                    Rectangle()
-                        .frame(maxWidth: .infinity, maxHeight: 10)
-                        .foregroundColor(theme.gray.background)
-                }
+                        Rectangle()
+                            .frame(maxWidth: .infinity, maxHeight: 10)
+                            .foregroundColor(theme.gray.background)
+                    }
             }.onAppear(){
                 startedSession = true
+            }
+            .onReceive(timer) { _ in
+                counter += 1
+                hour = counter / (60 * 60)
+                if counter / 60 == 60 {
+                    min = 0
+                } else {
+                    min = (counter / 60) - (hour * 60)
+                }
+                print(counter)
+                
             }
         }
         .navigationBarBackButtonHidden(true)
     }
 }
 
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
 struct Focus_ModeView_Previews: PreviewProvider {
     static var previews: some View {
-        Focus_ModeView(theme: .constant(Theme()), startedSession: .constant(false))
+        Focus_ModeView(theme: .constant(Theme()), startedSession: .constant(false), focusLength: .constant(0), breakLength: .constant(0), longBreakLength: .constant(0), pomo: .constant(false), focusOptions: .constant(["25mins", "35mins", "45mins", "55min"]), breakOptions: .constant(["5mins", "10mins", "15mins", "20min"]))
     }
 }
 

@@ -11,6 +11,7 @@ struct HomescreenView: View {
     @Binding var theme: Theme;
     @Binding var page: Int
     @Binding var startedSession: Bool
+    @Binding var pomodoroSelection: Bool
 
     @State var value = 0
     
@@ -82,7 +83,7 @@ struct HomescreenView: View {
                                     .opacity(0.5)
                             }.offset(x: -25, y: -50)
                             NavigationLink {
-                                Focus_ModeTypeSelectionView(theme : $theme, startedSession: $startedSession)
+                                Focus_ModeTypeSelectionView(theme : $theme, startedSession: $startedSession, pomodoroSelection: $pomodoroSelection)
                             } label: {
                                 Circle()
                                     .fill(theme.color.button)
@@ -425,6 +426,6 @@ struct HomescreenView: View {
 
 struct HomescreenView_Previews: PreviewProvider {
     static var previews: some View {
-        HomescreenView(theme: .constant(Theme()), page: .constant(1), startedSession: .constant(false))
+        HomescreenView(theme: .constant(Theme()), page: .constant(1), startedSession: .constant(false), pomodoroSelection: .constant(false))
     }
 }
