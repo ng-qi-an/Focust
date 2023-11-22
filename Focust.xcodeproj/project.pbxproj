@@ -21,6 +21,7 @@
 		F22434E02B0C49070088E199 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22434DF2B0C49070088E199 /* APIManager.swift */; };
 		F22434E32B0C493E0088E199 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = F22434E22B0C493E0088E199 /* AlertToast */; };
 		F2A28EF22B085A21009B00AD /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A28EF12B085A21009B00AD /* SignupView.swift */; };
+		F2CB09282B0D980D006AA31D /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB09272B0D980D006AA31D /* AccountDetailsView.swift */; };
 		F2D5F7962B09E2E30041EE70 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F7952B09E2E30041EE70 /* Themes.swift */; };
 		F2D5F7992B0A32A60041EE70 /* SignupPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F7982B0A32A60041EE70 /* SignupPassword.swift */; };
 		F2D5F79F2B0A41C90041EE70 /* SignupUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5F79E2B0A41C90041EE70 /* SignupUsername.swift */; };
@@ -43,6 +44,7 @@
 		F22434DD2B0C48E20088E199 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Focust/ContentView.swift; sourceTree = SOURCE_ROOT; };
 		F22434DF2B0C49070088E199 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F2A28EF12B085A21009B00AD /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		F2CB09272B0D980D006AA31D /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
 		F2D5F7952B09E2E30041EE70 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		F2D5F7982B0A32A60041EE70 /* SignupPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPassword.swift; sourceTree = "<group>"; };
 		F2D5F79E2B0A41C90041EE70 /* SignupUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUsername.swift; sourceTree = "<group>"; };
@@ -93,9 +95,18 @@
 				AAD489912B02499900E2131B /* HomescreenView.swift */,
 				AA46033F2B03D20200F24DC4 /* FriendsView.swift */,
 				AAB01EAA2B03AC9200A6E8D6 /* StatisticsView.swift */,
-				AA46033D2B03D01300F24DC4 /* AccountView.swift */,
+				F2CB09262B0D9766006AA31D /* Account */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F2CB09262B0D9766006AA31D /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				AA46033D2B03D01300F24DC4 /* AccountView.swift */,
+				F2CB09272B0D980D006AA31D /* AccountDetailsView.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		F2D5F7942B09E2C60041EE70 /* Utilities */ = {
@@ -245,6 +256,7 @@
 				F2D5F7962B09E2E30041EE70 /* Themes.swift in Sources */,
 				AAA204542B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift in Sources */,
 				AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */,
+				F2CB09282B0D980D006AA31D /* AccountDetailsView.swift in Sources */,
 				F2D5F79F2B0A41C90041EE70 /* SignupUsername.swift in Sources */,
 				F22434E02B0C49070088E199 /* APIManager.swift in Sources */,
 				F2D5F7992B0A32A60041EE70 /* SignupPassword.swift in Sources */,

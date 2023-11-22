@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainController: View {
     @Binding var authenticated: Bool;
+    
     @State var darkMode = true
     @State var mode = AppearanceMode.Light
     @State var color = AppearanceScheme.Teal

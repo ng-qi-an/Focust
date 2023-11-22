@@ -21,7 +21,7 @@ struct ContentView: View {
         VStack {
             if enabled {
                 if authenticated {
-                    MainController(authenticated: $authenticated)
+                    MainController(authenticated: $authenticated, user: $user)
                 } else {
                     AuthController(authenticated: $authenticated, token: $token)
                         .preferredColorScheme(.light)

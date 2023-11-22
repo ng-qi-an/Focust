@@ -37,7 +37,7 @@ struct AccountView: View {
                                 withAnimation {
                                     color = AppearanceScheme.Blue
                                 }
-                            } label: {
+                             } label: {
                                 Image("blueTheme")
                                     .resizable()
                                     .frame(width: 70, height: 150)

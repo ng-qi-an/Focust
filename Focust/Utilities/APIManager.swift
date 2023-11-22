@@ -22,7 +22,7 @@ struct UserData: Codable {
 struct User: Codable {
     var name: String
     var id: String
-    init(dictionary: [String: Any]) {
+    init(dictionary: [String: Any]=["name": "John Doe", "id": "1234567890"]) {
         self.name = dictionary["name"] as? String ?? "John Doe"
         self.id = dictionary["id"] as? String ?? "1234567890"
     }
