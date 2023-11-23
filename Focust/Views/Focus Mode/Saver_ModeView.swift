@@ -26,29 +26,29 @@ struct Saver_ModeView: View {
             }
             VStack {
                 Spacer()
-                HStack(spacing: 25) {
+                HStack(spacing: 20) {
                     VStack(spacing: -20) {
                         Text("**\(hour)**")
-                            .font(.system(size: 100))
+                            .font(.system(size: 80))
                             .foregroundColor(.white)
                             .opacity(0.5)
                         Text("hr")
-                            .font(.system(size: 25))
+                            .font(.system(size: 23))
                             .foregroundColor(.white)
                             .opacity(0.5)
                     }
                     Text(" **:** ")
-                        .font(.system(size: 100))
+                        .font(.system(size: 80))
                         .foregroundColor(.white)
                         .padding(.bottom, 30)
                         .opacity(0.5)
                     VStack(spacing: -20) {
                         Text("**\(min < 10 ? "0" : "")\(min)**")
-                            .font(.system(size: 100))
+                            .font(.system(size: 80))
                             .foregroundColor(.white)
                             .opacity(0.5)
                         Text("minutes")
-                            .font(.system(size: 25))
+                            .font(.system(size: 23))
                             .foregroundColor(.white)
                             .opacity(0.5)
                     }
@@ -58,7 +58,7 @@ struct Saver_ModeView: View {
                     .font(.system(size: 20))
                     .foregroundColor(.white)
                     .opacity(0.5)
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 60)
                     .padding(.top, 100)
             }
         }
