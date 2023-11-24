@@ -149,18 +149,18 @@ struct SignupUsername: View {
                                         hasError.remove(at: hasError.firstIndex(of: Field.Username)!)
                                     }
                                     do {
-                                        let result = try await users.register(password: password, username: username)
-                                        if result["status"] as! String == "OK" {
-                                            Haptics.shared.notify(.success)
-                                            let data = result["data"] as! [String: Any]
-                                            token = data["token"] as! String
-                                            authenticated = true
-                                        } else if result["status"] as! String == "EXISTS" {
-                                            loading = false
-                                            apiErrorMessage = "Phone No. / Username exists"
-                                            apiError = true
-                                            Haptics.shared.notify(.error)
-                                        }
+//                                        let result = try await users.register(password: password, username: username)
+//                                        if result["status"] as! String == "OK" {
+//                                            Haptics.shared.notify(.success)
+//                                            let data = result["data"] as! [String: Any]
+//                                            token = data["token"] as! String
+//                                            authenticated = true
+//                                        } else if result["status"] as! String == "EXISTS" {
+//                                            loading = false
+//                                            apiErrorMessage = "Phone No. / Username exists"
+//                                            apiError = true
+//                                            Haptics.shared.notify(.error)
+//                                        }
                                     } catch {
                                         print(String(describing: error))
                                         loading = false

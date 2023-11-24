@@ -11,13 +11,14 @@ struct AccountView: View {
     @Binding var theme: Theme;
     @Binding var mode: AppearanceMode;
     @Binding var color: AppearanceScheme;
+    @Binding var user: User;
 
     @Binding var darkMode: Bool;
     
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: Text("hi")) {
+                NavigationLink(destination: AccountDetailsView(user: $user)) {
                     HStack (spacing: 20) {
                         Circle()
                             .frame(width: 70, height: 70)
@@ -121,6 +122,6 @@ struct AccountView: View {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(theme: .constant(Theme()), mode: .constant(AppearanceMode.Light), color: .constant(AppearanceScheme.Teal), darkMode: .constant(false))
+        AccountView(theme: .constant(Theme()), mode: .constant(AppearanceMode.Light), color: .constant(AppearanceScheme.Teal), user: .constant(User()), darkMode: .constant(false))
     }
 }

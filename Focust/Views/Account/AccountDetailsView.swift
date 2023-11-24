@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct AccountDetailsView: View {
+    @Binding var user: User;
     var body: some View {
         NavigationView {
-            Text("hi")
+            List {
+                Section {
+                    
+                }
+            }
         }.navigationTitle("Account Settings")
     }
 }
 
-#Preview {
-    AccountDetailsView()
+struct AccountDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountDetailsView(user: .constant(User()))    }
 }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AlertToast
+import Alamofire
 
 struct ContentView: View {
     @AppStorage("token") var token: String = ""
@@ -32,29 +33,41 @@ struct ContentView: View {
             
         }.ignoresSafeArea(.all)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .task {
-                do {
-                    let result = try await apiManager.isAlive()
-                    if result["status"]! as! String == "OK" {
+            .onAppear() {
+                AF.request(apiUrl("/"), encoding: JSONEncoding.default).response { response in
+                    switch apiManager.status(response).code {
+                    case .Success:
                         if token != "" {
-                            let resultToken = try await users.retrieve(token: token)
-                            if resultToken["status"]! as! String == "OK"{
-                                enabled = true
-                                authenticated = true
-                                user = User(dictionary: resultToken["data"] as! [String : Any])
-                            } else {
-                                token = ""
-                                enabled = true
+                            AF.request(apiUrl("/users/verify"), parameters: ["token": token], encoder: JSONParameterEncoder.default).response { response in
+                                let res = apiManager.status(response)
+                                switch res.code {
+                                case .Success:
+                                    enabled = true
+                                    authenticated = true
+                                    user = User(dictionary: res.data["data"] as! [String : Any])
+                                case .Forbidden:
+                                    token = ""
+                                    enabled = true
+                                default:
+                                    hasError = true
+                                    
+                                }
                             }
+//                            let resultToken = try await users.retrieve(token: token)
+//                            if resultToken["status"]! as! String == "OK"{
+//                                enabled = true
+//                                authenticated = true
+//                                user = User(dictionary: resultToken["data"] as! [String : Any])
+//                            } else {
+//                                token = ""
+//                                enabled = true
+//                            }
                         } else {
                             enabled = true
                         }
-                    } else {
+                    default:
                         hasError = true
                     }
-                } catch {
-                    hasError = true
-                    print(String(describing: error))
                 }
             }
             .toast(isPresenting: $hasError){

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MainController: View {
     @Binding var authenticated: Bool;
-    
+    @Binding var user: User;
+
     @State var darkMode = true
     @State var mode = AppearanceMode.Light
     @State var color = AppearanceScheme.Teal
@@ -38,7 +39,7 @@ struct MainController: View {
                         Text("Stats")
                     }
                     .tag(3)
-                AccountView(theme: $theme, mode: $mode, color: $color, darkMode: $darkMode)
+                AccountView(theme: $theme, mode: $mode, color: $color, user: $user, darkMode: $darkMode)
                     .tabItem {
                         Image(systemName: "gearshape.fill")
                         Text("Account")
@@ -66,6 +67,6 @@ struct MainController: View {
 
 struct MainController_Previews: PreviewProvider {
     static var previews: some View {
-        MainController(authenticated: .constant(true))
+        MainController(authenticated: .constant(true), user: .constant(User()))
     }
 }

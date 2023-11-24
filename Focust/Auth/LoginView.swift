@@ -7,10 +7,11 @@
 
 import SwiftUI
 import AlertToast
+import Alamofire
 
 struct LoginView: View {
     let users = UsersManager()
-
+    let apiManager = APIManager()
     @Binding var authenticated: Bool;
     
     @Binding var token: String;
@@ -134,7 +135,6 @@ struct LoginView: View {
                         }
                         HStack {}
                         Button {
-                            Task {
                                 errorFree = false
                                 if loading {
                                     // Do nothing
@@ -171,29 +171,31 @@ struct LoginView: View {
                                     if hasError.contains(Field.Password) == true {
                                         hasError.remove(at: hasError.firstIndex(of: Field.Password)!)
                                     }
-                                    do {
-                                        loading = true
-                                        let result = try await users.login(username: username, password: password)
-                                        if result["status"] as! String == "OK" {
+                                    loading = true
+                                    print(apiUrl("/users/login"))
+                                    AF.request(apiUrl("/"), method: .post, parameters: ["username": username, "password": password], encoder: JSONParameterEncoder.default).response { response in
+                                        debugPrint(response)
+                                        let res = apiManager.status(response)
+                                        print(res.code)
+                                        switch res.code {
+                                        case .Success:
                                             Haptics.shared.notify(.success)
-                                            let data = result["data"] as! [String: Any]
+                                            let data = res.data["data"] as! [String: Any]
                                             token = data["token"] as! String
                                             authenticated = true
-                                        } else if result["status"] as! String == "INVALID" {
+                                        case .Forbidden:
                                             loading = false
                                             apiErrorMessage = "No account exists with those credentials"
                                             apiError = true
                                             Haptics.shared.notify(.error)
+                                        default:
+                                            loading = false
+                                            apiErrorMessage = "A unknown error occured"
+                                            apiError = true
+                                            Haptics.shared.notify(.error)
                                         }
-                                    } catch {
-                                        loading = false
-                                        print(String(describing: error))
-                                        apiErrorMessage = "UNKNOWN ERROR"
-                                        apiError = true
-                                        Haptics.shared.notify(.error)
                                     }
                                 }
-                            }
                         } label : {
                             HStack {
                                 if loading{
