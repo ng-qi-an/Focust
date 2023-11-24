@@ -297,7 +297,7 @@ struct Focus_ModeView: View {
                 
                 .onReceive(breakCount) { _ in
                     if paused == true {
-                        breakCounter += 10
+                        breakCounter += 1
                         if breakCounter .isMultiple(of: 60)  {
                             sec = 0
                         } else {
