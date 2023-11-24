@@ -17,7 +17,6 @@
 		AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2752B05D0B9003A6DBF /* LoginView.swift */; };
 		AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2772B05D98F003A6DBF /* AuthController.swift */; };
 		AAD489922B02499900E2131B /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD489912B02499900E2131B /* HomescreenView.swift */; };
-		AAF0EEFD2B105D7300AE58D1 /* Focus_PomoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0EEFC2B105D7300AE58D1 /* Focus_PomoView.swift */; };
 		F22434DE2B0C48E20088E199 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22434DD2B0C48E20088E199 /* ContentView.swift */; };
 		F22434E02B0C49070088E199 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22434DF2B0C49070088E199 /* APIManager.swift */; };
 		F22434E32B0C493E0088E199 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = F22434E22B0C493E0088E199 /* AlertToast */; };
@@ -45,7 +44,6 @@
 		AAB1D2752B05D0B9003A6DBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AAB1D2772B05D98F003A6DBF /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		AAD489912B02499900E2131B /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
-		AAF0EEFC2B105D7300AE58D1 /* Focus_PomoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Focus_PomoView.swift; path = "../../../../../Library/Mobile Documents/.Trash/Focus_PomoView.swift"; sourceTree = "<group>"; };
 		F22434DD2B0C48E20088E199 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Focust/ContentView.swift; sourceTree = SOURCE_ROOT; };
 		F22434DF2B0C49070088E199 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F238F69F2B103F720064CDC1 /* Saver_ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saver_ModeView.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 			children = (
 				AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */,
 				AAA204532B0B2E89006DA103 /* Focus_ModeTypeSelectionView.swift */,
-				AAF0EEFC2B105D7300AE58D1 /* Focus_PomoView.swift */,
 				F238F69F2B103F720064CDC1 /* Saver_ModeView.swift */,
 			);
 			path = "Focus Mode";
@@ -261,7 +258,6 @@
 				AA1F0AEC2B04A08600F3ECFF /* Focus_ModeView.swift in Sources */,
 				AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */,
 				AA4603402B03D20200F24DC4 /* FriendsView.swift in Sources */,
-				AAF0EEFD2B105D7300AE58D1 /* Focus_PomoView.swift in Sources */,
 				F2D5F7A12B0A4DAA0041EE70 /* Haptics.swift in Sources */,
 				AAD489922B02499900E2131B /* HomescreenView.swift in Sources */,
 				AAB01EAB2B03AC9200A6E8D6 /* StatisticsView.swift in Sources */,
