@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StatisticsView: View {
     @Binding var theme: Theme;
+    @State var clear = false
     
     var body: some View {
         NavigationView {
@@ -63,7 +64,7 @@ struct StatisticsView: View {
                                     .cornerRadius(20)
                                 VStack {
                                     HStack {
-                                        Image(systemName: "clock")
+                                        Image(systemName: "clock.arrow.2.circlepath")
                                         Text("HOURS FOCUSED")
                                             .font(.system(size: 15))
                                             .foregroundColor(theme.gray.foreground)
@@ -79,9 +80,11 @@ struct StatisticsView: View {
                                                 .foregroundColor(theme.gray.surface4)
                                                 .padding(.bottom, 10)
                                         }
-                                        Image("clock")
+                                        Image(systemName: "clock")
                                             .resizable()
-                                            .frame(width: 110, height: 110)
+                                            .frame(width: 100, height: 100)
+                                            .font(Font.title.weight(.thin))
+                                            .padding(.bottom, 20)
                                             .padding(.leading, 20)
                                     }
                                 }
@@ -102,7 +105,7 @@ struct StatisticsView: View {
                                             Spacer()
                                         }
                                         VStack {
-                                            Text("90")
+                                            Text("**90**")
                                                 .font(.system(size: 70))
                                                 .foregroundColor(theme.gray.foreground)
                                                 .padding(.top, 10)
@@ -114,7 +117,7 @@ struct StatisticsView: View {
                                     }
                                     Rectangle()
                                         .frame(width: 2, height: 200)
-                                        .padding(.leading, 10)
+                                        .padding(.trailing, 3)
                                         .foregroundColor(theme.gray.surface4)
                                     VStack {
                                         HStack {
@@ -125,7 +128,7 @@ struct StatisticsView: View {
                                         }
                                         .padding(.leading, 10)
                                         VStack {
-                                            Text("0")
+                                            Text("**0**")
                                                 .font(.system(size: 70))
                                                 .foregroundColor(theme.gray.foreground)
                                                 .padding(.top, 10)
@@ -135,45 +138,98 @@ struct StatisticsView: View {
                                         }
                                         .padding(.leading, 40)
                                     }
-                                    .padding(.trailing, 100)
+                                    .padding(.trailing, 87)
                                 }
                             }
-                            HStack(spacing: 30) {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 390, height: 200)
+                                    .foregroundColor(theme.gray.surface1)
+                                    .cornerRadius(20)
+                                HStack {
+                                    VStack {
+                                        HStack {
+                                            Image(systemName: "gearshape")
+                                                .padding(.leading, 40)
+                                            Text("FOCUS MODE")
+                                                .font(.system(size: 15))
+                                                .foregroundColor(theme.gray.foreground)
+                                            Spacer()
+                                        }
+                                        .padding(.top, 25)
+                                        Spacer()
+                                        VStack {
+                                            Text("**Flexible**")
+                                                .font(.system(size: 45))
+                                                .foregroundColor(theme.gray.foreground)
+                                                .padding(.bottom, 20)
+                                        }
+                                        .padding(.leading, 20)
+                                        Spacer()
+                                    }
+                                    Rectangle()
+                                        .frame(width: 2, height: 200)
+                                        .padding(.trailing, 5)
+                                        .foregroundColor(theme.gray.surface4)
+                                    VStack {
+                                        HStack {
+                                            Image(systemName: "message")
+                                            Text("SUGGESTIONS")
+                                                .font(.system(size: 15))
+                                                .foregroundColor(theme.gray.foreground)
+                                        }
+                                        .padding(.leading, 10)
+                                        .padding(.bottom, 15)
+                                        VStack {
+                                            Image(systemName: "text.bubble")
+                                                .resizable()
+                                                .frame(width: 70, height: 70)
+                                                .font(Font.title.weight(.thin))
+                                        }
+                                    }
+                                    .padding(.trailing, 37)
+                                }
+                            }
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 390, height: 180)
+                                    .foregroundColor(theme.gray.surface1)
+                                    .cornerRadius(20)
                                 VStack {
                                     HStack {
-                                        Image(systemName: "gearshape")
-                                        Text("FOCUS MODE")
+                                        Image(systemName: "exclamationmark.triangle")
+                                        Text("DANGER")
                                             .font(.system(size: 15))
                                             .foregroundColor(theme.gray.foreground)
                                     }
-                                    VStack {
-                                        Text("Flexible")
-                                            .padding(.top, 40)
-                                            .padding(.bottom, 60)
-                                            .font(.system(size: 40))
-                                            .foregroundColor(theme.gray.foreground)
-                                    }
-                                }
-                                .frame(maxWidth: 180, maxHeight: 200)
-                                .background(theme.gray.surface1)
-                                VStack {
+                                    .padding(.trailing, 260)
                                     HStack {
-                                        Image(systemName: "message")
-                                        Text("SUGGESTIONS")
-                                            .font(.system(size: 15))
-                                            .foregroundColor(theme.gray.foreground)
-                                    }
-                                    VStack {
-                                        Image("feedback")
-                                            .resizable()
-                                            .frame(maxWidth: 70, maxHeight: 70)
-                                            .padding(.top, 10)
-                                        
+                                        VStack(spacing: 5) {
+                                            Text("**Made a mistake?**")
+                                                .font(.system(size: 25))
+                                                .foregroundColor(theme.gray.foreground)
+                                                .padding(.trailing, 50)
+                                            Text("Perhaps it was an accident.")
+                                                .font(.system(size: 20))
+                                                .foregroundColor(theme.gray.surface4)
+                                        }
+                                        Button {
+                                            clear = true
+                                        } label: {
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 100, height: 100)
+                                                    .foregroundColor(RGBtoColor(254, 211, 211))
+                                                Image(systemName: "trash")
+                                                    .resizable()
+                                                    .frame(width: 50, height: 60)
+                                                    .foregroundColor(theme.gray.foreground)
+                                                    .font(Font.title.weight(.thin))
+                                            }
+                                            .padding(.leading, 10)
+                                        }
                                     }
                                 }
-                                .frame(maxWidth: 180, maxHeight: 200)
-                                .background(theme.gray.surface1)
-                                
                             }
                         }
                     }

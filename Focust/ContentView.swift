@@ -38,7 +38,7 @@ struct ContentView: View {
                     switch apiManager.status(response).code {
                     case .Success:
                         if token != "" {
-                            AF.request(apiUrl("/users/verify"), parameters: ["token": token], encoder: JSONParameterEncoder.default).response { response in
+                            AF.request(apiUrl("/users/verify?token=\(token)")).response { response in
                                 let res = apiManager.status(response)
                                 switch res.code {
                                 case .Success:

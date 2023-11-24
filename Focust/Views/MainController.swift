@@ -27,24 +27,18 @@ struct MainController: View {
                         Text("Home")
                     }
                     .tag(1)
-                FriendsView(theme: $theme)
-                    .tabItem {
-                        Image(systemName: "person.2.fill")
-                        Text("Friends")
-                    }
-                    .tag(2)
                 StatisticsView(theme: $theme)
                     .tabItem {
                         Image(systemName: "chart.line.uptrend.xyaxis")
                         Text("Stats")
                     }
-                    .tag(3)
+                    .tag(2)
                 AccountView(theme: $theme, mode: $mode, color: $color, user: $user, darkMode: $darkMode)
                     .tabItem {
                         Image(systemName: "gearshape.fill")
                         Text("Account")
                     }
-                    .tag(4)
+                    .tag(3)
             }
             .onChange(of: mode) { new in
                 theme = Theme(mode: new, scheme: color)

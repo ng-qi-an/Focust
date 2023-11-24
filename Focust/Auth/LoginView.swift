@@ -172,8 +172,10 @@ struct LoginView: View {
                                         hasError.remove(at: hasError.firstIndex(of: Field.Password)!)
                                     }
                                     loading = true
-                                    print(apiUrl("/users/login"))
-                                    AF.request(apiUrl("/"), method: .post, parameters: ["username": username, "password": password], encoder: JSONParameterEncoder.default).response { response in
+                                    AF.upload(multipartFormData: { multiFormData in
+                                        multiFormData.append(Data(username.utf8), withName: "username")
+                                        multiFormData.append(Data(password.utf8), withName: "password")
+                                    }, to: apiUrl("/users/login")).response { response in
                                         debugPrint(response)
                                         let res = apiManager.status(response)
                                         print(res.code)

@@ -7,10 +7,11 @@
 
 import SwiftUI
 import AlertToast
+import Alamofire
 
 struct SignupUsername: View {
     let users = UsersManager()
-    
+    let apiManager = APIManager()
     @Binding var authenticated: Bool;
     
     @Binding var token: String;
@@ -148,25 +149,30 @@ struct SignupUsername: View {
                                     if hasError.contains(Field.Username) == true {
                                         hasError.remove(at: hasError.firstIndex(of: Field.Username)!)
                                     }
-                                    do {
-//                                        let result = try await users.register(password: password, username: username)
-//                                        if result["status"] as! String == "OK" {
-//                                            Haptics.shared.notify(.success)
-//                                            let data = result["data"] as! [String: Any]
-//                                            token = data["token"] as! String
-//                                            authenticated = true
-//                                        } else if result["status"] as! String == "EXISTS" {
-//                                            loading = false
-//                                            apiErrorMessage = "Phone No. / Username exists"
-//                                            apiError = true
-//                                            Haptics.shared.notify(.error)
-//                                        }
-                                    } catch {
-                                        print(String(describing: error))
-                                        loading = false
-                                        apiErrorMessage = "UNKNOWN ERROR"
-                                        apiError = true
-                                        Haptics.shared.notify(.error)
+                                    AF.upload(multipartFormData: { multiFormData in
+                                        multiFormData.append(Data(username.utf8), withName: "username")
+                                        multiFormData.append(Data(password.utf8), withName: "password")
+                                    }, to: apiUrl("/users/register")).response { response in
+                                        debugPrint(response)
+                                        let res = apiManager.status(response)
+                                        print(res.code)
+                                        switch res.code {
+                                        case .Success:
+                                            Haptics.shared.notify(.success)
+                                            let data = res.data["data"] as! [String: Any]
+                                            token = data["token"] as! String
+                                            authenticated = true
+                                        case .Forbidden:
+                                            loading = false
+                                            apiErrorMessage = "An account with that username already exists"
+                                            apiError = true
+                                            Haptics.shared.notify(.error)
+                                        default:
+                                            loading = false
+                                            apiErrorMessage = "A unknown error occured"
+                                            apiError = true
+                                            Haptics.shared.notify(.error)
+                                        }
                                     }
                                 }
                             }
