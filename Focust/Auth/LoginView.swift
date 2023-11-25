@@ -172,9 +172,7 @@ struct LoginView: View {
                                         multiFormData.append(Data(username.utf8), withName: "username")
                                         multiFormData.append(Data(password.utf8), withName: "password")
                                     }, to: apiUrl("/users/login")).response { response in
-                                        debugPrint(response)
                                         let res = apiManager.status(response)
-                                        print(res.code)
                                         switch res.code {
                                         case .Success:
                                             Haptics.shared.notify(.success)

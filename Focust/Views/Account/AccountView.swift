@@ -12,21 +12,23 @@ struct AccountView: View {
     @Binding var mode: AppearanceMode;
     @Binding var color: AppearanceScheme;
     @Binding var user: User;
-
     @Binding var darkMode: Bool;
+    @Binding var verifyToken: Bool;
+    @Binding var token: String;
     
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: AccountDetailsView(user: $user)) {
+                NavigationLink(destination: AccountDetailsView(user: $user, theme: $theme, verifyToken: $verifyToken, token: $token)) {
                     HStack (spacing: 20) {
                         Circle()
                             .frame(width: 70, height: 70)
                             .foregroundColor(theme.color.background)
                         VStack (alignment: .leading) {
-                            Text("@John_Doe")
+                            Text("\(user.name)")
                                 .font(.title3)
-                            Text("Account settings")
+                            Text("@\(user.lower_name)")
+                                .opacity(0.5)
                         }
                         Spacer()
                     }
@@ -122,6 +124,5 @@ struct AccountView: View {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(theme: .constant(Theme()), mode: .constant(AppearanceMode.Light), color: .constant(AppearanceScheme.Teal), user: .constant(User()), darkMode: .constant(false))
-    }
+        AccountView(theme: .constant(Theme()), mode: .constant(AppearanceMode.Light), color: .constant(AppearanceScheme.Teal), user: .constant(User()), darkMode: .constant(false), verifyToken: .constant(false), token: .constant(""))}
 }

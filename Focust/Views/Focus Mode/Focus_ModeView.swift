@@ -361,6 +361,11 @@ struct Focus_ModeView: View {
         .onAppear(){
             startedSession = true
             Haptics.shared.play(.medium)
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        .onDisappear {
+            // Re-enable the idle timer when the view disappears
+            UIApplication.shared.isIdleTimerDisabled = false
         }
         
         .onReceive(breakCount) { _ in

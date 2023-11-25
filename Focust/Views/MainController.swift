@@ -12,6 +12,7 @@ struct MainController: View {
     @Binding var user: User;
     @Binding var today: String;
     @Binding var token: String;
+    @Binding var verifyToken: Bool;
 
     @State var darkMode = true
     @State var mode = AppearanceMode.Light
@@ -35,7 +36,7 @@ struct MainController: View {
                         Text("Stats")
                     }
                     .tag(2)
-                AccountView(theme: $theme, mode: $mode, color: $color, user: $user, darkMode: $darkMode)
+                AccountView(theme: $theme, mode: $mode, color: $color, user: $user, darkMode: $darkMode, verifyToken: $verifyToken, token: $token)
                     .tabItem {
                         Image(systemName: "gearshape.fill")
                         Text("Account")
@@ -66,6 +67,6 @@ struct MainController: View {
 
 struct MainController_Previews: PreviewProvider {
     static var previews: some View {
-        MainController(authenticated: .constant(true), user: .constant(User()), today: .constant("0"), token: .constant("epofj23prjrj23"))
+        MainController(authenticated: .constant(true), user: .constant(User()), today: .constant("0"), token: .constant("epofj23prjrj23"), verifyToken: .constant(false))
     }
 }

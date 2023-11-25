@@ -44,17 +44,21 @@ struct Stat: Hashable {
 
 struct User: Codable {
     var name: String
+    var lower_name: String
     var id: String
     var token: String
-    init(dictionary: [String: Any]=["name": "John Doe", "id": "1234567890", "token": "1234567896543456789"]) {
-        self.name = dictionary["name"] as? String ?? "John Doe"
-        self.id = dictionary["id"] as? String ?? "1234567890"
-        self.token = dictionary["token"] as? String ?? "1234567890"
+    var goal: Int
+    init(dictionary: [String: Any]=["name": "John_Doe", "lower_name": "john_doe", "id": "eL64zUDAWd3mLK612En2i504Q5tO9er2tNQc-RwOznU", "goal": 60, "token": "2BfSZavpX5L-YKjec9Cxbbb4VzpVSdi5KbBNMQNQ88z7swyQ2-Tio4vKMVMihzsaDZV85mvX5cp97y23uuvg3A"]) {
+        self.name = dictionary["name"] as? String ?? "John_Doe"
+        self.id = dictionary["id"] as? String ?? "eL64zUDAWd3mLK612En2i504Q5tO9er2tNQc-RwOznU"
+        self.lower_name = dictionary["lower_name"] as? String ?? "john_doe"
+        self.goal = dictionary["goal"] as? Int ?? 60
+        self.token = dictionary["token"] as? String ?? "2BfSZavpX5L-YKjec9Cxbbb4VzpVSdi5KbBNMQNQ88z7swyQ2-Tio4vKMVMihzsaDZV85mvX5cp97y23uuvg3A"
     }
 }
 
 
-let baseUrl: String = "http://172.16.102.159:2087"
+let baseUrl: String = "https://api.pop-plays.live:2087"
 
 
 func parameters(_ data: Dictionary<String, String>) -> String {

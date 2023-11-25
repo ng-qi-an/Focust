@@ -24,7 +24,7 @@ struct ContentView: View {
         VStack {
             if enabled {
                 if authenticated {
-                    MainController(authenticated: $authenticated, user: $user, today: $today, token: $token)
+                    MainController(authenticated: $authenticated, user: $user, today: $today, token: $token, verifyToken: $verifyToken)
                 } else {
                     AuthController(authenticated: $authenticated, token: $token, verifyToken: $verifyToken)
                         .preferredColorScheme(.light)
@@ -55,6 +55,7 @@ struct ContentView: View {
                         let res = apiManager.status(response)
                         switch res.code {
                         case .Success:
+                            verifyToken = false
                             enabled = true
                             authenticated = true
                             today = res.data["today"] as! String
@@ -62,10 +63,14 @@ struct ContentView: View {
                         case .Forbidden:
                             token = ""
                             enabled = true
+                            authenticated = false
                         default:
                             hasError = true
+                            enabled = false
+                            authenticated = false
                             
                         }
+                        verifyToken = false
                     }
                 }
             }
