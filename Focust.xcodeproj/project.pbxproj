@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		295CF92A2B0AF95F00257D83 /* SwiftQRCodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */; };
 		AA1F0AEC2B04A08600F3ECFF /* Focus_ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F0AEB2B04A08600F3ECFF /* Focus_ModeView.swift */; };
 		AA2147112B03D83C00E7B7A5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2147102B03D83C00E7B7A5 /* MainController.swift */; };
 		AA46033E2B03D01300F24DC4 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46033D2B03D01300F24DC4 /* AccountView.swift */; };
@@ -17,6 +16,7 @@
 		AAB1D2762B05D0B9003A6DBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2752B05D0B9003A6DBF /* LoginView.swift */; };
 		AAB1D2782B05D98F003A6DBF /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1D2772B05D98F003A6DBF /* AuthController.swift */; };
 		AAD489922B02499900E2131B /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD489912B02499900E2131B /* HomescreenView.swift */; };
+		F21976EB2B119B7E008AB917 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = F21976EA2B119B7E008AB917 /* SwiftUIIntrospect */; };
 		F22434DE2B0C48E20088E199 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22434DD2B0C48E20088E199 /* ContentView.swift */; };
 		F22434E02B0C49070088E199 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22434DF2B0C49070088E199 /* APIManager.swift */; };
 		F22434E32B0C493E0088E199 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = F22434E22B0C493E0088E199 /* AlertToast */; };
@@ -65,8 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21976EB2B119B7E008AB917 /* SwiftUIIntrospect in Frameworks */,
 				F2CB092D2B0DA396006AA31D /* Alamofire in Frameworks */,
-				295CF92A2B0AF95F00257D83 /* SwiftQRCodeScanner in Frameworks */,
 				F22434E32B0C493E0088E199 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,9 +192,9 @@
 			);
 			name = Focust;
 			packageProductDependencies = (
-				295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */,
 				F22434E22B0C493E0088E199 /* AlertToast */,
 				F2CB092C2B0DA396006AA31D /* Alamofire */,
+				F21976EA2B119B7E008AB917 /* SwiftUIIntrospect */,
 			);
 			productName = Focust;
 			productReference = F2DBBAB72B0127460099395D /* Focust.app */;
@@ -225,9 +225,9 @@
 			);
 			mainGroup = F2DBBAAE2B0127460099395D;
 			packageReferences = (
-				295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */,
 				F22434E12B0C493E0088E199 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				F2CB092B2B0DA396006AA31D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F21976E92B119B7E008AB917 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 			);
 			productRefGroup = F2DBBAB82B0127460099395D /* Products */;
 			projectDirPath = "";
@@ -484,12 +484,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */ = {
+		F21976E92B119B7E008AB917 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vinodiOS/SwiftQRScanner";
+			repositoryURL = "https://github.com/siteline/swiftui-introspect.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.5;
+				minimumVersion = 1.1.1;
 			};
 		};
 		F22434E12B0C493E0088E199 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
@@ -511,10 +511,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		295CF9292B0AF95F00257D83 /* SwiftQRCodeScanner */ = {
+		F21976EA2B119B7E008AB917 /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 295CF9282B0AF95F00257D83 /* XCRemoteSwiftPackageReference "SwiftQRScanner" */;
-			productName = SwiftQRCodeScanner;
+			package = F21976E92B119B7E008AB917 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
+			productName = SwiftUIIntrospect;
 		};
 		F22434E22B0C493E0088E199 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;

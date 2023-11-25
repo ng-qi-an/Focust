@@ -11,10 +11,12 @@ import Alamofire
 
 struct ContentView: View {
     @AppStorage("token") var token: String = ""
-    @State var user:User = User(dictionary: ["name": "John Doe", "id": "12345678"])
+    @State var today: String = "0"
+    @State var user:User = User()
     @State var authenticated = false
     @State var enabled = false
     @State var hasError = false
+    @State var verifyToken = false
     let apiManager = APIManager()
     let users = UsersManager()
     
@@ -22,9 +24,9 @@ struct ContentView: View {
         VStack {
             if enabled {
                 if authenticated {
-                    MainController(authenticated: $authenticated, user: $user)
+                    MainController(authenticated: $authenticated, user: $user, today: $today, token: $token)
                 } else {
-                    AuthController(authenticated: $authenticated, token: $token)
+                    AuthController(authenticated: $authenticated, token: $token, verifyToken: $verifyToken)
                         .preferredColorScheme(.light)
                 }
             } else {
@@ -38,35 +40,32 @@ struct ContentView: View {
                     switch apiManager.status(response).code {
                     case .Success:
                         if token != "" {
-                            AF.request(apiUrl("/users/verify?token=\(token)")).response { response in
-                                let res = apiManager.status(response)
-                                switch res.code {
-                                case .Success:
-                                    enabled = true
-                                    authenticated = true
-                                    user = User(dictionary: res.data["data"] as! [String : Any])
-                                case .Forbidden:
-                                    token = ""
-                                    enabled = true
-                                default:
-                                    hasError = true
-                                    
-                                }
-                            }
-//                            let resultToken = try await users.retrieve(token: token)
-//                            if resultToken["status"]! as! String == "OK"{
-//                                enabled = true
-//                                authenticated = true
-//                                user = User(dictionary: resultToken["data"] as! [String : Any])
-//                            } else {
-//                                token = ""
-//                                enabled = true
-//                            }
+                            verifyToken = true
                         } else {
                             enabled = true
                         }
                     default:
                         hasError = true
+                    }
+                }
+            }
+            .onChange(of: verifyToken){ newValue in
+                if newValue == true {
+                    AF.request(apiUrl("/users/verify?token=\(token)")).response { response in
+                        let res = apiManager.status(response)
+                        switch res.code {
+                        case .Success:
+                            enabled = true
+                            authenticated = true
+                            today = res.data["today"] as! String
+                            user = User(dictionary: res.data["data"] as! [String : Any])
+                        case .Forbidden:
+                            token = ""
+                            enabled = true
+                        default:
+                            hasError = true
+                            
+                        }
                     }
                 }
             }

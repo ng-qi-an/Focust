@@ -19,12 +19,12 @@
       }
     },
     {
-      "identity" : "swiftqrscanner",
+      "identity" : "swiftui-introspect",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vinodiOS/SwiftQRScanner",
+      "location" : "https://github.com/siteline/swiftui-introspect.git",
       "state" : {
-        "revision" : "bfaa2885e836dddcb25fbfefada908377344880b",
-        "version" : "1.1.5"
+        "revision" : "9e1cc02a65b22e09a8251261cccbccce02731fc5",
+        "version" : "1.1.1"
       }
     }
   ],

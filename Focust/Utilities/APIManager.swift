@@ -27,12 +27,29 @@ struct UserData: Codable {
     var data: User
 }
 
+struct Stat: Hashable {
+    var id: String
+    var owner: String
+    var breaks: String
+    var breakLength: String
+    var sessionLength: String
+    init(dictionary: [String: Any]=[:]) {
+        self.id = dictionary["id"] as? String ?? "qbfeibfwf"
+        self.owner = dictionary["owner"] as? String ?? "yes"
+        self.breaks = dictionary["breaks"] as? String ?? "1"
+        self.breakLength = dictionary["breakLength"] as? String ?? "10"
+        self.sessionLength = dictionary["sessionLength"] as? String ?? "60"
+    }
+}
+
 struct User: Codable {
     var name: String
     var id: String
-    init(dictionary: [String: Any]=["name": "John Doe", "id": "1234567890"]) {
+    var token: String
+    init(dictionary: [String: Any]=["name": "John Doe", "id": "1234567890", "token": "1234567896543456789"]) {
         self.name = dictionary["name"] as? String ?? "John Doe"
         self.id = dictionary["id"] as? String ?? "1234567890"
+        self.token = dictionary["token"] as? String ?? "1234567890"
     }
 }
 

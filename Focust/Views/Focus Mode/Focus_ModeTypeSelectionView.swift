@@ -54,6 +54,7 @@ struct Focus_ModeTypeSelectionView: View {
                             Text("**Choose a focus type**")
                                 .foregroundColor(.white)
                                 .font(.system(size: 25))
+                            Spacer()
                             Button {
                                 flexible = true
                             } label: {
@@ -75,7 +76,7 @@ struct Focus_ModeTypeSelectionView: View {
                                 }
                             }
                             Button {
-                                flexible = false
+                                // flexible = false
                             } label: {
                                 ZStack {
                                     Color(.white)
@@ -87,13 +88,13 @@ struct Focus_ModeTypeSelectionView: View {
                                             .font(.system(size: 25))
                                             .foregroundColor(flexible == false ? .black : .white)
                                             .padding(10)
-                                        Text("Fixed breaks and focus duration. Follows a \n strict schedule to ensure good time \n management.")
+                                        Text("Work in progress!")
                                             .font(.system(size: 15))
                                             .padding(.trailing, 10)
                                             .foregroundColor(flexible == false ? .black : .white)
                                     }
-                                }
-                            }
+                                }.opacity(0.5)
+                            }.disabled(true)
                             Spacer()
                         } else {
                             Text("**Configure Pomodoro**")
@@ -190,7 +191,7 @@ struct Focus_ModeTypeSelectionView: View {
                         HStack {
                             if flexible {
                                 NavigationLink {
-                                    Focus_ModeView(theme: $theme, startedSession: $startedSession, focusLength: $focusLength, breakLength: $breakLength, longBreakLength: $longBreakLength, pomo: $pomo, focusOptions: $focusOptions, breakOptions: $breakOptions)
+                                    //Focus_ModeView(theme: $theme, startedSession: $startedSession, focusLength: $focusLength, breakLength: $breakLength, longBreakLength: $longBreakLength, pomo: $pomo, focusOptions: $focusOptions, breakOptions: $breakOptions)
                                 } label: {
                                     VStack {
                                         Text("Start Session")
@@ -218,7 +219,7 @@ struct Focus_ModeTypeSelectionView: View {
                                     }
                                 } else {
                                     NavigationLink {
-                                        Focus_ModeView(theme: $theme, startedSession: $startedSession, focusLength: $focusLength, breakLength: $breakLength, longBreakLength: $longBreakLength, pomo: $pomo, focusOptions: $focusOptions, breakOptions: $breakOptions)
+                                        //Focus_ModeView(theme: $theme, startedSession: $startedSession, focusLength: $focusLength, breakLength: $breakLength, longBreakLength: $longBreakLength, pomo: $pomo, focusOptions: $focusOptions, breakOptions: $breakOptions)
                                     } label: {
                                         VStack {
                                             Text("Next")

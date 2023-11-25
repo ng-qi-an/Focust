@@ -10,7 +10,7 @@ import SwiftUI
 struct StatisticsView: View {
     @Binding var theme: Theme;
     @State var clear = false
-    var stats = [1, 2, 3, 4, 5, 6, 7]
+    var stats: Array<Stat> = []
     var body: some View {
         NavigationView {
             TabView {

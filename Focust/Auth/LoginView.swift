@@ -17,6 +17,7 @@ struct LoginView: View {
     @Binding var token: String;
     @Binding var username: String;
     @Binding var password: String;
+    @Binding var verifyToken: Bool;
     @State var loading: Bool = false
     
     enum Field:Hashable {
@@ -93,11 +94,6 @@ struct LoginView: View {
                                 .foregroundColor(.black)
                                 .focused($focused, equals: .Username)
                                 .padding(.leading, 10)
-                                .onChange(of: username) { newValue in
-                                    if newValue.count > 8 {
-                                        username = String(newValue.prefix(8))
-                                    }
-                                }
                                 .disabled(loading)
                         }
                         .frame(width: 350, height: 50)
@@ -192,7 +188,7 @@ struct LoginView: View {
                                             Haptics.shared.notify(.error)
                                         default:
                                             loading = false
-                                            apiErrorMessage = "A unknown error occured"
+                                            apiErrorMessage = "An unknown error occured"
                                             apiError = true
                                             Haptics.shared.notify(.error)
                                         }
@@ -240,6 +236,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authenticated: .constant(false), token: .constant(""), username: .constant("john_doe"), password: .constant("12345678"))
+        LoginView(authenticated: .constant(false), token: .constant(""), username: .constant("john_doe"), password: .constant("12345678"), verifyToken: .constant(false))
     }
 }

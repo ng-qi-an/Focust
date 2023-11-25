@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
-
+import SwiftUIIntrospect
 struct MainController: View {
     @Binding var authenticated: Bool;
     @Binding var user: User;
+    @Binding var today: String;
+    @Binding var token: String;
 
     @State var darkMode = true
     @State var mode = AppearanceMode.Light
@@ -21,7 +23,7 @@ struct MainController: View {
     var body: some View {
         NavigationView {
             TabView(selection: $page) {
-                HomescreenView(theme: $theme, page: $page, startedSession: $startedSession)
+                HomescreenView(theme: $theme, page: $page, startedSession: $startedSession, today: $today, token: $token)
                     .tabItem {
                         Image(systemName: "house.fill")
                         Text("Home")
@@ -53,6 +55,9 @@ struct MainController: View {
                 }
                 theme = Theme(mode: mode, scheme: color)
             }
+            .introspect(.tabView, on: .iOS(.v15, .v16, .v17)){ tabBarController in
+                tabBarController.tabBar.isHidden = startedSession
+            }
             .preferredColorScheme(darkMode ? .dark : .light)
             .accentColor(theme.color.foreground)
         }
@@ -61,6 +66,6 @@ struct MainController: View {
 
 struct MainController_Previews: PreviewProvider {
     static var previews: some View {
-        MainController(authenticated: .constant(true), user: .constant(User()))
+        MainController(authenticated: .constant(true), user: .constant(User()), today: .constant("0"), token: .constant("epofj23prjrj23"))
     }
 }

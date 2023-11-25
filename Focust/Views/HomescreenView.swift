@@ -11,6 +11,8 @@ struct HomescreenView: View {
     @Binding var theme: Theme;
     @Binding var page: Int
     @Binding var startedSession: Bool
+    @Binding var today: String
+    @Binding var token: String;
 
     @State var value = 0
     
@@ -34,7 +36,7 @@ struct HomescreenView: View {
                             }.frame(maxWidth: .infinity, maxHeight: 250)
                             VStack {
                                 Spacer()
-                                Text("**1**")
+                                Text("**\(Int(today)! / (60 * 60))**")
                                     .foregroundColor(.white)
                                     .font(.system(size: 60))
                                 Text("hours focused")
@@ -82,7 +84,7 @@ struct HomescreenView: View {
                                     .opacity(0.5)
                             }.offset(x: -25, y: -50)
                             NavigationLink {
-                                Focus_ModeTypeSelectionView(theme : $theme, startedSession: $startedSession)
+                                Focus_ModeView(theme : $theme, startedSession: $startedSession, token: $token, today: $today)
                             } label: {
                                 Circle()
                                     .fill(theme.color.button)
@@ -152,6 +154,6 @@ struct HomescreenView: View {
 
 struct HomescreenView_Previews: PreviewProvider {
     static var previews: some View {
-        HomescreenView(theme: .constant(Theme()), page: .constant(1), startedSession: .constant(false))
+        HomescreenView(theme: .constant(Theme()), page: .constant(1), startedSession: .constant(false), today: .constant("0"), token: .constant("094392432hh23r"))
     }
 }

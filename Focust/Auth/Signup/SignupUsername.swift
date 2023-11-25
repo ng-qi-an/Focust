@@ -17,6 +17,7 @@ struct SignupUsername: View {
     @Binding var token: String;
     @Binding var password: String;
     @Binding var username: String;
+    @Binding var verifyToken: Bool;
     @State var loading: Bool = false
     enum Field:Hashable {
         case Username
@@ -169,7 +170,7 @@ struct SignupUsername: View {
                                             Haptics.shared.notify(.error)
                                         default:
                                             loading = false
-                                            apiErrorMessage = "A unknown error occured"
+                                            apiErrorMessage = "An unknown error occured"
                                             apiError = true
                                             Haptics.shared.notify(.error)
                                         }
@@ -224,6 +225,6 @@ struct SignupUsername: View {
 
 struct SignupUsername_Previews: PreviewProvider {
     static var previews: some View {
-        SignupUsername(authenticated: .constant(false), token: .constant(""), password: .constant("12345678"), username: .constant("12345678"))
+        SignupUsername(authenticated: .constant(false), token: .constant(""), password: .constant("12345678"), username: .constant("12345678"), verifyToken: .constant(false))
     }
 }
