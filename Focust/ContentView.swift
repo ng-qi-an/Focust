@@ -17,14 +17,17 @@ struct ContentView: View {
     @State var enabled = false
     @State var hasError = false
     @State var verifyToken = false
+    @AppStorage("darkMode") var darkMode = true
+    @AppStorage("AppearanceMode") var mode: AppearanceMode = AppearanceMode.Light
+    @AppStorage("AppearanceScheme") var color: AppearanceScheme = AppearanceScheme.Teal
+    @State var theme = Theme()
     let apiManager = APIManager()
-    let users = UsersManager()
     
     var body: some View {
         VStack {
             if enabled {
                 if authenticated {
-                    MainController(authenticated: $authenticated, user: $user, today: $today, token: $token, verifyToken: $verifyToken)
+                    MainController(authenticated: $authenticated, user: $user, today: $today, token: $token, verifyToken: $verifyToken, darkMode: $darkMode, mode: $mode, color: $color, theme: $theme)
                 } else {
                     AuthController(authenticated: $authenticated, token: $token, verifyToken: $verifyToken)
                         .preferredColorScheme(.light)
@@ -36,6 +39,10 @@ struct ContentView: View {
         }.ignoresSafeArea(.all)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onAppear() {
+                if darkMode == true {
+                    mode = AppearanceMode.Dark
+                }
+                theme = Theme(mode: mode, scheme: color)
                 AF.request(apiUrl("/"), encoding: JSONEncoding.default).response { response in
                     switch apiManager.status(response).code {
                     case .Success:
@@ -73,6 +80,12 @@ struct ContentView: View {
                         verifyToken = false
                     }
                 }
+            }
+            .onChange(of: mode) { new in
+                theme = Theme(mode: new, scheme: color)
+            }
+            .onChange(of: color) { new in
+                theme = Theme(mode: mode, scheme: new)
             }
             .toast(isPresenting: $hasError){
                 AlertToast(type: .error(.red), title: "Unable to connect")

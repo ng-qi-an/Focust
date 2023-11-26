@@ -10,7 +10,6 @@ import AlertToast
 import Alamofire
 
 struct SignupUsername: View {
-    let users = UsersManager()
     let apiManager = APIManager()
     @Binding var authenticated: Bool;
     

@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-enum AppearanceMode {
+enum AppearanceMode: String, Codable, CaseIterable {
     case Light
     case Dark
 }
 
-enum AppearanceScheme {
+enum AppearanceScheme: String, Codable, CaseIterable {
     case Blue
     case Teal
     case Yellow

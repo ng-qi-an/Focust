@@ -68,7 +68,7 @@ struct AccountDetailsView: View {
                         } label: {
                             Text("Log Out")
                                 .foregroundColor(.red)
-                        }.confirmationDialog("**Log out?**", isPresented: $confirmLogout, titleVisibility: .visible) {
+                        }.confirmationDialog("Log out?", isPresented: $confirmLogout, titleVisibility: .visible) {
                             Button("Log Out", role: .destructive){
                                 Haptics.shared.notify(.success)
                                 token = ""

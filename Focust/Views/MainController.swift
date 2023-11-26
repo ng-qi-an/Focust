@@ -14,12 +14,12 @@ struct MainController: View {
     @Binding var token: String;
     @Binding var verifyToken: Bool;
 
-    @State var darkMode = true
-    @State var mode = AppearanceMode.Light
-    @State var color = AppearanceScheme.Teal
-    @State var page: Int = 1
-    @State var theme = Theme()
+    @Binding var darkMode: Bool
+    @Binding var mode: AppearanceMode
+    @Binding var color: AppearanceScheme
+    @Binding var theme: Theme
     @State var startedSession = false
+    @State var page: Int = 1
 
     var body: some View {
         NavigationView {
@@ -30,7 +30,7 @@ struct MainController: View {
                         Text("Home")
                     }
                     .tag(1)
-                StatisticsView(theme: $theme)
+                StatisticsView(theme: $theme, token: $token)
                     .tabItem {
                         Image(systemName: "chart.line.uptrend.xyaxis")
                         Text("Stats")
@@ -43,19 +43,7 @@ struct MainController: View {
                     }
                     .tag(3)
             }
-            .onChange(of: mode) { new in
-                theme = Theme(mode: new, scheme: color)
-            }
-            .onChange(of: color) { new in
-                theme = Theme(mode: mode, scheme: new)
-            }
-            .onAppear(){
-                // Sets the default / user created theme
-                if darkMode == true {
-                    mode = AppearanceMode.Dark
-                }
-                theme = Theme(mode: mode, scheme: color)
-            }
+            
             .introspect(.tabView, on: .iOS(.v15, .v16, .v17)){ tabBarController in
                 tabBarController.tabBar.isHidden = startedSession
             }
@@ -67,6 +55,6 @@ struct MainController: View {
 
 struct MainController_Previews: PreviewProvider {
     static var previews: some View {
-        MainController(authenticated: .constant(true), user: .constant(User()), today: .constant("0"), token: .constant("epofj23prjrj23"), verifyToken: .constant(false))
+        MainController(authenticated: .constant(true), user: .constant(User()), today: .constant("0"), token: .constant("epofj23prjrj23"), verifyToken: .constant(false), darkMode: .constant(false), mode: .constant(AppearanceMode.Light), color: .constant(AppearanceScheme.Teal), theme: .constant(Theme()))
     }
 }

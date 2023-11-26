@@ -15,6 +15,15 @@ enum StatusCodes {
     case Success, NotFound, ServerError, Forbidden, BadRequest, UnknownError
 }
 
+func convertToTime(timestamp: Double) -> String {
+    print(timestamp)
+    let date = Date(timeIntervalSince1970: timestamp)
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeStyle = DateFormatter.Style.short
+    dateFormatter.timeZone = .current
+    return dateFormatter.string(from: date)
+}
+
 struct StatusResponse {
     var status: Int
     var data: Dictionary<String, Any>
@@ -33,12 +42,20 @@ struct Stat: Hashable {
     var breaks: String
     var breakLength: String
     var sessionLength: String
+    var date: String
+    var month: String
+    var created_on: Double
+    
     init(dictionary: [String: Any]=[:]) {
         self.id = dictionary["id"] as? String ?? "qbfeibfwf"
         self.owner = dictionary["owner"] as? String ?? "yes"
         self.breaks = dictionary["breaks"] as? String ?? "1"
         self.breakLength = dictionary["breakLength"] as? String ?? "10"
         self.sessionLength = dictionary["sessionLength"] as? String ?? "60"
+        self.date = dictionary["date"] as? String ?? "1/1/2024"
+        self.month = dictionary["month"] as? String ?? "January 2024"
+        self.created_on = Double((dictionary["created_on"] as? Int) ?? 0)
+
     }
 }
 
@@ -48,17 +65,17 @@ struct User: Codable {
     var id: String
     var token: String
     var goal: Int
-    init(dictionary: [String: Any]=["name": "John_Doe", "lower_name": "john_doe", "id": "eL64zUDAWd3mLK612En2i504Q5tO9er2tNQc-RwOznU", "goal": 60, "token": "2BfSZavpX5L-YKjec9Cxbbb4VzpVSdi5KbBNMQNQ88z7swyQ2-Tio4vKMVMihzsaDZV85mvX5cp97y23uuvg3A"]) {
+    init(dictionary: [String: Any]=["name": "John_Doe", "lower_name": "john_doe", "id": "eL64zUDAWd3mLK612En2i504Q5tO9er2tNQc-RwOznU", "goal": 60, "token": "BaJVgTasL_PjwwugBt__9bNGKG0Wz0nLu4pjT6hnc5UlAkjoUKa34y06gYksEeWFXL7-3MrMZqYqAX7MFoHDRg"]) {
         self.name = dictionary["name"] as? String ?? "John_Doe"
         self.id = dictionary["id"] as? String ?? "eL64zUDAWd3mLK612En2i504Q5tO9er2tNQc-RwOznU"
         self.lower_name = dictionary["lower_name"] as? String ?? "john_doe"
         self.goal = dictionary["goal"] as? Int ?? 60
-        self.token = dictionary["token"] as? String ?? "2BfSZavpX5L-YKjec9Cxbbb4VzpVSdi5KbBNMQNQ88z7swyQ2-Tio4vKMVMihzsaDZV85mvX5cp97y23uuvg3A"
+        self.token = dictionary["token"] as? String ?? "BaJVgTasL_PjwwugBt__9bNGKG0Wz0nLu4pjT6hnc5UlAkjoUKa34y06gYksEeWFXL7-3MrMZqYqAX7MFoHDRg"
     }
 }
 
 
-let baseUrl: String = "https://api.pop-plays.live:2087"
+let baseUrl: String = "http://localhost:2087" // "https://api.pop-plays.live:2087"
 
 
 func parameters(_ data: Dictionary<String, String>) -> String {
@@ -112,29 +129,8 @@ struct APIManager {
         }
         return StatusResponse(status: response.response?.statusCode ?? 0,  data: data, code: status)
     }
-//    func isAlive() async throws -> [String: Any] {
-//        let (data, _) = try await URLSession.shared.data(from: apiUrl("/"))
-//        return try parseData(data)
-//    }
 }
 
 
-struct UsersManager {
-//    func get(token:String) async throws -> [String: Any] {
-//        let (data, _) = try await URLSession.shared.data(from: apiUrl("/users/get", params: ["token": token]))
-//        return try parseData(data)
-//    }
-//    func register(password:String, username: String) async throws -> [String: Any] {
-//        let (data, _) = try await URLSession.shared.data(from: apiUrl("/users/register", params: ["password": password, "username": username]))
-//        return try parseData(data)
-//    }
-//    func login(username: String, password:String) async throws -> [String: Any] {
-//        let (data, _) = try await URLSession.shared.data(from: apiUrl("/users/login", params: ["username": username, "password": password]))
-//        return try parseData(data)
-//    }
-//    func retrieve(token:String) async throws -> [String: Any] {
-//        let (data, _) = try await URLSession.shared.data(from: apiUrl("/users/verify", params: ["token": token]))
-//        return try parseData(data)
-//    }
-}
+
 
