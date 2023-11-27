@@ -71,7 +71,7 @@ struct StatisticsView: View {
                                     ){
                                         ForEach(data, id: \.self) { stat in
                                             if stat.month == selectedMonth {
-                                                NavigationLink (destination: StatisticsDetailsView(data: stat)){
+                                                NavigationLink (destination: StatisticsDetailsView(data: stat, theme: theme)){
                                                     VStack(alignment: .leading) {
                                                         Text("**Focus Session**")
                                                         Text("\(Int(stat.sessionLength)! / 60) mins - \(convertToTime(timestamp: stat.created_on))")

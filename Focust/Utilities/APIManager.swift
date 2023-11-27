@@ -51,7 +51,7 @@ struct Stat: Hashable {
         self.owner = dictionary["owner"] as? String ?? "yes"
         self.breaks = dictionary["breaks"] as? String ?? "1"
         self.breakLength = dictionary["breakLength"] as? String ?? "10"
-        self.sessionLength = dictionary["sessionLength"] as? String ?? "60"
+        self.sessionLength = dictionary["sessionLength"] as? String ?? "4800"
         self.date = dictionary["date"] as? String ?? "1/1/2024"
         self.month = dictionary["month"] as? String ?? "January 2024"
         self.created_on = Double((dictionary["created_on"] as? Int) ?? 0)
