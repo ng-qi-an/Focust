@@ -101,7 +101,6 @@ struct StatisticsView: View {
                     switch res.code {
                     case .Success:
                         loading = false
-                        Haptics.shared.notify(.success)
                         months = res.data["months"] as! Array<String>
                         dates = res.data["dates"] as! Array<String>
                         if months.count > 0 {

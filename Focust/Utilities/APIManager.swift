@@ -75,7 +75,7 @@ struct User: Codable {
 }
 
 
-let baseUrl: String = "http://localhost:2087" // "https://api.pop-plays.live:2087"
+let baseUrl: String = "https://api.pop-plays.live:2087"
 
 
 func parameters(_ data: Dictionary<String, String>) -> String {

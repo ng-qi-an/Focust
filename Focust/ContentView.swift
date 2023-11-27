@@ -29,7 +29,7 @@ struct ContentView: View {
                 if authenticated {
                     MainController(authenticated: $authenticated, user: $user, today: $today, token: $token, verifyToken: $verifyToken, darkMode: $darkMode, mode: $mode, color: $color, theme: $theme)
                 } else {
-                    AuthController(authenticated: $authenticated, token: $token, verifyToken: $verifyToken)
+                    AuthController(authenticated: $authenticated, token: $token, user: $user, verifyToken: $verifyToken)
                         .preferredColorScheme(.light)
                 }
             } else {

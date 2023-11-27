@@ -16,6 +16,7 @@ struct LoginView: View {
     @Binding var token: String;
     @Binding var username: String;
     @Binding var password: String;
+    @Binding var user: User;
     @Binding var verifyToken: Bool;
     @State var loading: Bool = false
     
@@ -177,6 +178,7 @@ struct LoginView: View {
                                             Haptics.shared.notify(.success)
                                             let data = res.data["data"] as! [String: Any]
                                             token = data["token"] as! String
+                                            user = User(dictionary: data)
                                             authenticated = true
                                         case .Forbidden:
                                             loading = false
@@ -233,6 +235,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authenticated: .constant(false), token: .constant(""), username: .constant("john_doe"), password: .constant("12345678"), verifyToken: .constant(false))
+        LoginView(authenticated: .constant(false), token: .constant(""), username: .constant("john_doe"), password: .constant("12345678"), user: .constant(User()), verifyToken: .constant(false))
     }
 }

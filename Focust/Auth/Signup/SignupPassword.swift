@@ -13,6 +13,7 @@ struct SignupPassword: View {
     @Binding var token: String;
     @Binding var password: String;
     @Binding var username: String;
+    @Binding var user: User;
     @Binding var verifyToken: Bool;
     @State private var passwordConfirm = ""
     @State private var errorFree: Bool = false
@@ -130,7 +131,7 @@ struct SignupPassword: View {
                             }.frame(width: 350)
                         }
                         HStack{}
-                        NavigationLink(destination: SignupUsername(authenticated: $authenticated, token: $token, password: $password, username: $username, verifyToken: $verifyToken), isActive: $errorFree){
+                        NavigationLink(destination: SignupUsername(authenticated: $authenticated, token: $token, password: $password, username: $username, user: $user, verifyToken: $verifyToken), isActive: $errorFree){
                             Button {
                                 withAnimation {
                                     errorFree = false
@@ -208,6 +209,6 @@ struct SignupPassword: View {
 
 struct SignupPassword_Previews: PreviewProvider {
     static var previews: some View {
-        SignupPassword(authenticated: .constant(false), token: .constant(""), password: .constant("12345678"), username: .constant("12345678"), verifyToken: .constant(false))
+        SignupPassword(authenticated: .constant(false), token: .constant(""), password: .constant("12345678"), username: .constant("12345678"), user: .constant(User()), verifyToken: .constant(false))
     }
 }

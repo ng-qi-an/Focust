@@ -16,6 +16,7 @@ struct SignupUsername: View {
     @Binding var token: String;
     @Binding var password: String;
     @Binding var username: String;
+    @Binding var user: User;
     @Binding var verifyToken: Bool;
     @State var loading: Bool = false
     enum Field:Hashable {
@@ -159,6 +160,7 @@ struct SignupUsername: View {
                                             Haptics.shared.notify(.success)
                                             let data = res.data["data"] as! [String: Any]
                                             token = data["token"] as! String
+                                            user = User(dictionary: data)
                                             authenticated = true
                                         case .Forbidden:
                                             loading = false
@@ -222,6 +224,6 @@ struct SignupUsername: View {
 
 struct SignupUsername_Previews: PreviewProvider {
     static var previews: some View {
-        SignupUsername(authenticated: .constant(false), token: .constant(""), password: .constant("12345678"), username: .constant("12345678"), verifyToken: .constant(false))
+        SignupUsername(authenticated: .constant(false), token: .constant(""), password: .constant("12345678"), username: .constant("12345678"), user: .constant(User()), verifyToken: .constant(false))
     }
 }
