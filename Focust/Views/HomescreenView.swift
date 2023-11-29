@@ -118,28 +118,28 @@ struct HomescreenView: View {
                             }.offset(x: 25, y: -50)
                         }
                         .offset(y: 100)
-                        HStack {
-                            Text("🏁")
-                                .font(.system(size: 15))
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 270, height: 10)
-                                    .cornerRadius(20)
-                                    .foregroundColor(theme.gray.surface1)
-                                    .shadow(color: theme.gray.shadow, radius: 2, x: 0, y: 1)
-                                Rectangle()
-                                    .frame(width: 90, height: 10)
-                                    .cornerRadius(20)
-                                    .foregroundColor(theme.color.button)
-                                    .offset(x: -90)
-                            }
-                            Text("🎉")
-                                .font(.system(size: 15))
-                        }.offset(x: 3, y: 65) //time left
-                        Text("[ ] hrs left") //text version of time left
-                            .opacity(0.5)
-                            .offset(y: 65)
-                            .foregroundColor(theme.gray.foreground)
+//                        HStack {
+//                            Text("🏁")
+//                                .font(.system(size: 15))
+//                            ZStack {
+//                                Rectangle()
+//                                    .frame(width: 270, height: 10)
+//                                    .cornerRadius(20)
+//                                    .foregroundColor(theme.gray.surface1)
+//                                    .shadow(color: theme.gray.shadow, radius: 2, x: 0, y: 1)
+//                                Rectangle()
+//                                    .frame(width: 90, height: 10)
+//                                    .cornerRadius(20)
+//                                    .foregroundColor(theme.color.button)
+//                                    .offset(x: -90)
+//                            }
+//                            Text("🎉")
+//                                .font(.system(size: 15))
+//                        }.offset(x: 3, y: 65) //time left
+//                        Text("[ ] hrs left") //text version of time left
+//                            .opacity(0.5)
+//                            .offset(y: 65)
+//                            .foregroundColor(theme.gray.foreground)
                     }
                     .offset(y: 10)
                     .padding(.top, 200)

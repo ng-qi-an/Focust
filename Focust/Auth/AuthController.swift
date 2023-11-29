@@ -29,7 +29,7 @@ struct AuthController: View {
                 }
                 VStack(spacing: 20){
                     VStack(spacing: 5) {
-                        Image("placeholderIcon")
+                        Image("LightIcon")
                             .resizable()
                             .frame(width: 150, height: 150)
                             .offset(y: -30)
