@@ -2,7 +2,7 @@
 //  Login.swift
 //  Focust
 //
-//  Created by Ethan Chow on 16/11/23.
+//  Created by Ng Qi An on 16/11/23.
 //
 
 import SwiftUI
@@ -11,230 +11,121 @@ import Alamofire
 
 struct LoginView: View {
     let apiManager = APIManager()
-    @Binding var authenticated: Bool;
     
-    @Binding var token: String;
-    @Binding var username: String;
-    @Binding var password: String;
-    @Binding var user: User;
-    @Binding var verifyToken: Bool;
     @State var loading: Bool = false
+    @Binding var authenticated: Bool;
+    @Binding var token: String;
     
-    enum Field:Hashable {
-        case Username, Password
-    }
-    
-    @FocusState private var focused:Field?
-    @State private var isFocused: Bool = false
-    @State private var error: String = ""
-    @State private var errorFree: Bool = false
-    @State private var hasError: Array<Field> = []
-    
+    @Binding var verifyToken: Bool;
+    @Binding var password: String;
+    @Binding var username: String;
+    @Binding var theme: Theme;
+    @Binding var user: User;
+
     @State private var apiError = false
     @State private var apiErrorMessage = ""
-
     @Environment(\.dismiss) private var dismiss
     
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color(red: 216/255, green: 255/255, blue:250/255)
-                    .ignoresSafeArea(.all)
-                VStack {
-                    Image("authBg")
-                        .resizable()
-                        .frame(maxWidth: .infinity, maxHeight: isFocused ? 250 : 350)
-                    Spacer()
-                }
-                
-                VStack {
-                    HStack {
-                        if loading == false {
-                            Button {
-                                dismiss()
-                            } label: {
-                                Image(systemName: "chevron.backward")
-                                    .offset(x: 0, y: 0)
-                                    .font(.system(size: 25))
-                                    .foregroundColor(.black)
-                            }
-                        }
-                        Spacer()
+            VStack {
+                HStack {
+                    Button {
+                        dismiss()
+                    } label: {
+                        VStack {
+                            Image(systemName: "chevron.left")
+                        }.padding()
+                            .frame(width: 50, height: 50)
+                            .background(theme.gray.surface1)
+                            .cornerRadius(50)
+                            .foregroundColor(theme.gray.foreground)
                     }
                     Spacer()
-                }.padding(.leading, 50)
-                    .padding(.top, 100)
-                VStack {
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Text("**Login**")
-                                .foregroundColor(.black)
-                                .font(.system(size: 20))
-                        }
-                        .frame(width: 220, height: 70)
-                        .background(.white)
-                        .cornerRadius(15)
-                        Spacer()
-                    }.frame(maxWidth:.infinity, maxHeight: isFocused ? 250 : 350)
-                    if isFocused == false {
-                        Spacer()
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Sign Up")
+                    }.variant(.outline, theme: theme, stroke: theme.color.foreground)
+                }
+                Text("Welcome Back")
+                    .fontWeight(.bold)
+                    .font(.system(size: 30))
+                    .padding(.top, 20)
+                Text("Return to your wonderful focus journey")
+                    .foregroundColor(theme.gray.foreground)
+                    .opacity(0.7)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 30)
+                VStack (spacing: 15){
+                    Input(type: .Text, theme: theme, label: "Username", value: $username)
+                    Input(type: .Password, theme: theme, label: "Password", value: $password)
+                }
+                Spacer()
+                Button {
+                    if loading {
+                        // do nothing
+                    } else if username.isEmpty {
+                        apiError = true
+                        apiErrorMessage = "Username is required"
+                        Haptics.shared.notify(.error)
+                        
+                    } else if password.isEmpty {
+                        apiError = true
+                        apiErrorMessage = "Password is required"
+                        Haptics.shared.notify(.error)
                     } else {
-                        HStack {
-                            
-                        }.frame(height: 25)
-                    }
-                    VStack(spacing: 10){
-                        HStack {
-                            Image(systemName: "at")
-                                .foregroundColor(.black)
-                                .padding(.leading, 30)
-                            TextField("Username", text: $username, prompt: Text("Username").foregroundColor(.gray))
-                                .foregroundColor(.black)
-                                .focused($focused, equals: .Username)
-                                .padding(.leading, 10)
-                                .disabled(loading)
-                        }
-                        .frame(width: 350, height: 50)
-                        .background(.white)
-                        .cornerRadius(20)
-                        .shadow(color: Color(red: 218/255, green: 218/255, blue: 218/255), radius: 4, y: 3)
-                        if hasError.contains(Field.Username) {
-                            HStack {
-                                Text(error)
-                                    .foregroundColor(.red)
-                                Spacer()
-                            }.frame(width: 350)
-                        }
-                        HStack {
-                            Image(systemName: "lock")
-                                .foregroundColor(.black)
-                                .padding(.leading, 30)
-                            SecureField("Password", text: $password, prompt: Text("Password").foregroundColor(.gray))
-                                .foregroundColor(.black)
-                                .padding(.leading, 10)
-                                .focused($focused, equals: .Password)
-                                .disabled(loading)
-
-                        }
-                        .frame(width: 350, height: 50)
-                        .background(.white)
-                        .cornerRadius(20)
-                        .shadow(color: Color(red: 218/255, green: 218/255, blue: 218/255), radius: 4, y: 3)
-                        if hasError.contains(Field.Password) {
-                            HStack {
-                                Text(error)
-                                    .foregroundColor(.red)
-                                Spacer()
-                            }.frame(width: 350)
-                        }
-                        HStack {}
-                        Button {
-                                errorFree = false
-                                if loading {
-                                    // Do nothing
-                                } else if username.isEmpty {
-                                    error = "This field is required"
-                                    if hasError.contains(Field.Username) == false {
-                                        hasError.append(Field.Username)
-                                    }
-                                    Haptics.shared.notify(.error)
-                                } else if username.count < 3 {
-                                    error = "Invalid username"
-                                    if hasError.contains(Field.Username) == false {
-                                        hasError.append(Field.Username)
-                                    }
-                                    Haptics.shared.notify(.error)
-                                } else if password.isEmpty {
-                                    error = "This field is required"
-                                    if hasError.contains(Field.Password) == false {
-                                        hasError.append(Field.Password)
-                                    }
-                                    Haptics.shared.notify(.error)
-                                } else if password.count < 8 {
-                                    error = "Minimum of 8 characters"
-                                    if hasError.contains(Field.Password) == false {
-                                        hasError.append(Field.Password)
-                                    }
-                                    Haptics.shared.notify(.error)
-                                }  else {
-                                    error = ""
-                                    errorFree = true
-                                    if hasError.contains(Field.Username) == true {
-                                        hasError.remove(at: hasError.firstIndex(of: Field.Username)!)
-                                    }
-                                    if hasError.contains(Field.Password) == true {
-                                        hasError.remove(at: hasError.firstIndex(of: Field.Password)!)
-                                    }
-                                    loading = true
-                                    AF.upload(multipartFormData: { multiFormData in
-                                        multiFormData.append(Data(username.utf8), withName: "username")
-                                        multiFormData.append(Data(password.utf8), withName: "password")
-                                    }, to: apiUrl("/users/login")).response { response in
-                                        let res = apiManager.status(response)
-                                        switch res.code {
-                                        case .Success:
-                                            Haptics.shared.notify(.success)
-                                            let data = res.data["data"] as! [String: Any]
-                                            token = data["token"] as! String
-                                            user = User(dictionary: data)
-                                            authenticated = true
-                                        case .Forbidden:
-                                            loading = false
-                                            apiErrorMessage = "No account exists with those credentials"
-                                            apiError = true
-                                            Haptics.shared.notify(.error)
-                                        default:
-                                            loading = false
-                                            apiErrorMessage = "An unknown error occured"
-                                            apiError = true
-                                            Haptics.shared.notify(.error)
-                                        }
-                                    }
-                                }
-                        } label : {
-                            HStack {
-                                if loading{
-                                    ProgressView()
-                                } else {
-                                    Text("Login")
-                                        .padding(.leading, 30)
-                                        .foregroundColor(.black)
-                                    Spacer()
-                                    Image(systemName: "paperplane.fill")
-                                        .padding(.trailing, 30)
-                                        .foregroundColor(.black)
-                                }
+                        loading = true
+                        apiError = false
+                        AF.upload(multipartFormData: { multiFormData in
+                                                                multiFormData.append(Data(username.utf8), withName: "username")
+                                                                multiFormData.append(Data(password.utf8), withName: "password")
+                        }, to: apiUrl("/users/login")).response { response in
+                            let res = apiManager.status(response)
+                            switch res.code {
+                            case .Success:
+                                Haptics.shared.notify(.success)
+                                let data = res.data["data"] as! [String: Any]
+                                token = data["token"] as! String
+                                user = User(dictionary: data)
+                                authenticated = true
+                            case .Forbidden:
+                                loading = false
+                                apiErrorMessage = "No account exists with those credentials"
+                                apiError = true
+                                Haptics.shared.notify(.error)
+                            default:
+                                loading = false
+                                apiErrorMessage = "An unknown error occured"
+                                apiError = true
+                                Haptics.shared.notify(.error)
                             }
-                            .frame(width: 350, height: 60)
-                            .background(Color(red: 45/255, green: 212/255, blue: 191/255))
-                            .cornerRadius(20)
-                            .shadow(color: Color(red: 218/255, green: 218/255, blue: 218/255), radius: 4, y: 3)
-                        }.disabled(loading)
-                    }
-                    Spacer()
-                }
-            }.ignoresSafeArea(.all)
-                .onChange(of: focused) { value in
-                    withAnimation {
-                        if (value != nil){
-                            isFocused = true
-                        } else {
-                            isFocused = false
                         }
                     }
-                }
-                .toast(isPresenting: $apiError){
-                    AlertToast(displayMode: .hud, type: .error(Color.red), title: "Request Failed", subTitle: apiErrorMessage)
-                }
-
+                } label: {
+                    if loading {
+                        HStack {
+                            ProgressView()
+                        }.frame(maxWidth: .infinity)
+                        
+                    } else {
+                        Text("Confirm")
+                            .frame(maxWidth: .infinity)
+                            .font(.system(size: 20))
+                    }
+                }.variant(.fill, theme: theme, background: theme.color.background)
+            }.padding(.leading, 40)
+            .padding(.trailing, 40)
+            .toast(isPresenting: $apiError){
+                AlertToast(displayMode: .hud, type: .error(Color.red), title: "Request Failed", subTitle: apiErrorMessage)
+            }
         }.navigationBarBackButtonHidden(true)
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authenticated: .constant(false), token: .constant(""), username: .constant("john_doe"), password: .constant("12345678"), user: .constant(User()), verifyToken: .constant(false))
+        LoginView(authenticated: .constant(false), token: .constant(""), verifyToken: .constant(false), password: .constant("12345678"), username: .constant("12345678"), theme: .constant(Theme()), user: .constant(User()))
     }
 }

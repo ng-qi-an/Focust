@@ -29,14 +29,15 @@ struct ContentView: View {
                 if authenticated {
                     MainController(authenticated: $authenticated, user: $user, today: $today, token: $token, verifyToken: $verifyToken, darkMode: $darkMode, mode: $mode, color: $color, theme: $theme)
                 } else {
-                    AuthController(authenticated: $authenticated, token: $token, user: $user, verifyToken: $verifyToken)
-                        .preferredColorScheme(.light)
+                    AuthController(authenticated: $authenticated, token: $token, user: $user, verifyToken: $verifyToken, theme: $theme)
+                        .preferredColorScheme(mode == AppearanceMode.Dark ? .dark : .light)
                 }
             } else {
                 ProgressView()
             }
             
         }.ignoresSafeArea(.all)
+            .preferredColorScheme(mode == AppearanceMode.Dark ? .dark : .light)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onAppear() {
                 if darkMode == true {

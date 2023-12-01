@@ -53,7 +53,7 @@ struct StatisticsDetailsView: View {
                             .padding(.trailing, 10)
                         Spacer()
                         HStack {
-                            Text("**\(Int(data.sessionLength)! / 60) mins**")
+                            Text("**Flexible**")
                                 .font(.system(size: 30))
                         }
                         Spacer()
@@ -102,40 +102,40 @@ struct StatisticsDetailsView: View {
                 .padding()
                 .background(theme.gray.surface1)
                 .cornerRadius(20)
-                VStack {
-                    HStack {
-                        Image(systemName: "exclamationmark.triangle")
-                        Text("Danger")
-                            .textCase(.uppercase)
-                        Spacer()
-                    }.padding(.leading, 10)
-                    .padding(.trailing, 10)
-                    Spacer()
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Made a mistake?")
-                                .font(.system(size: 25))
-                            Text("Perhaps it was an accident.")
-                        }
-                        Spacer()
-                        Button {
-                            
-                        } label: {
-                            HStack {
-                                Image(systemName: "trash")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 25))
-                            }.padding(25)
-                                .background(theme.red.background)
-                                .cornerRadius(40)
-                        }
-                    }
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity, minHeight: 150)
-                .padding()
-                .background(theme.gray.surface1)
-                .cornerRadius(20)
+//                VStack {
+//                    HStack {
+//                        Image(systemName: "exclamationmark.triangle")
+//                        Text("Danger")
+//                            .textCase(.uppercase)
+//                        Spacer()
+//                    }.padding(.leading, 10)
+//                    .padding(.trailing, 10)
+//                    Spacer()
+//                    HStack {
+//                        VStack(alignment: .leading) {
+//                            Text("Made a mistake?")
+//                                .font(.system(size: 25))
+//                            Text("Perhaps it was an accident.")
+//                        }
+//                        Spacer()
+//                        Button {
+//                            
+//                        } label: {
+//                            HStack {
+//                                Image(systemName: "trash")
+//                                    .foregroundColor(.white)
+//                                    .font(.system(size: 25))
+//                            }.padding(25)
+//                                .background(theme.red.background)
+//                                .cornerRadius(40)
+//                        }
+//                    }
+//                    Spacer()
+//                }
+//                .frame(maxWidth: .infinity, minHeight: 150)
+//                .padding()
+//                .background(theme.gray.surface1)
+//                .cornerRadius(20)
                 
             }
                 .padding()

@@ -65,12 +65,23 @@ struct User: Codable {
     var id: String
     var token: String
     var goal: Int
-    init(dictionary: [String: Any]=["name": "John_Doe", "lower_name": "john_doe", "id": "eL64zUDAWd3mLK612En2i504Q5tO9er2tNQc-RwOznU", "goal": 60, "token": "BaJVgTasL_PjwwugBt__9bNGKG0Wz0nLu4pjT6hnc5UlAkjoUKa34y06gYksEeWFXL7-3MrMZqYqAX7MFoHDRg"]) {
-        self.name = dictionary["name"] as? String ?? "John_Doe"
-        self.id = dictionary["id"] as? String ?? "eL64zUDAWd3mLK612En2i504Q5tO9er2tNQc-RwOznU"
-        self.lower_name = dictionary["lower_name"] as? String ?? "john_doe"
-        self.goal = dictionary["goal"] as? Int ?? 60
-        self.token = dictionary["token"] as? String ?? "BaJVgTasL_PjwwugBt__9bNGKG0Wz0nLu4pjT6hnc5UlAkjoUKa34y06gYksEeWFXL7-3MrMZqYqAX7MFoHDRg"
+    var guest: Bool = false
+    init(dictionary: [String: Any]=["name": "Test_User_2", "lower_name": "test_user_2", "id": "be0MzgBnY4tHEjYXzG9eJleNc0Nsjxzq04WH-95jvZw", "goal": 60, "token": "DJL0geR3MSubTuU14Q0X3Y7z3NkKHrkl_I7YNLudYdxRZvTa40fnPCaXE_kiZIJ8_hkMy5WA6QS9JPoQv6h9fg"], guest: Bool = false) {
+        if guest == false {
+            self.name = dictionary["name"] as? String ?? "Test_User_2"
+            self.id = dictionary["id"] as? String ?? "be0MzgBnY4tHEjYXzG9eJleNc0Nsjxzq04WH-95jvZw"
+            self.lower_name = dictionary["lower_name"] as? String ?? "test_user_2"
+            self.goal = dictionary["goal"] as? Int ?? 60
+            self.token = dictionary["token"] as? String ?? "DJL0geR3MSubTuU14Q0X3Y7z3NkKHrkl_I7YNLudYdxRZvTa40fnPCaXE_kiZIJ8_hkMy5WA6QS9JPoQv6h9fg"
+            self.guest = guest
+        } else {
+            self.name = "Guest"
+            self.id = "guest"
+            self.lower_name = "guest"
+            self.goal = 0
+            self.token = "guest"
+            self.guest = guest
+        }
     }
 }
 

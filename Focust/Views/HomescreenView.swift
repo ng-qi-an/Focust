@@ -13,140 +13,240 @@ struct HomescreenView: View {
     @Binding var startedSession: Bool
     @Binding var today: String
     @Binding var token: String;
+    @Binding var user: User;
+    @Binding var authenticated: Bool;
 
     @State var value = 0
     
     var body: some View {
         
         NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                ZStack {
-                    VStack {
-                        ZStack {
-                            VStack {
-                                ZStack {
-                                    theme.color.background
-                                        .frame(maxWidth: .infinity, maxHeight: 225)
-                                    Image("triangles")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 380, height: 191)
-                                }
-                                Spacer()
-                            }.frame(maxWidth: .infinity, maxHeight: 250)
-                            VStack {
-                                Spacer()
-                                Text("**\(Int(today)! / (60 * 60))**")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 60))
-                                Text("hours focused")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 20)) //number of hours focused //bg oval
-                                Spacer()
-                            }.frame(maxWidth: .infinity, maxHeight: 200)
-                            ZStack {
-                                VStack {
-                                    Ellipse()
-                                        .frame(maxWidth: .infinity, maxHeight: 50)
-                                        .foregroundColor(theme.gray.background)
-                                        .padding(.top, 260)
-                                    Spacer()
-                                }
-                                Rectangle()
-                                    .frame(maxWidth: .infinity, maxHeight: 50)
-                                    .foregroundColor(theme.gray.background)
-                                    .padding(.top, 370)
-                            }.frame(maxWidth: .infinity, maxHeight: 250)
-                        }
-                        Spacer()
-                    }
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [theme.color.background.opacity(0.7), theme.gray.background]), startPoint: .topTrailing, endPoint: .bottomLeading)
                     .ignoresSafeArea(.all)
-                    .frame(maxWidth: .infinity)
-                    VStack {
-                        HStack {
-                            VStack {
-                                Button {
-                                    page = 3
-                                } label: {
-                                    Circle()
-                                        .fill(theme.gray.surface2)
-                                        .frame(width: 50, height: 50)
-                                        .overlay(
-                                            Image(systemName: "gearshape")
-                                                .font(.system(size: 17))
+                ScrollView(.vertical, showsIndicators: false) {
+                    GeometryReader { geometry in
+                        VStack(spacing: 20) {
+                            HStack {
+                                VStack {
+                                    
+                                }.frame(width: 50, height: 50)
+                                    .background(theme.color.background)
+                                    .cornerRadius(10)
+                                VStack(alignment: .leading) {
+                                    Text("Hello, \(user.name)")
+                                        .font(.system(size: 18))
+                                        .fontWeight(.semibold)
+                                    Text("@\(user.lower_name)")
+                                        .foregroundColor(theme.gray.foreground)
+                                        .opacity(0.7)
+                                }
+                                Spacer()
+                                if user.guest == false {
+                                    Button {
+                                        page = 3
+                                    } label: {
+                                        Image(systemName: "gearshape")
+                                            .frame(width: 50, height: 50)
+                                            .background(theme.gray.surface1)
+                                            .cornerRadius(10)
+                                            .foregroundColor(theme.gray.foreground)
+                                    }
+                                }
+                                
+                            }.padding(.top, 20)
+                                .padding(.bottom, 20)
+                            if user.guest == false {
+                                VStack(alignment: .center, spacing: 0) {
+                                    HStack {
+                                        VStack(alignment: .leading, spacing: 5) {
+                                            Text("Your goal for today")
+                                                .font(.system(size: 22))
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(.white)
+                                            Text("Seize your objective")
+                                                .font(.system(size: 15))
+                                                .foregroundColor(.white)
+                                        }
+                                        Spacer()
+                                        Button {
+                                            page = 3
+                                        } label: {
+                                            Image(systemName: "arrow.forward")
+                                                .frame(width: 50, height: 50)
+                                                .background(theme.gray.surface1)
+                                                .cornerRadius(10)
                                                 .foregroundColor(theme.gray.foreground)
-                                                .offset(y: -0.5))
-                                        .shadow(color: theme.gray.shadow, radius: 2, x: 0, y: 1)
-                                }//frien button
-                                Text("Account")
-                                    .font(.system(size: 15))
-                                    .foregroundColor(theme.gray.foreground)
-                                    .opacity(0.5)
-                            }.offset(x: -25, y: -50)
+                                        }
+                                    }
+                                    Spacer()
+                                    ZStack {
+                                        GeometryReader { geometry in
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .foregroundColor(theme.gray.surface1)
+                                                .opacity(0.2)
+                                                .frame(width: geometry.size.width, height: 10)
+                                            Rectangle()
+                                                .foregroundColor(theme.gray.surface1)
+                                                .cornerRadius(10)
+                                                .frame(width: geometry.size.width * (Double(today)! / Double(user.goal)), height: 10)
+                                        }.frame(height: 10)
+                                    }
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity, minHeight: 120)
+                                .background(theme.color.background)
+                                .cornerRadius(10)
+                                HStack {
+                                    VStack {
+                                        HStack {
+                                            Text("Today's Time")
+                                                .font(.system(size: 15))
+                                                .opacity(0.5)
+                                            Spacer()
+                                            Image(systemName: "chevron.right")
+                                                .font(.system(size: 15))
+                                                .opacity(0.5)
+                                        }
+                                        Spacer()
+                                        Text("\(Int(today)! / (60 * 60))")
+                                            .font(.system(size: 40))
+                                            .fontWeight(.bold)
+                                        Text("hr")
+                                        Spacer()
+                                    }.padding()
+                                        .frame(width: (geometry.size.width - 20) / 2, height: (geometry.size.width - 20) / 2)
+                                        .background(theme.gray.surface1)
+                                        .cornerRadius(10)
+                                        .onTapGesture {
+                                            page = 2
+                                        }
+                                    
+                                    VStack {
+                                        HStack {
+                                            Text("Your Goal")
+                                                .font(.system(size: 15))
+                                                .opacity(0.5)
+                                            Spacer()
+                                            Image(systemName: "chevron.right")
+                                                .font(.system(size: 15))
+                                                .opacity(0.5)
+                                        }
+                                        Spacer()
+                                        Text("\(user.goal / (60 * 60))")
+                                            .font(.system(size: 40))
+                                            .fontWeight(.bold)
+                                        Text("hr")
+                                        Spacer()
+                                    }.padding()
+                                        .frame(width: (geometry.size.width - 20) / 2, height: (geometry.size.width - 20) / 2)
+                                        .background(theme.gray.surface1)
+                                        .cornerRadius(10)
+                                        .onTapGesture {
+                                            page = 3
+                                        }
+                                    
+                                }.frame(maxWidth: .infinity)
+                            } else {
+                                VStack {
+                                    Text("Guest Account")
+                                        .font(.system(size: 30))
+                                        .fontWeight(.bold)
+                                    Text("In order to save and view statistical data, an active account is required.")
+                                        .multilineTextAlignment(.center)
+                                    }
+                                    .padding()
+                                    .frame(height: 300)
+                            }
                             NavigationLink {
-                                Focus_ModeView(theme : $theme, startedSession: $startedSession, token: $token, today: $today)
+                                Focus_ModeView(theme: $theme, startedSession: $startedSession, user: $user, token: $token, today: $today)
                             } label: {
-                                Circle()
-                                    .fill(theme.color.button)
-                                    .frame(width: 100, height: 100)
-                                    .overlay(
-                                        Image(systemName: "triangle.fill")
-                                            .font(.system(size: 30))
+                                HStack(spacing: 10) {
+                                    VStack {
+                                        Image(systemName: "play.fill")
                                             .foregroundColor(.white)
-                                            .offset(x: -2.5, y: -3)
-                                            .rotationEffect(.degrees(-30)))
-                                    .offset(y: -60)
-                            } //start button
-                            VStack {
-                                Button {
-                                    page = 2
-                                } label: {
-                                    Circle()
-                                        .fill(theme.gray.surface2)
-                                        .frame(width: 50, height: 50)
-                                        .overlay(
-                                            Image(systemName: "chart.line.uptrend.xyaxis")
-                                                .font(.system(size: 17))
-                                                .foregroundColor(theme.gray.foreground)
-                                                .offset(y: -0.5))
-                                        .shadow(color: theme.gray.shadow, radius: 2, x: 0, y: 1)
-                                } //stats button
-                                Text("Stats")
-                                    .font(.system(size: 15))
-                                    .foregroundColor(theme.gray.foreground)
-                                    .opacity(0.5)
-                            }.offset(x: 25, y: -50)
+                                    }.frame(width: 50, height: 50)
+                                        .background(theme.color.background)
+                                        .cornerRadius(10)
+                                    VStack(alignment: .leading) {
+                                        Text("Start Session")
+                                            .font(.system(size: 18))
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(theme.gray.foreground)
+                                        Text("Begin a distraction-free environment")
+                                            .font(.system(size: 14))
+                                            .foregroundColor(theme.gray.foreground)
+                                            .opacity(0.7)
+                                    }
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 15))
+                                        .foregroundColor(theme.gray.foreground)
+                                        .opacity(0.5)
+                                }.padding()
+                                    .background(theme.gray.surface1)
+                                    .cornerRadius(10)
+                            }
+                            if user.guest == false {
+                                HStack(spacing: 10) {
+                                    VStack {
+                                        Image(systemName: "chart.line.uptrend.xyaxis")
+                                            .foregroundColor(.white)
+                                    }.frame(width: 50, height: 50)
+                                        .background(theme.color.background)
+                                        .cornerRadius(10)
+                                    VStack(alignment: .leading) {
+                                        Text("View statistics")
+                                            .font(.system(size: 18))
+                                            .fontWeight(.semibold)
+                                        Text("Take a quick look at your progress")
+                                            .font(.system(size: 14))
+                                            .foregroundColor(theme.gray.foreground)
+                                            .opacity(0.7)
+                                    }
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 15))
+                                        .opacity(0.5)
+                                    
+                                }.padding()
+                                    .background(theme.gray.surface1)
+                                    .cornerRadius(10)
+                                    .onTapGesture {
+                                        page = 2
+                                    }
+                            } else {
+                                HStack(spacing: 10) {
+                                    VStack {
+                                        Image(systemName: "person.badge.plus")
+                                            .foregroundColor(.white)
+                                    }.frame(width: 50, height: 50)
+                                        .background(theme.color.background)
+                                        .cornerRadius(10)
+                                    VStack(alignment: .leading) {
+                                        Text("Create an account")
+                                            .font(.system(size: 18))
+                                            .fontWeight(.semibold)
+                                        Text("Gain access to all that Focust can offer")
+                                            .font(.system(size: 14))
+                                            .foregroundColor(theme.gray.foreground)
+                                            .opacity(0.7)
+                                    }
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 15))
+                                        .opacity(0.5)
+                                    
+                                }.padding()
+                                    .background(theme.gray.surface1)
+                                    .cornerRadius(10)
+                                    .onTapGesture {
+                                        authenticated = false
+                                    }
+                                Spacer()
+                            }
                         }
-                        .offset(y: 100)
-//                        HStack {
-//                            Text("🏁")
-//                                .font(.system(size: 15))
-//                            ZStack {
-//                                Rectangle()
-//                                    .frame(width: 270, height: 10)
-//                                    .cornerRadius(20)
-//                                    .foregroundColor(theme.gray.surface1)
-//                                    .shadow(color: theme.gray.shadow, radius: 2, x: 0, y: 1)
-//                                Rectangle()
-//                                    .frame(width: 90, height: 10)
-//                                    .cornerRadius(20)
-//                                    .foregroundColor(theme.color.button)
-//                                    .offset(x: -90)
-//                            }
-//                            Text("🎉")
-//                                .font(.system(size: 15))
-//                        }.offset(x: 3, y: 65) //time left
-//                        Text("[ ] hrs left") //text version of time left
-//                            .opacity(0.5)
-//                            .offset(y: 65)
-//                            .foregroundColor(theme.gray.foreground)
-                    }
-                    .offset(y: 10)
-                    .padding(.top, 200)
-                    .padding(.bottom, 120)
+                    }.padding(.leading, 40)
+                        .padding(.trailing, 40)
                 }
             }
-            .ignoresSafeArea(edges: .top)
         }
         .navigationBarBackButtonHidden(true)
     }
@@ -154,6 +254,6 @@ struct HomescreenView: View {
 
 struct HomescreenView_Previews: PreviewProvider {
     static var previews: some View {
-        HomescreenView(theme: .constant(Theme()), page: .constant(1), startedSession: .constant(false), today: .constant("0"), token: .constant("094392432hh23r"))
+        HomescreenView(theme: .constant(Theme()), page: .constant(1), startedSession: .constant(false), today: .constant("10"), token: .constant("094392432hh23r"), user: .constant(User(guest: false)), authenticated: .constant(true))
     }
 }

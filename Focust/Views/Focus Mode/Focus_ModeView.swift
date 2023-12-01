@@ -36,6 +36,7 @@ struct Focus_ModeView: View {
     @State private var paused = false
     @Binding var theme: Theme
     @Binding var startedSession: Bool
+    @Binding var user: User
 //    @Binding var focusLength: Int
 //    @Binding var breakLength: Int
 //    @Binding var longBreakLength: Int
@@ -283,34 +284,40 @@ struct Focus_ModeView: View {
                                             saverCount.upstream.connect().cancel()
                                             saverCounter = 0
                                             breakCount.upstream.connect().cancel()
-                                            saving = true
-                                            print(totalBreakCount)
-                                            print(breakNum)
-                                            print(counter)
-                                            AF.upload(multipartFormData: { multiFormData in
-                                                multiFormData.append(Data(String(token).utf8), withName: "token")
-                                                multiFormData.append(Data(String(totalBreakCount).utf8), withName: "breakLength")
-                                                multiFormData.append(Data(String(breakNum).utf8), withName: "breakCount")
-                                                multiFormData.append(Data(String(counter).utf8), withName: "sessionLength")
-                                            }, to: apiUrl("/sessions/create")).response { response in
-                                                let res = apiManager.status(response)
-                                                switch res.code {
-                                                case .Success:
-                                                    Haptics.shared.notify(.success)
-                                                    today = res.data["data"] as! String
-                                                    startedSession = false
-                                                    dismiss()
-                                                case .Forbidden:
-                                                    saving = false
-                                                    apiErrorMessage = "Token error. Login again."
-                                                    apiError = true
-                                                    Haptics.shared.notify(.error)
-                                                default:
-                                                    saving = false
-                                                    apiErrorMessage = "An unknown error occured"
-                                                    apiError = true
-                                                    Haptics.shared.notify(.error)
+                                            if user.guest == false {
+                                                saving = true
+                                                print(totalBreakCount)
+                                                print(breakNum)
+                                                print(counter)
+                                                AF.upload(multipartFormData: { multiFormData in
+                                                    multiFormData.append(Data(String(token).utf8), withName: "token")
+                                                    multiFormData.append(Data(String(totalBreakCount).utf8), withName: "breakLength")
+                                                    multiFormData.append(Data(String(breakNum).utf8), withName: "breakCount")
+                                                    multiFormData.append(Data(String(counter).utf8), withName: "sessionLength")
+                                                }, to: apiUrl("/sessions/create")).response { response in
+                                                    let res = apiManager.status(response)
+                                                    switch res.code {
+                                                    case .Success:
+                                                        Haptics.shared.notify(.success)
+                                                        today = res.data["data"] as! String
+                                                        startedSession = false
+                                                        dismiss()
+                                                    case .Forbidden:
+                                                        saving = false
+                                                        apiErrorMessage = "Token error. Login again."
+                                                        apiError = true
+                                                        Haptics.shared.notify(.error)
+                                                    default:
+                                                        saving = false
+                                                        apiErrorMessage = "An unknown error occured"
+                                                        apiError = true
+                                                        Haptics.shared.notify(.error)
+                                                    }
                                                 }
+                                            } else {
+                                                Haptics.shared.notify(.success)
+                                                startedSession = false
+                                                dismiss()
                                             }
                                         } label: {
                                             ZStack {
@@ -429,7 +436,7 @@ struct RoundedCorner: Shape {
 
 struct Focus_ModeView_Previews: PreviewProvider {
     static var previews: some View {
-        Focus_ModeView(theme: .constant(Theme()), startedSession: .constant(false), token: .constant("f3oifh29f43nf4"), today: .constant("0"))
+        Focus_ModeView(theme: .constant(Theme()), startedSession: .constant(false), user: .constant(User(guest: true)), token: .constant("f3oifh29f43nf4"), today: .constant("0"))
     }
 }
 

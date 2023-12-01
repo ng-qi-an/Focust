@@ -12,75 +12,76 @@ struct AuthController: View {
     @Binding var token: String;
     @Binding var user: User;
     @Binding var verifyToken: Bool;
-    
+    @Binding var theme: Theme;
+
     @State private var password = ""
     @State private var username = ""
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color(red: 216/255, green: 255/255, blue:250/255)
-                    .ignoresSafeArea(.all)
+            VStack(alignment: .leading) {
                 VStack {
-                    Spacer()
-                    Image("startPageBg")
+                    Image("IconArray")
                         .resizable()
-                        .frame(maxWidth: .infinity, maxHeight: 456)
+                        .frame(width: 240, height: 240)
                 }
-                VStack(spacing: 20){
-                    VStack(spacing: 5) {
-                        Image("LightIcon")
-                            .resizable()
-                            .frame(width: 150, height: 150)
-                            .offset(y: -30)
-                        Text("**Start you focus journey**")
-                            .font(.system(size: 25))
-                            .foregroundColor(Color(red: 102/255, green: 100/255, blue: 100/255))
-                        Text("**TODAY!**")
-                            .font(.system(size: 40))
-                            .foregroundColor(Color(red: 45/255, green: 212/255, blue: 191/255))
-                    }.offset(y: -125)
+                .frame(maxWidth: .infinity, maxHeight: 300)
+                .background(theme.color.background)
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text("**Focust** is")
+                    Text("Your way towards")
+                        .font(.system(size: 35))
+                        .fontWeight(.light)
+                    Text("academic success")
+                        .font(.system(size: 35))
+                        .fontWeight(.semibold)
+                    Text("today.")
+                        .font(.system(size: 35))
+                        .fontWeight(.semibold)
+                    Text("Keep track of goals, with a distraction-free environment. Change starts with you.")
+                        .foregroundColor(theme.gray.foreground)
+                        .opacity(0.7)
+                        .padding(.top, -5)
+                }.padding(.leading, 30)
+                Spacer()
+                HStack {
+                    NavigationLink {
+                        LoginView(authenticated: $authenticated, token: $token, verifyToken: $verifyToken, password: $password, username: $username, theme: $theme, user: $user)
+                    } label: {
+                        Text("Sign In")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .variant(.outline, theme: theme, stroke: theme.color.foreground)
+                    NavigationLink {
+                        SignupView(authenticated: $authenticated, token: $token, verifyToken: $verifyToken, password: $password, username: $username, theme: $theme, user: $user)
+                    } label: {
+                        Text("Sign Up")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .variant(.fill, theme: theme, background: theme.color.background)
                     
-                    NavigationLink(destination: SignupPassword(authenticated: $authenticated, token: $token, password: $password, username: $username, user: $user, verifyToken: $verifyToken)) {
-                        HStack {
-                            Text("Sign Up")
-                            Spacer()
-                            Image(systemName: "person.crop.circle.badge.plus")
-                        }
-                        .padding(Edge.Set(arrayLiteral: .leading, .trailing), 30)
-                        .frame(width: 315, height: 50)
-                        .foregroundColor(.black)
-                        .background(.white)
-                        .cornerRadius(20)
-                        .shadow(color: Color(red: 218/255, green: 218/255, blue: 218/255), radius: 4, y: 3)
-                    }.simultaneousGesture(TapGesture().onEnded{
-                        Haptics.shared.play(.light)
-
-                    })
-                    NavigationLink(destination: LoginView(authenticated: $authenticated, token: $token, username: $username, password: $password, user: $user, verifyToken: $verifyToken)) {
-                        HStack {
-                            Text("Log In")
-                            Spacer()
-                            Image(systemName: "key")
-                        }
-                        .padding(Edge.Set(arrayLiteral: .leading, .trailing), 30)
-                        .frame(width: 315, height: 50)
-                        .foregroundColor(.black)
-                        .background(.white)
-                        .cornerRadius(20)
-                        .shadow(color: Color(red: 218/255, green: 218/255, blue: 218/255), radius: 4, y: 3)
-                    }.simultaneousGesture(TapGesture().onEnded{
-                        Haptics.shared.play(.light)
-
-                    })
+                }.padding(.leading, 40)
+                    .padding(.trailing, 40)
+                Button {
+                    user = User(guest: true)
+                    authenticated = true
+                } label: {
+                    Text("Try without an account")
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(theme.gray.foreground)
+                        .opacity(0.7)
+                        .padding(.top, 10)
                 }
-            }.ignoresSafeArea(.all)
+                
+            }.frame(maxWidth: .infinity)
         }
     }
 }
 
 struct AuthController_Previews: PreviewProvider {
     static var previews: some View {
-        AuthController(authenticated: .constant(false), token: .constant(""), user: .constant(User()), verifyToken: .constant(false))
+        AuthController(authenticated: .constant(false), token: .constant(""), user: .constant(User()), verifyToken: .constant(false), theme: .constant(Theme()))
     }
 }

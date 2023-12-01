@@ -30,7 +30,7 @@ struct AccountDetailsView: View {
     @State private var deleteAccountError = ""
 
     let goals = ["1 hour", "1.5 hours", "2 hours", "2.5 hours", "3 hours"]
-    let goalMap = [60, 90, 120, 150, 180]
+    let goalMap = [60 * 60, 90 * 60, 120 * 60, 150 * 60, 180 * 60]
     var body: some View {
         NavigationView {
             VStack {
