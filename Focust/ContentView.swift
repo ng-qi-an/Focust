@@ -30,12 +30,21 @@ struct ContentView: View {
             MainController(today: $today, goal: $goal, todayDate: $todayDate, sessions: $sessions, darkMode: $darkMode, mode: $mode, color: $color, theme: $theme)
                 .preferredColorScheme(theme.mode == AppearanceMode.Dark ? .dark : .light)
         }.onAppear(){
+            if darkMode == true {
+                mode = AppearanceMode.Dark
+            }
+            theme = Theme(mode: mode, scheme: color)
             let date = checkDate(date: todayDate)
             if date != "VALID" {
                 todayDate = date
             }
             sessions = getSessions()
             print(sessions)
+        }.onChange(of: mode) { new in
+            theme = Theme(mode: new, scheme: color)
+        }
+        .onChange(of: color) { new in
+            theme = Theme(mode: mode, scheme: new)
         }
     }
 }

@@ -34,12 +34,12 @@ struct MainController: View {
                         Text("Stats")
                     }
                     .tag(2)
-                //                    AccountView(theme: $theme, mode: $mode, color: $color, user: $user, darkMode: $darkMode, verifyToken: $verifyToken, token: $token)
-                //                        .tabItem {
-                //                            Image(systemName: "gearshape.fill")
-                //                            Text("Account")
-                //                        }
-                //                        .tag(3)
+                SettingsView(theme: $theme, goal: $goal, mode: $mode, color: $color, darkMode: $darkMode)
+                    .tabItem {
+                        Image(systemName: "gearshape.fill")
+                        Text("Settings")
+                    }
+                    .tag(3)
             }
             
             .introspect(.tabView, on: .iOS(.v15, .v16, .v17)){ tabBarController in

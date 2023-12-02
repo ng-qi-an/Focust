@@ -23,6 +23,7 @@
 		F22434E32B0C493E0088E199 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = F22434E22B0C493E0088E199 /* AlertToast */; };
 		F238F6A02B103F720064CDC1 /* Saver_ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F238F69F2B103F720064CDC1 /* Saver_ModeView.swift */; };
 		F25B2B952B133A5C00147B57 /* StatisticsDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25B2B942B133A5C00147B57 /* StatisticsDetailsView.swift */; };
+		F2A261842B1B467800372700 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A261832B1B467800372700 /* SettingsView.swift */; };
 		F2A28EF22B085A21009B00AD /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A28EF12B085A21009B00AD /* SignupView.swift */; };
 		F2CB09282B0D980D006AA31D /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB09272B0D980D006AA31D /* AccountDetailsView.swift */; };
 		F2CB092A2B0DA096006AA31D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB09292B0DA096006AA31D /* ImagePicker.swift */; };
@@ -52,6 +53,7 @@
 		F22434DF2B0C49070088E199 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F238F69F2B103F720064CDC1 /* Saver_ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saver_ModeView.swift; sourceTree = "<group>"; };
 		F25B2B942B133A5C00147B57 /* StatisticsDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDetailsView.swift; sourceTree = "<group>"; };
+		F2A261832B1B467800372700 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F2A28EF12B085A21009B00AD /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		F2CB09272B0D980D006AA31D /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
 		F2CB09292B0DA096006AA31D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				AA46033F2B03D20200F24DC4 /* FriendsView.swift */,
 				F25B2B932B133A3500147B57 /* Statistics */,
 				F2CB09262B0D9766006AA31D /* Account */,
+				F2A261832B1B467800372700 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				F22434E02B0C49070088E199 /* APIManager.swift in Sources */,
 				F25B2B952B133A5C00147B57 /* StatisticsDetailsView.swift in Sources */,
 				F238F6A02B103F720064CDC1 /* Saver_ModeView.swift in Sources */,
+				F2A261842B1B467800372700 /* SettingsView.swift in Sources */,
 				F2D5F7992B0A32A60041EE70 /* SignupPassword.swift in Sources */,
 				F2A28EF22B085A21009B00AD /* SignupView.swift in Sources */,
 				F2CB092A2B0DA096006AA31D /* ImagePicker.swift in Sources */,
