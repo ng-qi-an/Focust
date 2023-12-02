@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct StatisticsDetailsView: View {
-    var data = Stat()
+    var data = Session()
     var theme = Theme()
-    init(data: Stat, theme: Theme){
+    init(data: Session, theme: Theme){
         self.data = data
     }
     var body: some View {
@@ -18,9 +18,9 @@ struct StatisticsDetailsView: View {
             ScrollView {
                 VStack {
                     Spacer()
-                    Text("**\((Int(data.sessionLength)! - Int(data.breakLength)!) / (60 * 60))**")
+                    Text("**\(Int(Double(data.sessionLength - data.breakLength) / (60 * 60)))**")
                         .font(.system(size: 70))
-                    Text("hours clocked")
+                    Text("hours focused")
                     Spacer()
                 }.frame(height: 200)
                 VStack {
@@ -33,7 +33,7 @@ struct StatisticsDetailsView: View {
                     .padding(.trailing, 10)
                     Spacer()
                     HStack {
-                        Text("**\(Int(data.sessionLength)! / 60) mins**")
+                        Text("**\(data.sessionLength / 60) mins**")
                             .font(.system(size: 40))
                     }
                     Spacer()
@@ -93,7 +93,7 @@ struct StatisticsDetailsView: View {
                     .padding(.trailing, 10)
                     Spacer()
                     HStack {
-                        Text("**\(Int(data.breakLength)! / 60) mins**")
+                        Text("**\(data.breakLength / 60) mins**")
                             .font(.system(size: 40))
                     }
                     Spacer()
@@ -139,7 +139,7 @@ struct StatisticsDetailsView: View {
                 
             }
                 .padding()
-                .navigationTitle("\(data.date)")
+                .navigationTitle("\(parseDate(date: data.date, format: "dd MMMM yyyy"))")
                 .navigationBarTitleDisplayMode(.inline)
             
         }
@@ -147,5 +147,5 @@ struct StatisticsDetailsView: View {
 }
 
 #Preview {
-    StatisticsDetailsView(data: Stat(), theme: Theme())
+    StatisticsDetailsView(data: Session(), theme: Theme())
 }

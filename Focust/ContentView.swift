@@ -10,8 +10,10 @@ import AlertToast
 import Alamofire
 
 struct ContentView: View {
-    @AppStorage("token") var token: String = ""
-    @State var today: String = "0"
+    @AppStorage("Today") var today: Int = 0
+    @AppStorage("Goal") var goal: Int = 3600
+    @AppStorage("TodayDate") var todayDate: String = ""
+    @State var sessions: Array<Session> = []
     @State var user:User = User()
     @State var authenticated = false
     @State var enabled = false
@@ -25,72 +27,16 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            if enabled {
-                if authenticated {
-                    MainController(authenticated: $authenticated, user: $user, today: $today, token: $token, verifyToken: $verifyToken, darkMode: $darkMode, mode: $mode, color: $color, theme: $theme)
-                } else {
-                    AuthController(authenticated: $authenticated, token: $token, user: $user, verifyToken: $verifyToken, theme: $theme)
-                        .preferredColorScheme(mode == AppearanceMode.Dark ? .dark : .light)
-                }
-            } else {
-                ProgressView()
+            MainController(today: $today, goal: $goal, todayDate: $todayDate, sessions: $sessions, darkMode: $darkMode, mode: $mode, color: $color, theme: $theme)
+                .preferredColorScheme(theme.mode == AppearanceMode.Dark ? .dark : .light)
+        }.onAppear(){
+            let date = checkDate(date: todayDate)
+            if date != "VALID" {
+                todayDate = date
             }
-            
-        }.ignoresSafeArea(.all)
-            .preferredColorScheme(mode == AppearanceMode.Dark ? .dark : .light)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .onAppear() {
-                if darkMode == true {
-                    mode = AppearanceMode.Dark
-                }
-                theme = Theme(mode: mode, scheme: color)
-                AF.request(apiUrl("/"), encoding: JSONEncoding.default).response { response in
-                    switch apiManager.status(response).code {
-                    case .Success:
-                        if token != "" {
-                            verifyToken = true
-                        } else {
-                            enabled = true
-                        }
-                    default:
-                        hasError = true
-                    }
-                }
-            }
-            .onChange(of: verifyToken){ newValue in
-                if newValue == true {
-                    AF.request(apiUrl("/users/verify?token=\(token)")).response { response in
-                        let res = apiManager.status(response)
-                        switch res.code {
-                        case .Success:
-                            verifyToken = false
-                            enabled = true
-                            authenticated = true
-                            today = res.data["today"] as! String
-                            user = User(dictionary: res.data["data"] as! [String : Any])
-                        case .Forbidden:
-                            token = ""
-                            enabled = true
-                            authenticated = false
-                        default:
-                            hasError = true
-                            enabled = false
-                            authenticated = false
-                            
-                        }
-                        verifyToken = false
-                    }
-                }
-            }
-            .onChange(of: mode) { new in
-                theme = Theme(mode: new, scheme: color)
-            }
-            .onChange(of: color) { new in
-                theme = Theme(mode: mode, scheme: new)
-            }
-            .toast(isPresenting: $hasError){
-                AlertToast(type: .error(.red), title: "Unable to connect")
-            }
+            sessions = getSessions()
+            print(sessions)
+        }
     }
 }
 

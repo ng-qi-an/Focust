@@ -24,27 +24,33 @@ struct Focus_ModeView: View {
     @State private var task2 = ""
     @State private var task3 = ""
     @State private var task4 = ""
-    @State private var counter = 0
-    @State private var saverCounter = 0
-    @State private var sec = 0
-    @State private var min2 = 0
-    @State private var min = 0
-    @State private var hour = 0
     @State private var taskCount = 0
+    
+    // Error handling
     @State private var apiError = false
     @State private var apiErrorMessage = ""
     @State private var paused = false
+    
+    // Bindings
     @Binding var theme: Theme
     @Binding var startedSession: Bool
-    @Binding var user: User
 //    @Binding var focusLength: Int
 //    @Binding var breakLength: Int
 //    @Binding var longBreakLength: Int
 //    @Binding var pomo: Bool
 //    @Binding var focusOptions: Array<String>
 //    @Binding var breakOptions: Array<String>
-    @Binding var token: String
-    @Binding var today: String
+    @Binding var today: Int
+    @Binding var todayDate: String;
+    @Binding var sessions: Array<Session>;
+    
+    // Timers
+    @State private var counter = 0
+    @State private var saverCounter = 0
+    @State private var sec = 0
+    @State private var min2 = 0
+    @State private var min = 0
+    @State private var hour = 0
     @State var breakNum = 0
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var saverCount = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -284,41 +290,46 @@ struct Focus_ModeView: View {
                                             saverCount.upstream.connect().cancel()
                                             saverCounter = 0
                                             breakCount.upstream.connect().cancel()
-                                            if user.guest == false {
-                                                saving = true
-                                                print(totalBreakCount)
-                                                print(breakNum)
-                                                print(counter)
-                                                AF.upload(multipartFormData: { multiFormData in
-                                                    multiFormData.append(Data(String(token).utf8), withName: "token")
-                                                    multiFormData.append(Data(String(totalBreakCount).utf8), withName: "breakLength")
-                                                    multiFormData.append(Data(String(breakNum).utf8), withName: "breakCount")
-                                                    multiFormData.append(Data(String(counter).utf8), withName: "sessionLength")
-                                                }, to: apiUrl("/sessions/create")).response { response in
-                                                    let res = apiManager.status(response)
-                                                    switch res.code {
-                                                    case .Success:
-                                                        Haptics.shared.notify(.success)
-                                                        today = res.data["data"] as! String
-                                                        startedSession = false
-                                                        dismiss()
-                                                    case .Forbidden:
-                                                        saving = false
-                                                        apiErrorMessage = "Token error. Login again."
-                                                        apiError = true
-                                                        Haptics.shared.notify(.error)
-                                                    default:
-                                                        saving = false
-                                                        apiErrorMessage = "An unknown error occured"
-                                                        apiError = true
-                                                        Haptics.shared.notify(.error)
-                                                    }
-                                                }
-                                            } else {
-                                                Haptics.shared.notify(.success)
-                                                startedSession = false
-                                                dismiss()
+                                            saving = true
+                                            print(totalBreakCount)
+                                            print(breakNum)
+                                            print(counter)
+                                            sessions.append(Session(id: UUID(), breaks: breakNum, breakLength: totalBreakCount, sessionLength: counter, date: Date()))
+                                            saveSessions(sessions)
+                                            Haptics.shared.notify(.success)
+                                            let date = checkDate(date: todayDate)
+                                            if date != "VALID" {
+                                                todayDate = date
+                                                today = 0
                                             }
+                                            today += (counter - totalBreakCount)
+                                            startedSession = false
+                                            dismiss()
+                                            //                                                AF.upload(multipartFormData: { multiFormData in
+//                                                    multiFormData.append(Data(String(token).utf8), withName: "token")
+//                                                    multiFormData.append(Data(String(totalBreakCount).utf8), withName: "breakLength")
+//                                                    multiFormData.append(Data(String(breakNum).utf8), withName: "breakCount")
+//                                                    multiFormData.append(Data(String(counter).utf8), withName: "sessionLength")
+//                                                }, to: apiUrl("/sessions/create")).response { response in
+//                                                    let res = apiManager.status(response)
+//                                                    switch res.code {
+//                                                    case .Success:
+//                                                        Haptics.shared.notify(.success)
+//                                                        today = res.data["data"] as! String
+//                                                        startedSession = false
+//                                                        dismiss()
+//                                                    case .Forbidden:
+//                                                        saving = false
+//                                                        apiErrorMessage = "Token error. Login again."
+//                                                        apiError = true
+//                                                        Haptics.shared.notify(.error)
+//                                                    default:
+//                                                        saving = false
+//                                                        apiErrorMessage = "An unknown error occured"
+//                                                        apiError = true
+//                                                        Haptics.shared.notify(.error)
+//                                                    }
+//                                                }
                                         } label: {
                                             ZStack {
                                                 Rectangle()
@@ -436,7 +447,7 @@ struct RoundedCorner: Shape {
 
 struct Focus_ModeView_Previews: PreviewProvider {
     static var previews: some View {
-        Focus_ModeView(theme: .constant(Theme()), startedSession: .constant(false), user: .constant(User(guest: true)), token: .constant("f3oifh29f43nf4"), today: .constant("0"))
+        Focus_ModeView(theme: .constant(Theme()), startedSession: .constant(false), today: .constant(0), todayDate: .constant(""), sessions: .constant([]))
     }
 }
 
